@@ -63,6 +63,25 @@
       "citations": 1
     },
     {
+      "title": "Height-encoded vision-language distillation for edge automotive bushing inspection",
+      "authors": [
+        "Shikun Chen",
+        "Songquan Xiong",
+        "Longjin Lv",
+        "Xueqin Lu",
+        "Wenxiang Li",
+        "Junjie Mao"
+      ],
+      "venue": "Journal of Visual Communication and Image Representation",
+      "year": 2026,
+      "date": "2026-08-07",
+      "type": "journal",
+      "doi": "10.1016/j.jvcir.2026.104923",
+      "url": "https://doi.org/10.1016/j.jvcir.2026.104923",
+      "citations": 0,
+      "added": "2026-10-16"
+    },
+    {
       "title": "Large language model-guided simulation optimization for balancing productivity, energy, and worker physical load in job shop scheduling",
       "authors": [
         "Shikun Chen",
@@ -107,6 +126,39 @@
       "code": "https://github.com/redcican/CoSAEM"
     },
     {
+      "title": "Cross-modal fusion of cytomorphology and 18F-FDG PET/CT for non-invasive bone marrow immune microenvironment decoding in multiple myeloma",
+      "authors": [
+        "Minjie Gao",
+        "Guifang Ouyang",
+        "Liu Y",
+        "S T Chen",
+        "Kaihong Xu"
+      ],
+      "venue": "Frontiers in Immunology",
+      "year": 2026,
+      "date": "2026-06-24",
+      "type": "journal",
+      "doi": "10.3389/fimmu.2026.1856163",
+      "url": "https://doi.org/10.3389/fimmu.2026.1856163",
+      "citations": 0,
+      "added": "2026-10-16"
+    },
+    {
+      "title": "Hierarchical process-level generative reward modeling with adaptive long-horizon reasoning for robust LLM alignment",
+      "authors": [
+        "S T Chen",
+        "Y F LIU"
+      ],
+      "venue": "Information Processing & Management",
+      "year": 2026,
+      "date": "2026-06-04",
+      "type": "journal",
+      "doi": "10.1016/j.ipm.2026.104957",
+      "url": "https://doi.org/10.1016/j.ipm.2026.104957",
+      "citations": 1,
+      "added": "2026-10-16"
+    },
+    {
       "title": "Multi-objective evolutionary reinforcement learning for Pareto-optimal interpretable policies",
       "authors": [
         "Shikun Chen",
@@ -120,6 +172,59 @@
       "url": "https://doi.org/10.1016/j.asoc.2026.115521",
       "citations": 0,
       "code": "https://github.com/redcican/morl-interp"
+    },
+    {
+      "title": "Mixed-type tabular data generation with graph-augmented flow matching",
+      "authors": [
+        "Shikun Chen",
+        "Longjin Lv",
+        "Yangguang Liu"
+      ],
+      "venue": "Pattern Recognition",
+      "year": 2026,
+      "date": "2026-05-11",
+      "type": "journal",
+      "doi": "10.1016/j.patcog.2026.113913",
+      "url": "https://doi.org/10.1016/j.patcog.2026.113913",
+      "citations": 0,
+      "added": "2026-10-16"
+    },
+    {
+      "title": "Height-information guided vision-language distillation for annotation-efficient bushing defect detection",
+      "authors": [
+        "Songquan Xiong",
+        "Shikun Chen",
+        "Yangguang Liu",
+        "Junjie Mao",
+        "Ruikai Qiu"
+      ],
+      "venue": "The International Journal of Advanced Manufacturing Technology",
+      "year": 2026,
+      "date": "2026-05-04",
+      "type": "journal",
+      "doi": "10.1007/s00170-026-18199-y",
+      "url": "https://doi.org/10.1007/s00170-026-18199-y",
+      "citations": 0,
+      "added": "2026-10-16"
+    },
+    {
+      "title": "Morphology-based cytogenetic risk prediction in multiple myeloma from bone marrow smears",
+      "authors": [
+        "Minjie Gao",
+        "Xiao Yan",
+        "Ling Chen",
+        "Guifang Ouyang",
+        "Yangguang Liu",
+        "Shikun Chen"
+      ],
+      "venue": "Frontiers in Oncology",
+      "year": 2026,
+      "date": "2026-03-18",
+      "type": "journal",
+      "doi": "10.3389/fonc.2026.1790130",
+      "url": "https://doi.org/10.3389/fonc.2026.1790130",
+      "citations": 1,
+      "added": "2026-10-16"
     },
     {
       "title": "Conditional diffusion with gradient guidance for high-dimensional expensive multi-objective optimization",
@@ -164,6 +269,23 @@
       "citations": 0
     },
     {
+      "title": "Contrastive learning enhanced retrieval-augmented few-shot framework for multi-label patent classification",
+      "authors": [
+        "Wenlong Zheng",
+        "Xin Li",
+        "Guoqing Cui",
+        "Shikun Chen"
+      ],
+      "venue": "PLoS ONE",
+      "year": 2026,
+      "date": "2026-01-21",
+      "type": "journal",
+      "doi": "10.1371/journal.pone.0341118",
+      "url": "https://doi.org/10.1371/journal.pone.0341118",
+      "citations": 0,
+      "added": "2026-10-16"
+    },
+    {
       "title": "Illuminating Heuristic Design: Language-Model-Driven Quality-Diversity Evolution for Combinatorial Optimization",
       "authors": [
         "Shikun Chen",
@@ -176,6 +298,27 @@
       "doi": "10.1109/tevc.2026.3721299",
       "url": "https://doi.org/10.1109/tevc.2026.3721299",
       "citations": 0
+    },
+    {
+      "title": "Development of multifunctional nanomaterials for advanced theranostic applications in skin cancer",
+      "authors": [
+        "Yu-Lung HSIEH",
+        "Jun Xie",
+        "Shaohua Jiang",
+        "Junwei Chen",
+        "Hao Peng",
+        "Fang Yang",
+        "Shikun Chen",
+        "Chao Liang"
+      ],
+      "venue": "Journal of Materials Chemistry B",
+      "year": 2026,
+      "date": "2026-01-01",
+      "type": "journal",
+      "doi": "10.1039/d6tb00762g",
+      "url": "https://doi.org/10.1039/d6tb00762g",
+      "citations": 0,
+      "added": "2026-10-16"
     },
     {
       "title": "Vision-Language Model-Assisted Active Learning for High-Accuracy Defect Detection in Automotive Bushing Components",
@@ -195,6 +338,20 @@
       ]
     },
     {
+      "title": "Dynamic multi-objective causal Bayesian optimization: Adaptive learning for complex systems under interventional constraints",
+      "authors": [
+        "Shikun Chen"
+      ],
+      "venue": "Knowledge-Based Systems",
+      "year": 2025,
+      "date": "2025-12-05",
+      "type": "journal",
+      "doi": "10.1016/j.knosys.2025.114971",
+      "url": "https://doi.org/10.1016/j.knosys.2025.114971",
+      "citations": 0,
+      "added": "2026-10-16"
+    },
+    {
       "title": "Design of graded cellular structures with data-driven inverse homogenization for microstructures with cubic symmetry",
       "authors": [
         "Shikun Chen",
@@ -210,6 +367,72 @@
       "doi": "10.1007/s00158-025-04200-x",
       "url": "https://doi.org/10.1007/s00158-025-04200-x",
       "citations": 1
+    },
+    {
+      "title": "Research on the impact of digital economy on the high-quality development of logistics industry",
+      "authors": [
+        "Wenlong Zheng",
+        "Shikun Chen",
+        "Jiaying Guo",
+        "Chenliang Wo"
+      ],
+      "venue": "Proceedings of the 2025 2nd International Conference on Digital Economy and Computer Science",
+      "year": 2025,
+      "date": "2025-10-17",
+      "type": "conference",
+      "doi": "10.1145/3785706.3785770",
+      "url": "https://doi.org/10.1145/3785706.3785770",
+      "citations": 0,
+      "added": "2026-10-16"
+    },
+    {
+      "title": "Integration of Machine Learning Prediction and Water Wave Optimization for Online Customer Service Representatives Scheduling in Bank Contact Centers,融合机器学习预测和水波优化算法求解银行在线客服调度问题",
+      "authors": [
+        "LU Xueqin, XIE Xicheng, TANG Yan, CHEN Shikun, LIU Yangguang"
+      ],
+      "venue": "DOAJ (DOAJ: Directory of Open Access Journals)",
+      "year": 2025,
+      "date": "2025-10-01",
+      "type": "journal",
+      "doi": "10.11896/jsjkx.250500086",
+      "url": "https://doi.org/10.11896/jsjkx.250500086",
+      "citations": 0,
+      "added": "2026-10-16"
+    },
+    {
+      "title": "Chebyshev-Sobolev Physics-Informed Neural Networks for General PDE Solutions",
+      "authors": [
+        "Shikun Chen",
+        "Songquan Xiong",
+        "Yangguang Liu"
+      ],
+      "venue": "International Journal of Applied and Computational Mathematics",
+      "year": 2025,
+      "date": "2025-08-14",
+      "type": "journal",
+      "doi": "10.1007/s40819-025-01988-6",
+      "url": "https://doi.org/10.1007/s40819-025-01988-6",
+      "citations": 5,
+      "added": "2026-10-16"
+    },
+    {
+      "title": "Scalable multi-label patent classification via iterative large language model-assisted active learning",
+      "authors": [
+        "Songquan Xiong",
+        "Shikun Chen",
+        "Jianwei He",
+        "Yangguang Liu",
+        "Junjie Mao",
+        "Chao Liu"
+      ],
+      "venue": "World Patent Information",
+      "year": 2025,
+      "date": "2025-08-06",
+      "type": "journal",
+      "doi": "10.1016/j.wpi.2025.102380",
+      "url": "https://doi.org/10.1016/j.wpi.2025.102380",
+      "citations": 5,
+      "added": "2026-10-16"
     },
     {
       "title": "Research on Cooperative Control of Heterogeneous Virtual Coupling Oriented to Variable Tracking Gap",
@@ -272,7 +495,7 @@
       "type": "journal",
       "doi": "10.1371/journal.pone.0319515",
       "url": "https://doi.org/10.1371/journal.pone.0319515",
-      "citations": 22,
+      "citations": 21,
       "code": "https://github.com/redcican/RRMSE"
     },
     {
@@ -306,7 +529,7 @@
       "type": "journal",
       "doi": "10.1007/s00170-024-14219-x",
       "url": "https://doi.org/10.1007/s00170-024-14219-x",
-      "citations": 5,
+      "citations": 4,
       "code": "https://github.com/redcican/Surrogate-gradient-methods"
     },
     {
@@ -326,6 +549,18 @@
       "citations": 1
     },
     {
+      "title": "RRMSE Voting Regressor: A weighting function based improvement to ensemble regression",
+      "authors": [],
+      "venue": "ArXiv",
+      "year": 2022,
+      "date": "2022",
+      "type": "journal",
+      "doi": null,
+      "url": "https://publons.com/wos-op/publon/68056202/",
+      "citations": 0,
+      "added": "2026-10-16"
+    },
+    {
       "title": "Development of Data-Driven Machine Learning Models for the Prediction of Casting Surface Defects",
       "authors": [
         "Shikun Chen",
@@ -337,7 +572,19 @@
       "type": "journal",
       "doi": "10.3390/met12010001",
       "url": "https://doi.org/10.3390/met12010001",
-      "citations": 65
+      "citations": 64
+    },
+    {
+      "title": "Interpretation of multi-label classification models using shapley values",
+      "authors": [],
+      "venue": "ArXiv",
+      "year": 2021,
+      "date": "2021",
+      "type": "journal",
+      "doi": null,
+      "url": "https://publons.com/wos-op/publon/68056201/",
+      "citations": 0,
+      "added": "2026-10-16"
     }
   ]
 }
