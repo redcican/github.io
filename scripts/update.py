@@ -200,8 +200,80 @@ def sync_publications():
                 continue
             if f == "citations" or not cur.get(f):
                 cur[f] = v
+    added += merge_scholar(items)
     items.sort(key=lambda p: (p.get("date") or str(p.get("year") or "")), reverse=True)
     save("publications.json", store)
+    return added
+
+
+def scholar_articles():
+    """Article list of the Google Scholar profile through SerpApi (needs SERPAPI_KEY)."""
+    key, user = os.environ.get("SERPAPI_KEY"), CONFIG.get("scholar_id")
+    if not key or not user:
+        return []
+    out, start = [], 0
+    while True:
+        q = urllib.parse.urlencode({"engine": "google_scholar_author", "author_id": user, "api_key": key,
+                                    "hl": "en", "num": 100, "start": start, "sort": "pubdate"})
+        r = get_json(f"https://serpapi.com/search.json?{q}") or {}
+        page = r.get("articles") or []
+        out += page
+        if len(page) < 100:
+            return out
+        start += 100
+
+
+def openalex_by_title(title):
+    """Find a work by exact (normalised) title, to get its DOI and full author list."""
+    r = openalex("works", filter=f"title.search:{re.sub(r'[^A-Za-z0-9 ]', ' ', title)[:200]}", **{"per-page": 10})
+    for w in (r or {}).get("results", []):
+        if norm_title(w.get("title")) == norm_title(title):
+            return from_openalex(w)
+    return None
+
+
+def merge_scholar(items):
+    """Add papers that are on Google Scholar but missing from ORCID, and take Scholar's per-paper citations."""
+    arts = scholar_articles()
+    if not arts:
+        return []
+    by_title = {norm_title(p["title"]): p for p in items}
+    report, added = [], []
+    for a in arts:
+        t = a.get("title") or ""
+        nt = norm_title(t)
+        cites = val(a, "cited_by", "value") or 0
+        cur = by_title.get(nt)
+        status = "listed"
+        if cur is not None:
+            if "citations" not in set(cur.get("locked", [])):
+                cur["citations"] = max(cites, cur.get("citations") or 0)
+        elif nt in HIDDEN:
+            status = "hidden"
+        else:
+            p = openalex_by_title(t)
+            if p and ((p.get("doi") or "") in HIDDEN):
+                status = "hidden"
+            elif "arxiv" in (a.get("publication") or "").lower() or (p and p["type"] in EXCLUDED_TYPES):
+                status = "skipped (preprint)"
+            else:
+                if not p:
+                    venue = re.split(r"\s+\d|,", a.get("publication") or "")[0].strip()
+                    p = {"title": t, "authors": [ALIASES.get(x.strip(), x.strip()) for x in (a.get("authors") or "").split(",") if x.strip()],
+                         "venue": venue, "year": int(a["year"]) if str(a.get("year", "")).isdigit() else None,
+                         "date": None, "type": "journal", "doi": None, "url": a.get("link") or "", "citations": cites}
+                if p.get("year"):
+                    p["citations"] = max(cites, p.get("citations") or 0)
+                    p["added"] = TODAY
+                    p["source"] = "scholar"
+                    items.append(p)
+                    by_title[nt] = p
+                    added.append(p)
+                    status = "added"
+                else:
+                    status = "skipped (no year)"
+        report.append({"title": t, "year": a.get("year"), "publication": a.get("publication"), "status": status})
+    save("scholar.json", {"count": len(arts), "items": report})
     return added
 
 
