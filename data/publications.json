@@ -229,7 +229,8 @@
       "type": "journal",
       "doi": "10.1016/j.swevo.2026.102290",
       "url": "https://doi.org/10.1016/j.swevo.2026.102290",
-      "citations": 0
+      "citations": 0,
+      "abstract": "Traditional Bayesian optimization relies on hand-crafted acquisition functions that treat variables uniformly, whereas multi-objective systems contain exploitable causal structure. Although recent advances established foundations for causal Bayesian optimization and multi-objective reinforcement learning independently, no existing approach combines these paradigms. Static acquisition policies cannot adapt to causal dependencies and competing objective trade-offs. Here, we present RL-CMBO (Reinforcement Learning for Causal Multi-Objective Bayesian Optimization), a reinforcement learning framework that learns intelligent acquisition policies through experience. Our approach shifts from hand-crafted functions to learned policies capable of discovering optimal intervention strategies. The framework integrates: (1) a meta-learning architecture adapting to task-specific causal structures, (2) state representation encoding Pareto front features and causal graph topology, and (3) constrained action space over Possibly-Optimal Minimal Intervention Sets (POMIS) ensuring causal identifiability. Our reward engineering balances hypervolume improvement, intervention costs, and Pareto front diversity–thus addressing competing objectives in causal systems. Experimental evaluation demonstrates that RL-CMBO outperforms existing methods across synthetic and real-world benchmarks, achieving improved sample efficiency while discovering intervention patterns that static acquisition functions fail to identify. This work establishes the first unified framework combining reinforcement learning, causal reasoning, and multi-objective optimization."
     },
     {
       "title": "Contrastive learning enhanced retrieval-augmented few-shot framework for multi-label patent classification",
@@ -246,7 +247,8 @@
       "doi": "10.1371/journal.pone.0341118",
       "url": "https://doi.org/10.1371/journal.pone.0341118",
       "citations": 0,
-      "added": "2026-10-16"
+      "added": "2026-10-16",
+      "abstract": "The rapid expansion of patent databases poses increasing challenges for multi-label patent classification, particularly for inventions spanning multiple technological domains. Conventional approaches are hindered by high annotation costs and limited scalability, while often neglecting the semantic structure of patent documents. Here, we present a retrieval-enhanced few-shot learning framework that combines patent-specific contrastive pre-training with semantic retrieval to enable scalable multi-label classification. Drone technologies are selected as the evaluation domain due to their multidisciplinary characteristics encompassing mechanical, electronic, and software aspects. The proposed method learns domain-adapted embeddings that capture multi-label co-occurrence patterns and leverages retrieval-augmented few-shot learning with structured reasoning to reduce reliance on extensive annotations. Experiments on a curated dataset of 15,000 annotated drone patents across ten categories demonstrate that the framework achieves Macro-F1 and Micro-F1 scores of 0.847 and 0.892, corresponding to improvements of 30% and 23% over few-shot baselines. Furthermore, contrastive pre-training yields notable benefits for underrepresented categories, with performance improvements reaching 16% over transformer-based approaches. These results indicate that the proposed approach offers an effective and resource-efficient solution for multi-label patent classification, with potential to improve the scalability and accessibility of intellectual property analysis."
     },
     {
       "title": "Illuminating Heuristic Design: Language-Model-Driven Quality-Diversity Evolution for Combinatorial Optimization",
@@ -277,7 +279,8 @@
       "citations": 0,
       "locked": [
         "venue"
-      ]
+      ],
+      "abstract": "Defect detection in automotive bushing components faces challenges from complex rubber-metal composite irregularities and high annotation costs for supervised detection systems requiring precise spatial localization. We present a vision-language model (VLM)-assisted active learning framework that leverages locally-deployed Qwen2.5-VL with LoRA fine-tuning for joint defect classification and bounding box prediction. Our cross-modal uncertainty estimation integrates classification confidence with localization uncertainty to prioritize informative samples for annotation. On a dataset of 15,000 bushing images with four spatially-annotated defect types, our framework achieved 98.2% mAP@50 using only 35% of training data—a 68% reduction in annotation requirements while surpassing the best fully supervised baseline by 5.9%. These results demonstrate the effectiveness of VLM-assisted active learning for addressing detection accuracy and annotation efficiency challenges in automotive manufacturing quality control."
     },
     {
       "title": "Dynamic multi-objective causal Bayesian optimization: Adaptive learning for complex systems under interventional constraints",
@@ -326,7 +329,8 @@
       "locked": [
         "title",
         "venue"
-      ]
+      ],
+      "abstract": "Online customer service representative scheduling is a crucial component of operational management in a bank's contact center.Optimized staffing and shift scheduling of customer service representatives ensure prompt customer responses,which significantly improves service efficiency and customer satisfaction.However,factors such as the uncertainty of customer request arrivals and variations in customer service skill levels make the online service representatives scheduling problem complex.Considering the practical challenges such as customer service representative skill levels,diversity of customer types,and matching requirements,this study proposes a mixed-integer linear programming model with the optimization objectives of minimizing custo-mer waiting time and operational costs,and also presents a hybrid machine learning and water wave optimization(WWO) method to effectively solve the online customer service scheduling problem.In this method,a forecasting model based on long short-term memory neural networks is employed to predict customer arrival volumes,and this model can capture both time series dependencies and the influence of external factors.For the mixed-integer programming model of representative scheduling,WWO combining reinforcement learning Q-learning is used for efficient solution.This method leverages Q-learning to adaptively optimize neighborhood selection,enhancing the efficiency and quality of solutions.Based on real data from the contact center of Zhejiang Tailong Bank's Ningbo branch,the experimental results show that the proposed method significantly outperforms comparative methods in terms of operational cost control.Further,sensitivity analysis reveals that when forecast accuracy drops below 90%,customer arrival uncertainty markedly increases scheduling costs and customer waiting times.Conversely,when accuracy reaches or exceeds 90%,performance improvements stabilize.These findings highlight the critical role of high-precision forecasting in effective scheduling and provide theoretical insights and practical guidance for balancing forecasting model complexity with scheduling efficiency in real-world applications."
     },
     {
       "title": "Chebyshev-Sobolev Physics-Informed Neural Networks for General PDE Solutions",
@@ -395,7 +399,8 @@
       "type": "journal",
       "doi": "10.1038/s41598-025-10371-w",
       "url": "https://doi.org/10.1038/s41598-025-10371-w",
-      "citations": 2
+      "citations": 2,
+      "abstract": "On-demand food delivery services are a rapidly expanding sector within the logistics industry, yet optimizing delivery routes in real-time remains a significant challenge, particularly in high-demand and complex environments. This gap hinders operational efficiency and customer satisfaction, highlighting the need for advanced decision-making frameworks. In response, we propose a multi-agent system (MAS) using the Belief-Desire-Intention (BDI) framework to enhance delivery efficiency. Our dynamic model simulates interactions between platforms, riders, and shops, utilizing Monte Carlo Tree Search (MCTS) and Insertion Heuristic methodologies to optimize routes. Through simulations of varying complexity, we demonstrate that MCTS outperforms the Insertion Heuristic, especially in complex scenarios, by effectively managing multiple objectives and maintaining high service quality. These results indicate that advanced intention scheduling methods like MCTS can significantly improve real-time decision-making, thereby enhancing both customer satisfaction and operational efficiency in high-demand delivery contexts."
     },
     {
       "title": "Optimization of non-smooth functions via differentiable surrogates",
@@ -410,7 +415,8 @@
       "type": "journal",
       "doi": "10.1371/journal.pone.0321862",
       "url": "https://doi.org/10.1371/journal.pone.0321862",
-      "citations": 2
+      "citations": 2,
+      "abstract": "Mathematical optimization is fundamental across many scientific and engineering applications. While data-driven models like gradient boosting and random forests excel at prediction tasks, they often lack mathematical regularity, being non-differentiable or even discontinuous. These models are commonly used to predict outputs based on a combination of fixed parameters and adjustable variables. A key transition in optimization involves moving beyond simple prediction to determine optimal variable values. Specifically, the challenge lies in identifying values of adjustable variables that maximize the output quality according to the model's predictions, given a set of fixed parameters. To address this challenge, we propose a method that combines XGBoost's superior prediction accuracy with neural networks' differentiability as optimization surrogates. The approach leverages gradient information from neural networks to guide SLSQP optimization while maintaining XGBoost's prediction precision. Through extensive testing on classical optimization benchmarks including Rosenbrock, Levy, and Rastrigin functions with varying dimensions and constraint conditions, we demonstrate that our method achieves solutions up to 40% better than traditional methods while reducing computation time by orders of magnitude. The framework consistently maintains near-zero constraint violations across all test cases, even as problem complexity increases. This approach bridges the gap between model accuracy and optimization efficiency, offering a practical solution for optimizing non-differentiable machine learning models that can be extended to other tree-based ensemble algorithms. The method has been successfully applied to real-world steel alloy optimization, where it achieved superior performance while maintaining all metallurgical composition constraints."
     },
     {
       "title": "RRMSE-enhanced weighted voting regressor for improved ensemble regression",
@@ -425,7 +431,8 @@
       "doi": "10.1371/journal.pone.0319515",
       "url": "https://doi.org/10.1371/journal.pone.0319515",
       "citations": 21,
-      "code": "https://github.com/redcican/RRMSE"
+      "code": "https://github.com/redcican/RRMSE",
+      "abstract": "Ensemble regression methods are widely used to improve prediction accuracy by combining multiple regression models, especially when dealing with continuous numerical targets. However, most ensemble voting regressors use equal weights for each base model's predictions, which can limit their effectiveness, particularly when there is no specific domain knowledge to guide the weighting. This uniform weighting approach doesn't consider that some models may perform better than others on different datasets, leaving room for improvement in optimizing ensemble performance. To overcome this limitation, we propose the RRMSE (Relative Root Mean Square Error) Voting Regressor, a new ensemble regression technique that assigns weights to each base model based on their relative error rates. By using an RRMSE-based weighting function, our method gives more importance to models that demonstrate higher accuracy, thereby enhancing the overall prediction quality. We tested the RRMSE Voting Regressor on six popular regression datasets and compared its performance with several state-of-the-art ensemble regression algorithms. The results show that the RRMSE Voting Regressor consistently achieves lower prediction errors than existing methods across all tested datasets. This improvement highlights the effectiveness of using relative error metrics for weighting in ensemble models. Our approach not only fills a gap in current ensemble regression techniques but also provides a reliable and adaptable method for boosting prediction performance in various machine learning tasks. By leveraging the strengths of individual models through smart weighting, the RRMSE Voting Regressor offers a significant advancement in the field of ensemble learning."
     },
     {
       "title": "Conditional diffusion models for the inverse design of lattice structures",
@@ -459,7 +466,8 @@
       "doi": "10.1007/s00170-024-14219-x",
       "url": "https://doi.org/10.1007/s00170-024-14219-x",
       "citations": 4,
-      "code": "https://github.com/redcican/Surrogate-gradient-methods"
+      "code": "https://github.com/redcican/Surrogate-gradient-methods",
+      "abstract": "Abstract In many industrial applications, data-driven models are more and more commonly employed as an alternative to classical analytical descriptions or simulations. In particular, such models are often used to predict the outcome of an industrial process with respect to specific quality characteristics from both observed process parameters and control variables. A major step in proceeding from purely predictive to prescriptive analytics, i.e., towards leveraging data-driven models for process optimization, consists of, for given process parameters, determining control variable values such that the output quality improves according to the process model. This task naturally leads to a constrained optimization problem for data-driven prediction algorithms. In many cases, however, the best available models suffer from a lack of regularity: methods such as gradient boosting or random forests are generally non-differentiable and might even exhibit discontinuities. The optimization of these models would therefore require the use of derivative-free techniques. Here, we discuss the use of alternative, independently trained differentiable machine learning models as a surrogate during the optimization procedure. While these alternatives are generally less accurate representations of the actual process, the possibility of employing derivative-based optimization methods provides major advantages in terms of computational performance. Using classical benchmarks as well as a real-world dataset obtained from an industrial environment, we demonstrate that these advantages can outweigh the additional model error, especially in real-time applications."
     },
     {
       "title": "Train Trajectory Cooperative Optimization on Coupling Process at Junctions",
@@ -489,7 +497,8 @@
       "type": "journal",
       "doi": "10.3390/met12010001",
       "url": "https://doi.org/10.3390/met12010001",
-      "citations": 64
+      "citations": 65,
+      "abstract": "This paper presents an approach for the application of machine learning in the prediction and understanding of casting surface related defects. The manner by which production data from a steel and cast iron foundry can be used to create models for predicting casting surface related defect is demonstrated. The data used for the model creation were collected from a medium-sized steel and cast iron foundry in which components ranging from 1 to 100 kg in weight are produced from wear and heat resistant cast iron and steel materials. This includes all production-relevant data from the melting and casting process, as well as from the mold production, the sand preparation and component quality related data from the quality management department. The data are tethered together with each other, the information regarding the identity and number of components that resulted in scrap due to the casting surface defect metal penetrations was added to the dataset. Six different machine learning algorithms were trained and an interpretation of the models outputs was accomplished with the application of the SHAP framework."
     },
     {
       "title": "Interpretation of multi-label classification models using shapley values",
