@@ -291,16 +291,57 @@ def sync_projects():
     return added
 
 
-def sync_metrics(n_pubs):
-    a = openalex(f"authors/orcid:{ORCID}")
-    if not a:
-        return
-    save("metrics.json", {
-        "works": n_pubs,
-        "citations": a.get("cited_by_count", 0),
-        "h_index": val(a, "summary_stats", "h_index") or 0,
-        "source": "OpenAlex",
+def scholar_metrics():
+    """Citations, h-index and i10-index from the public Google Scholar profile.
+
+    Scholar has no API. With a SERPAPI_KEY secret the numbers come through SerpApi;
+    otherwise the profile page is read directly, which Scholar sometimes blocks.
+    Returns None when neither works, so the last known numbers are kept.
+    """
+    user = CONFIG.get("scholar_id")
+    if not user:
+        return None
+    key = os.environ.get("SERPAPI_KEY")
+    if key:
+        q = urllib.parse.urlencode({"engine": "google_scholar_author", "author_id": user, "api_key": key, "hl": "en"})
+        r = get_json(f"https://serpapi.com/search.json?{q}")
+        table = val(r, "cited_by", "table") or []
+        flat = {k: v.get("all") for row in table for k, v in row.items() if isinstance(v, dict)}
+        if flat.get("citations") is not None:
+            return {"citations": flat["citations"], "h_index": flat.get("h_index", 0), "i10_index": flat.get("i10_index", 0)}
+    url = f"https://scholar.google.com/citations?user={user}&hl=en"
+    req = urllib.request.Request(url, headers={
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0 Safari/537.36",
+        "Accept-Language": "en-US,en;q=0.9",
     })
+    try:
+        with urllib.request.urlopen(req, timeout=30) as r:
+            html = r.read().decode("utf-8", "replace")
+    except Exception as e:
+        print(f"warn: Google Scholar: {e}", file=sys.stderr)
+        return None
+    cells = [int(x) for x in re.findall(r'class="gsc_rsb_std">(\d+)<', html)]
+    if len(cells) < 6:
+        print("warn: Google Scholar page had no citation table (likely blocked)", file=sys.stderr)
+        return None
+    return {"citations": cells[0], "h_index": cells[2], "i10_index": cells[4]}
+
+
+def sync_metrics(n_pubs):
+    old = load("metrics.json")
+    m = scholar_metrics()
+    if m:
+        source = "Google Scholar"
+    elif old.get("source") == "Google Scholar":
+        m, source = {k: old[k] for k in ("citations", "h_index", "i10_index") if k in old}, "Google Scholar"
+    else:
+        a = openalex(f"authors/orcid:{ORCID}")
+        if not a:
+            return
+        m = {"citations": a.get("cited_by_count", 0), "h_index": val(a, "summary_stats", "h_index") or 0}
+        source = "OpenAlex"
+    save("metrics.json", {"works": n_pubs, **m, "source": source})
+    print(f"Metrics from {source}: {m}")
 
 
 def main():

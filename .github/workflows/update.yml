@@ -24,6 +24,8 @@ jobs:
         with:
           python-version: "3.12"
       - name: Pull ORCID and OpenAlex records
+        env:
+          SERPAPI_KEY: ${{ secrets.SERPAPI_KEY }}
         run: python scripts/update.py
       - name: Commit changes
         run: |

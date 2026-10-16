@@ -81,6 +81,7 @@ a:hover { text-decoration-thickness: 2px; }
   font-variant-numeric: tabular-nums;
 }
 .metrics b { color: var(--ink); font-weight: 500; }
+.metrics .src { opacity: 0.75; }
 
 .front { position: relative; margin-top: 0.5rem; }
 .front canvas { display: block; width: 100%; height: 150px; }
@@ -259,7 +260,7 @@ footer { font: 400 0.75rem/1.6 var(--font-mono); color: var(--muted); border-top
   const I18N = {
     en: {
       about: "About", research: "Research", publications: "Publications", projects: "Projects", review: "Peer review",
-      pubsN: "publications", cites: "citations", h: "h-index", papers: n => `${n} paper${n > 1 ? "s" : ""}`,
+      pubsN: "publications", cites: "citations", via: "via", h: "h-index", papers: n => `${n} paper${n > 1 ? "s" : ""}`,
       all: "All", journal: "Journal", conference: "Conference", preprint: "Preprint",
       search: "Search titles, co-authors, venues", cited: n => `cited ${n}`, isNew: "NEW",
       abstract: "Abstract", code: "Code", none: "No publications match.", clear: "Clear filters",
@@ -271,7 +272,7 @@ footer { font: 400 0.75rem/1.6 var(--font-mono); color: var(--muted); border-top
     },
     zh: {
       about: "简介", research: "研究方向", publications: "学术论文", projects: "科研项目", review: "审稿经历",
-      pubsN: "篇论文", cites: "次引用", h: "h 指数", papers: n => `${n} 篇`,
+      pubsN: "篇论文", cites: "次引用", via: "来源", h: "h 指数", papers: n => `${n} 篇`,
       all: "全部", journal: "期刊", conference: "会议", preprint: "预印本",
       search: "搜索标题、合作者、期刊", cited: n => `被引 ${n}`, isNew: "新",
       abstract: "摘要", code: "代码", none: "没有符合条件的论文。", clear: "清除筛选",
@@ -319,7 +320,9 @@ footer { font: 400 0.75rem/1.6 var(--font-mono); color: var(--muted); border-top
       $("metrics").innerHTML =
         `<span><b>${items.length}</b> ${t("pubsN")}</span>` +
         `<span><b>${metrics.citations}</b> ${t("cites")}</span>` +
-        `<span>${t("h")} <b>${metrics.h_index}</b></span>`;
+        `<span>${t("h")} <b>${metrics.h_index}</b></span>` +
+        (metrics.i10_index != null ? `<span>i10 <b>${metrics.i10_index}</b></span>` : "") +
+        (metrics.source ? `<span class="src">${t("via")} ${esc(metrics.source)}</span>` : "");
     }
     $("themes").innerHTML = themes.map((th, i) => {
       const n = items.filter(p => themeOf(p) === i).length;

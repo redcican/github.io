@@ -9,7 +9,7 @@ Static site for GitHub Pages. No build step: `index.html` reads the JSON files i
 - **works** from ORCID, with authors, venues and citation counts from OpenAlex
 - **peer reviews** from ORCID, with journal names resolved by ISSN through OpenAlex
 - **fundings** from ORCID into the Projects section
-- **citations / h-index** from OpenAlex
+- **citations / h-index / i10-index** from Google Scholar (add a `SERPAPI_KEY` repository secret if Scholar blocks the direct read; OpenAlex is the fallback)
 
 New items are appended to `data/*.json` and committed; GitHub Pages redeploys on that commit.
 Nothing is ever deleted automatically.
