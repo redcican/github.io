@@ -35,8 +35,10 @@
       "title": "Language models for optimization",
       "text": "Large language models as heuristic designers and search guides for flow shop and job shop scheduling and combinatorial optimization.",
       "keywords": [
-        "language model",
-        "language-model",
+        "large language model",
+        "large-language-model",
+        "language-model-driven",
+        "llm",
         "heuristic design",
         "scheduling"
       ],
@@ -63,7 +65,9 @@
         "defect",
         "foundry",
         "casting",
-        "manufacturing"
+        "manufacturing",
+        "bushing",
+        "inspection"
       ],
       "title_zh": "智能制造",
       "text_zh": "基于视觉-语言模型与主动学习的缺陷检测，以及铸造车间的数据驱动能耗优化。"

@@ -12,15 +12,20 @@
 <style>
 /* Layout: one quiet reading column; a Pareto front strip under the name is the only figure. Years sit in a mono gutter beside publications. */
 :root {
-  --bg: #f6f7f9;
+  --bg: #fbfcff;
   --surface: #ffffff;
-  --ink: #151a21;
-  --muted: #5b6573;
-  --rule: #dde2e8;
-  --accent: #1d5e8c;
-  --accent-soft: #e3edf5;
-  --dominated: #b5bfca;
-  --thumb-bg: #eaeff4;
+  --ink: #10162f;
+  --muted: #56607d;
+  --rule: #e2e6f3;
+  --accent: #2b59ff;
+  --accent-soft: #e7ecff;
+  --dominated: #bcc4dd;
+  --thumb-bg: #f2f5ff;
+  --c0: #2b59ff;
+  --c1: #8a3ffc;
+  --c2: #00a19b;
+  --c3: #ff6a2b;
+  --c4: #e8368f;
   --font-display: "Newsreader", "Iowan Old Style", Georgia, serif;
   --font-body: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
   --font-mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
@@ -28,21 +33,29 @@
 }
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
-    --bg: #0e1217; --surface: #151b22; --ink: #e3e8ee; --muted: #95a2b1;
-    --rule: #26303b; --accent: #7db7e3; --accent-soft: #19293a; --dominated: #3c4856; --thumb-bg: #17202a;
+    --bg: #0a0f22; --surface: #121a36; --ink: #eef1ff; --muted: #9ba6c8;
+    --rule: #242e52; --accent: #7d9bff; --accent-soft: #1b2658; --dominated: #34406c; --thumb-bg: #111a3a;
+    --c0: #7d9bff; --c1: #b38bff; --c2: #34d8cc; --c3: #ff9a62; --c4: #ff73b6;
     color-scheme: dark;
   }
 }
 :root[data-theme="dark"] {
-  --bg: #0e1217; --surface: #151b22; --ink: #e3e8ee; --muted: #95a2b1;
-  --rule: #26303b; --accent: #7db7e3; --accent-soft: #19293a; --dominated: #3c4856; --thumb-bg: #17202a;
+  --bg: #0a0f22; --surface: #121a36; --ink: #eef1ff; --muted: #9ba6c8;
+  --rule: #242e52; --accent: #7d9bff; --accent-soft: #1b2658; --dominated: #34406c; --thumb-bg: #111a3a;
+  --c0: #7d9bff; --c1: #b38bff; --c2: #34d8cc; --c3: #ff9a62; --c4: #ff73b6;
   color-scheme: dark;
 }
 *, *::before, *::after { box-sizing: border-box; }
 [hidden] { display: none !important; }
 html { padding-top: env(safe-area-inset-top, 0px); padding-bottom: env(safe-area-inset-bottom, 0px); }
 body {
-  margin: 0; background: var(--bg); color: var(--ink);
+  margin: 0; color: var(--ink);
+  background:
+    radial-gradient(48rem 26rem at 12% -6rem, color-mix(in srgb, var(--c0) 18%, transparent), transparent 70%),
+    radial-gradient(42rem 24rem at 92% -4rem, color-mix(in srgb, var(--c1) 15%, transparent), transparent 70%),
+    radial-gradient(36rem 20rem at 55% 16rem, color-mix(in srgb, var(--c2) 9%, transparent), transparent 70%),
+    var(--bg);
+  background-repeat: no-repeat;
   font: 400 1rem/1.65 var(--font-body);
   -webkit-font-smoothing: antialiased;
 }
@@ -80,7 +93,7 @@ a:hover { text-decoration-thickness: 2px; }
   font: 400 0.8rem/1.4 var(--font-mono); color: var(--muted);
   font-variant-numeric: tabular-nums;
 }
-.metrics b { color: var(--ink); font-weight: 500; }
+.metrics b { color: var(--accent); font-weight: 600; }
 .metrics .src { opacity: 0.75; }
 
 .front { position: relative; margin-top: 0.5rem; }
@@ -91,7 +104,7 @@ a:hover { text-decoration-thickness: 2px; }
   border-top: 1px solid var(--rule); padding-top: 0.4rem;
 }
 .front .key { display: inline-flex; align-items: center; gap: 0.4rem; }
-.front .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--accent); display: inline-block; }
+.front .dot { width: 7px; height: 7px; border-radius: 50%; background: linear-gradient(90deg, var(--c0), var(--c1)); display: inline-block; }
 
 /* Sections */
 section { display: grid; gap: 1.25rem; }
@@ -104,10 +117,14 @@ h2 .count { color: var(--accent); letter-spacing: 0.04em; }
 .bio { margin: 0; font: 400 1.3rem/1.55 var(--font-display); max-width: 38rem; text-wrap: pretty; }
 
 .themes { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.5rem 2rem; }
-.theme { display: grid; gap: 0.3rem; align-content: start; }
-.theme h3 { margin: 0; font: 500 1rem/1.35 var(--font-body); }
+.theme {
+  display: grid; gap: 0.35rem; align-content: start; padding: 1rem 1.1rem; border-radius: 10px;
+  background: color-mix(in srgb, var(--tc) 8%, var(--surface)); border: 1px solid color-mix(in srgb, var(--tc) 18%, transparent);
+}
+.theme h3 { margin: 0; font: 600 1rem/1.35 var(--font-body); color: color-mix(in srgb, var(--tc) 70%, var(--ink)); display: flex; gap: 0.5rem; align-items: baseline; }
+.theme h3::before { content: ""; width: 0.6rem; height: 0.6rem; border-radius: 2px; background: var(--tc); flex: none; transform: translateY(-0.05rem); }
 .theme p { margin: 0; color: var(--muted); font-size: 0.93rem; }
-.theme .n { font: 400 0.75rem var(--font-mono); color: var(--accent); }
+.theme .n { font: 500 0.75rem var(--font-mono); color: var(--tc); }
 
 /* Filters */
 .filters { display: flex; flex-wrap: wrap; gap: 0.4rem; }
@@ -117,7 +134,9 @@ h2 .count { color: var(--accent); letter-spacing: 0.04em; }
   padding: 0.45rem 0.8rem; cursor: pointer;
 }
 .chip:hover { color: var(--ink); border-color: var(--muted); }
-.chip[aria-pressed="true"] { background: var(--accent-soft); color: var(--accent); border-color: transparent; }
+.chip { --tc: var(--accent); }
+.chip:hover { color: var(--tc); border-color: var(--tc); }
+.chip[aria-pressed="true"] { background: color-mix(in srgb, var(--tc) 14%, var(--surface)); color: color-mix(in srgb, var(--tc) 80%, var(--ink)); border-color: color-mix(in srgb, var(--tc) 35%, transparent); font-weight: 500; }
 
 /* Publications */
 .year-group { display: grid; grid-template-columns: 4.5rem minmax(0, 1fr); gap: 0 1rem; border-top: 1px solid var(--rule); padding-top: 1rem; }
@@ -133,7 +152,7 @@ h2 .count { color: var(--accent); letter-spacing: 0.04em; }
 .venue { font-family: var(--font-display); font-style: italic; font-size: 1rem; color: var(--ink); }
 .tag { font: 400 0.7rem/1 var(--font-mono); letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); }
 .cites { font: 400 0.75rem var(--font-mono); font-variant-numeric: tabular-nums; }
-.new { font: 500 0.68rem/1 var(--font-mono); color: var(--accent); background: var(--accent-soft); padding: 0.2rem 0.4rem; border-radius: 3px; letter-spacing: 0.06em; }
+.new { font: 500 0.68rem/1 var(--font-mono); color: #fff; background: var(--c3); padding: 0.2rem 0.4rem; border-radius: 3px; letter-spacing: 0.06em; }
 
 /* Reviews and projects */
 .rows { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--rule); }
@@ -168,7 +187,8 @@ footer { font: 400 0.75rem/1.6 var(--font-mono); color: var(--muted); border-top
 .pub { grid-template-columns: 7rem minmax(0, 1fr); gap: 1rem; align-items: start; }
 .thumb { display: block; border-radius: 5px; overflow: hidden; background: var(--thumb-bg); aspect-ratio: 4 / 3; max-width: 100%; border: 1px solid var(--rule); transition: border-color .15s, transform .15s; }
 .thumb canvas, .thumb img { display: block; width: 100%; height: 100%; object-fit: cover; }
-.pub:hover .thumb { border-color: var(--accent); }
+.pub:hover .thumb { border-color: var(--tc, var(--accent)); box-shadow: 0 6px 18px -8px color-mix(in srgb, var(--tc, var(--accent)) 55%, transparent); transform: translateY(-1px); }
+.pub-title a:hover { color: var(--tc, var(--accent)); }
 .pub-body { display: grid; gap: 0.15rem; min-width: 0; }
 .actions { display: flex; flex-wrap: wrap; gap: 0.35rem; margin-top: 0.35rem; }
 .act {
@@ -326,7 +346,7 @@ footer { font: 400 0.75rem/1.6 var(--font-mono); color: var(--muted); border-top
     }
     $("themes").innerHTML = themes.map((th, i) => {
       const n = items.filter(p => themeOf(p) === i).length;
-      return `<div class="theme"><h3>${esc(pf(th, "title"))}</h3><p>${esc(pf(th, "text"))}</p>${n ? `<span class="n">${t("papers", n)}</span>` : ""}</div>`;
+      return `<div class="theme" style="--tc: var(--c${i})"><h3>${esc(pf(th, "title"))}</h3><p>${esc(pf(th, "text"))}</p>${n ? `<span class="n">${t("papers", n)}</span>` : ""}</div>`;
     }).join("");
   }
 
@@ -381,13 +401,13 @@ footer { font: 400 0.75rem/1.6 var(--font-mono); color: var(--muted); border-top
     const list = items.filter(matches);
     $("pub-count").textContent = list.length === items.length ? list.length : `${list.length} / ${items.length}`;
     $("filters").innerHTML = filters.map(f =>
-      `<button type="button" class="chip" id="f-${f.key}" data-k="${f.key}" aria-pressed="${f.key === active}">${esc(flabel(f))}</button>`).join("");
+      `<button type="button" class="chip" ${f.key[0] === "t" ? `style="--tc: var(--c${f.key.slice(1)})"` : ""} id="f-${f.key}" data-k="${f.key}" aria-pressed="${f.key === active}">${esc(flabel(f))}</button>`).join("");
     renderYears();
     const years = [...new Set(list.map(p => p.year))].sort((a, b) => b - a);
     $("pub-list").innerHTML = list.length ? years.map(y => {
       const ps = list.filter(p => p.year === y).sort((a, b) => (b.date || "").localeCompare(a.date || ""));
       return `<div class="year-group"><div class="year">${y}</div><ol class="pubs">${ps.map(p => `
-        <li class="pub" data-k="${p._k}">
+        <li class="pub" data-k="${p._k}" style="--tc: var(--c${themeOf(p) < 0 ? 4 : themeOf(p)})">
           <a class="thumb" href="${esc(p.url)}" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true">${p.thumb
             ? `<img src="${esc(p.thumb)}" alt="" loading="lazy">`
             : `<canvas data-k="${p._k}"></canvas>`}</a>
@@ -466,7 +486,7 @@ footer { font: 400 0.75rem/1.6 var(--font-mono); color: var(--muted); border-top
   function drawThumb(cv, p) {
     const css = getComputedStyle(document.documentElement);
     const C = (n) => css.getPropertyValue(n).trim();
-    const accent = C("--accent"), soft = C("--dominated"), ink = C("--muted"), bg = C("--thumb-bg");
+    const ti = themeOf(p), accent = C(`--c${ti < 0 ? 4 : ti}`), soft = C("--dominated"), ink = C("--muted"), bg = C("--thumb-bg");
     const dpr = window.devicePixelRatio || 1, w = cv.clientWidth || 112, h = cv.clientHeight || 84;
     cv.width = w * dpr; cv.height = h * dpr;
     const g = cv.getContext("2d"); g.setTransform(dpr, 0, 0, dpr, 0, 0);
@@ -597,7 +617,7 @@ footer { font: 400 0.75rem/1.6 var(--font-mono); color: var(--muted); border-top
 
   function draw() {
     const css = getComputedStyle(document.documentElement);
-    const accent = css.getPropertyValue("--accent").trim();
+    const cv0 = css.getPropertyValue("--c0").trim(), cv1 = css.getPropertyValue("--c1").trim(), cv4 = css.getPropertyValue("--c4").trim();
     const dom = css.getPropertyValue("--dominated").trim();
     const dpr = window.devicePixelRatio || 1;
     const w = cv.clientWidth, h = cv.clientHeight;
@@ -610,7 +630,9 @@ footer { font: 400 0.75rem/1.6 var(--font-mono); color: var(--muted); border-top
     ctx.fillStyle = dom;
     for (const p of pts) { ctx.beginPath(); ctx.arc(X(p.x), Y(1 - p.y), 2, 0, Math.PI * 2); ctx.fill(); }
     const upto = Math.max(1, Math.round(nd.length * progress));
-    ctx.strokeStyle = accent; ctx.lineWidth = 1.25; ctx.beginPath();
+    const accent = ctx.createLinearGradient(0, 0, w, 0);
+    accent.addColorStop(0, cv0); accent.addColorStop(0.55, cv1); accent.addColorStop(1, cv4);
+    ctx.strokeStyle = accent; ctx.lineWidth = 1.75; ctx.beginPath();
     nd.slice(0, upto).forEach((p, i) => {
       if (i === 0) ctx.moveTo(X(p.x), Y(1 - p.y));
       else { ctx.lineTo(X(p.x), Y(1 - nd[i - 1].y)); ctx.lineTo(X(p.x), Y(1 - p.y)); }
