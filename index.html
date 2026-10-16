@@ -259,7 +259,7 @@ footer { font: 400 0.75rem/1.6 var(--font-mono); color: var(--muted); border-top
             <span class="tag">${p.type === "conference" ? "Conference" : p.type === "journal" ? "Journal" : esc(p.type)}</span>
             ${p.citations ? `<span class="cites">cited ${p.citations}</span>` : ""}
             ${p.code ? `<a class="cites" href="${esc(p.code)}" target="_blank" rel="noopener">code</a>` : ""}
-            ${p.added && Date.parse(p.added) > recent ? `<span class="new">NEW</span>` : ""}</p>
+            ${p.date && Date.parse(p.date) > recent ? `<span class="new">NEW</span>` : ""}</p>
         </li>`).join("")}</ol></div>`;
     }).join("");
   }

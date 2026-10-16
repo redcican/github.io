@@ -4,6 +4,9 @@ on:
   schedule:
     - cron: "0 1 * * 1"   # every Monday 01:00 UTC (09:00 Beijing)
   workflow_dispatch:
+  push:
+    branches: [main]
+    paths: ["scripts/**", "config.json"]
 
 permissions:
   contents: write

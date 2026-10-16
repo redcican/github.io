@@ -4,5 +4,11 @@
   "author_aliases": {
     "Баочанг Лиу": "Baochang Liu"
   },
-  "hide": []
+  "hide": [],
+  "exclude_types": [
+    "preprint",
+    "data-set",
+    "dataset",
+    "other"
+  ]
 }

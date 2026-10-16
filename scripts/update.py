@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
 """Sync publications, peer reviews, funded projects and metrics into data/*.json.
 
-Sources: the public ORCID API (works, peer reviews, fundings) and OpenAlex
-(author lists, venues, citation counts, journal names for ISSNs).
+Sources: the public ORCID API decides which works, peer reviews and fundings are
+yours; OpenAlex (looked up by DOI) adds author lists, venues, citation counts and
+journal names for ISSNs.
 Existing entries are never deleted, and fields listed in an entry's "locked"
 array are never overwritten, so hand edits survive every sync.
 """
@@ -86,6 +87,7 @@ def save(name, obj):
 
 ALIASES = CONFIG.get("author_aliases", {})
 HIDDEN = {h.lower() for h in CONFIG.get("hide", [])}
+EXCLUDED_TYPES = set(CONFIG.get("exclude_types", ["preprint", "dataset", "other", "data-set"]))
 TYPE_MAP = {"journal-article": "journal", "article": "journal", "conference-paper": "conference",
             "conference-proceedings": "conference", "proceedings-article": "conference",
             "book-chapter": "chapter", "book": "book", "preprint": "preprint", "posted-content": "preprint"}
@@ -98,33 +100,30 @@ def date_from(d):
 
 # ---------- publications ----------
 
-def openalex_works():
-    """All works OpenAlex attributes to this ORCID, keyed by DOI / title."""
-    out, cursor = {}, "*"
-    while cursor:
-        r = openalex("works", filter=f"author.orcid:{ORCID}", **{"per-page": 200, "cursor": cursor})
-        if not r:
-            break
-        for w in r.get("results", []):
-            doi = (w.get("doi") or "").replace("https://doi.org/", "").lower() or None
-            src = val(w, "primary_location", "source") or {}
-            p = {
-                "title": w.get("title") or w.get("display_name") or "",
-                "authors": [ALIASES.get(a["author"]["display_name"], a["author"]["display_name"])
-                            for a in w.get("authorships", [])],
-                "venue": src.get("display_name") or val(w, "primary_location", "raw_source_name") or "",
-                "year": w.get("publication_year"),
-                "date": w.get("publication_date"),
-                "type": TYPE_MAP.get(w.get("type_crossref") or w.get("type"), w.get("type") or "other"),
-                "doi": doi,
-                "url": f"https://doi.org/{doi}" if doi else (w.get("id") or ""),
-                "citations": w.get("cited_by_count", 0),
-            }
-            if p["type"] == "journal" and src.get("type") == "conference":
-                p["type"] = "conference"
-            out[key_of(p)] = p
-        cursor = val(r, "meta", "next_cursor")
-    return out
+def from_openalex(w):
+    doi = (w.get("doi") or "").replace("https://doi.org/", "").lower() or None
+    src = val(w, "primary_location", "source") or {}
+    p = {
+        "title": w.get("title") or w.get("display_name") or "",
+        "authors": [ALIASES.get(a["author"]["display_name"], a["author"]["display_name"])
+                    for a in w.get("authorships", [])],
+        "venue": src.get("display_name") or val(w, "primary_location", "raw_source_name") or "",
+        "year": w.get("publication_year"),
+        "date": w.get("publication_date"),
+        "type": TYPE_MAP.get(w.get("type_crossref") or w.get("type"), w.get("type") or "other"),
+        "doi": doi,
+        "url": f"https://doi.org/{doi}" if doi else (w.get("id") or ""),
+        "citations": w.get("cited_by_count", 0),
+    }
+    if p["type"] == "journal" and src.get("type") == "conference":
+        p["type"] = "conference"
+    return p
+
+
+def openalex_by_doi(doi):
+    """Exact lookup of one work. OpenAlex's author-level ORCID matching is too loose to list works."""
+    w = openalex(f"works/doi:{doi}") if doi else None
+    return from_openalex(w) if w and w.get("id") else None
 
 
 def orcid_works():
@@ -158,27 +157,27 @@ def sync_publications():
     items = store["items"]
     index = {key_of(p): p for p in items}
     by_title = {norm_title(p["title"]): p for p in items}
-    oa, oc = openalex_works(), orcid_works()
-    if not oa and not oc:
-        print("No data from ORCID or OpenAlex; leaving publications unchanged.")
+    works = orcid_works()
+    if not works:
+        print("No works from ORCID; leaving publications unchanged.")
         return []
-    # ORCID decides what is the author's; OpenAlex fills details. OpenAlex-only works are added too.
-    merged = dict(oa)
-    for k, p in oc.items():
-        if k in merged:
-            for f in ("venue", "date", "year"):
-                merged[k][f] = merged[k][f] or p[f]
-        else:
-            alt = next((v for v in oa.values() if norm_title(v["title"]) == norm_title(p["title"])), None)
-            if alt:
-                alt["doi"] = alt["doi"] or p["doi"]
-            else:
-                merged[k] = p
     added = []
-    for k, p in merged.items():
-        if (p.get("doi") or "") in HIDDEN or norm_title(p["title"]) in HIDDEN or not p.get("year"):
+    for k, p in works.items():
+        if (p.get("doi") or "") in HIDDEN or norm_title(p["title"]) in HIDDEN:
             continue
         cur = index.get(k) or by_title.get(norm_title(p["title"]))
+        if cur is None and p["type"] in EXCLUDED_TYPES:
+            continue
+        rich = openalex_by_doi(p.get("doi"))
+        if rich:
+            for f in ("venue", "date", "year"):
+                rich[f] = rich[f] or p[f]
+            rich["title"] = p["title"] or rich["title"]
+            if p["type"] in ("journal", "conference"):
+                rich["type"] = p["type"]
+            p = rich
+        if not p.get("year"):
+            continue
         if cur is None:
             p["added"] = TODAY
             items.append(p)
