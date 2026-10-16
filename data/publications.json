@@ -399,23 +399,6 @@
       "thumb": "images/thumbs/10-1016-j-wpi-2025-102380.svg"
     },
     {
-      "title": "Research on Cooperative Control of Heterogeneous Virtual Coupling Oriented to Variable Tracking Gap",
-      "authors": [
-        "Junyu Wang",
-        "Qingyuan Wang",
-        "Xiaoyun Feng",
-        "Shikun Chen"
-      ],
-      "venue": "Chinese Control Conference (CCC)",
-      "year": 2025,
-      "date": "2025-07-28",
-      "type": "conference",
-      "doi": "10.23919/ccc64809.2025.11178698",
-      "url": "https://doi.org/10.23919/ccc64809.2025.11178698",
-      "citations": 1,
-      "thumb": "images/thumbs/10-23919-ccc64809-2025-11178698.svg"
-    },
-    {
       "title": "Optimizing on-demand food delivery with BDI-based multi-agent systems and Monte Carlo tree search scheduling",
       "authors": [
         "Li Liu",
