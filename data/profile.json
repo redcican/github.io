@@ -1,0 +1,36 @@
+{
+  "name": "Shikun Chen",
+  "name_native": "",
+  "position": "Researcher",
+  "affiliation": "Ningbo University of Finance and Economics",
+  "location": "Ningbo, China",
+  "email": "",
+  "bio": "I work on optimization when evaluations are expensive, objectives conflict and the system is only partly understood. My research combines evolutionary multi-objective optimization, Bayesian optimization and surrogate modeling with modern machine learning, including diffusion models, reinforcement learning and large language models, and applies them to scheduling, structural design and intelligent manufacturing.",
+  "links": [
+    { "label": "Google Scholar", "url": "https://scholar.google.com/citations?user=FpLnHcEAAAAJ&hl=en" },
+    { "label": "ORCID", "url": "https://orcid.org/0000-0001-5958-7545" }
+  ],
+  "themes": [
+    {
+      "title": "Expensive multi-objective optimization",
+      "text": "Surrogate-assisted evolutionary multitasking, gradient-guided diffusion and causal Bayesian optimization for problems where each evaluation costs hours.",
+      "keywords": ["multi-objective", "multiobjective", "surrogate", "bayesian", "pareto", "expensive"]
+    },
+    {
+      "title": "Language models for optimization",
+      "text": "Large language models as heuristic designers and search guides for flow shop and job shop scheduling and combinatorial optimization.",
+      "keywords": ["language model", "language-model", "heuristic design", "scheduling"]
+    },
+    {
+      "title": "Scientific machine learning and inverse design",
+      "text": "Physics-informed networks, inverse identification of dynamical systems and data-driven inverse design of lattice and cellular structures.",
+      "keywords": ["physics-informed", "inverse", "lattice", "cellular", "fractional"]
+    },
+    {
+      "title": "Intelligent manufacturing",
+      "text": "Defect detection with vision-language models and active learning, and data-driven energy optimization in foundries.",
+      "keywords": ["defect", "foundry", "casting", "manufacturing"]
+    }
+  ],
+  "self_names": ["Shikun Chen", "S. Chen"]
+}

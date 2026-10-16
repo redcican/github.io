@@ -1,0 +1,343 @@
+{
+  "updated": "2026-10-16",
+  "items": [
+    {
+      "title": "A self-consistent physics-informed neural network paradigm for sloshing analysis",
+      "authors": [
+        "Yan Qi",
+        "Shikun Chen",
+        "Zhanxue Cao",
+        "Mi-An Xue",
+        "Xiaoli Yuan",
+        "Jinhai Zheng",
+        "Ould el Moctar"
+      ],
+      "venue": "Physics of Fluids",
+      "year": 2026,
+      "date": "2026-10-01",
+      "type": "journal",
+      "doi": "10.1063/5.0353139",
+      "url": "https://doi.org/10.1063/5.0353139",
+      "citations": 0
+    },
+    {
+      "title": "Calibrated inverse identification for nonlinear and fractional-order dynamical systems",
+      "authors": [
+        "Shikun Chen",
+        "Longjin Lv",
+        "Yangguang Liu"
+      ],
+      "venue": "Communications in Nonlinear Science and Numerical Simulation",
+      "year": 2026,
+      "date": "2026-09-10",
+      "type": "journal",
+      "doi": "10.1016/j.cnsns.2026.110801",
+      "url": "https://doi.org/10.1016/j.cnsns.2026.110801",
+      "citations": 0
+    },
+    {
+      "title": "Causal Bayesian optimization for sensor placement and deconfounding in structural health monitoring",
+      "authors": [
+        "Shikun Chen",
+        "Yangguang Liu"
+      ],
+      "venue": "Mechanical Systems and Signal Processing",
+      "year": 2026,
+      "date": "2026-09-06",
+      "type": "journal",
+      "doi": "10.1016/j.ymssp.2026.114895",
+      "url": "https://doi.org/10.1016/j.ymssp.2026.114895",
+      "citations": 0
+    },
+    {
+      "title": "Coupling-aware destruction with large-language-model guidance for energy-efficient blocking hybrid flow shop scheduling",
+      "authors": [
+        "Shikun Chen"
+      ],
+      "venue": "Computers & Operations Research",
+      "year": 2026,
+      "date": "2026-08-18",
+      "type": "journal",
+      "doi": "10.1016/j.cor.2026.107645",
+      "url": "https://doi.org/10.1016/j.cor.2026.107645",
+      "citations": 1
+    },
+    {
+      "title": "Large language model-guided simulation optimization for balancing productivity, energy, and worker physical load in job shop scheduling",
+      "authors": [
+        "Shikun Chen",
+        "Longjin Lv",
+        "Yangguang Liu"
+      ],
+      "venue": "Computers & Industrial Engineering",
+      "year": 2026,
+      "date": "2026-08-05",
+      "type": "journal",
+      "doi": "10.1016/j.cie.2026.112286",
+      "url": "https://doi.org/10.1016/j.cie.2026.112286",
+      "citations": 0
+    },
+    {
+      "title": "Decomposition-based Zeroing neural dynamics for real-time Pareto tracking in time-varying multi-objective optimization",
+      "authors": [
+        "Shikun Chen",
+        "Yangguang Liu"
+      ],
+      "venue": "Journal of the Franklin Institute",
+      "year": 2026,
+      "date": "2026-07-07",
+      "type": "journal",
+      "doi": "10.1016/j.jfranklin.2026.108884",
+      "url": "https://doi.org/10.1016/j.jfranklin.2026.108884",
+      "citations": 0
+    },
+    {
+      "title": "Cooperative surrogate-assisted evolutionary multitasking for expensive constrained multiobjective optimization",
+      "authors": [
+        "Shikun Chen",
+        "Longjin Lv"
+      ],
+      "venue": "Swarm and Evolutionary Computation",
+      "year": 2026,
+      "date": "2026-06-25",
+      "type": "journal",
+      "doi": "10.1016/j.swevo.2026.102448",
+      "url": "https://doi.org/10.1016/j.swevo.2026.102448",
+      "citations": 0,
+      "code": "https://github.com/redcican/CoSAEM"
+    },
+    {
+      "title": "Multi-objective evolutionary reinforcement learning for Pareto-optimal interpretable policies",
+      "authors": [
+        "Shikun Chen",
+        "Yangguang Liu"
+      ],
+      "venue": "Applied Soft Computing",
+      "year": 2026,
+      "date": "2026-05-20",
+      "type": "journal",
+      "doi": "10.1016/j.asoc.2026.115521",
+      "url": "https://doi.org/10.1016/j.asoc.2026.115521",
+      "citations": 0,
+      "code": "https://github.com/redcican/morl-interp"
+    },
+    {
+      "title": "Conditional diffusion with gradient guidance for high-dimensional expensive multi-objective optimization",
+      "authors": [
+        "Shikun Chen"
+      ],
+      "venue": "Swarm and Evolutionary Computation",
+      "year": 2026,
+      "date": "2026-02-24",
+      "type": "journal",
+      "doi": "10.1016/j.swevo.2026.102340",
+      "url": "https://doi.org/10.1016/j.swevo.2026.102340",
+      "citations": 1
+    },
+    {
+      "title": "Self-supervised vision-language learning with uncertainty-guided strategic annotation for minimal-annotation defect detection",
+      "authors": [
+        "Shikun Chen",
+        "Yan Qi",
+        "Wenxiang Li"
+      ],
+      "venue": "Computers & Industrial Engineering",
+      "year": 2026,
+      "date": "2026-02-13",
+      "type": "journal",
+      "doi": "10.1016/j.cie.2026.111898",
+      "url": "https://doi.org/10.1016/j.cie.2026.111898",
+      "citations": 1
+    },
+    {
+      "title": "Toward intelligent acquisition policies: Reinforcement learning for causal multi-objective Bayesian optimization",
+      "authors": [
+        "Shikun Chen",
+        "Yangguang Liu"
+      ],
+      "venue": "Swarm and Evolutionary Computation",
+      "year": 2026,
+      "date": "2026-02-01",
+      "type": "journal",
+      "doi": "10.1016/j.swevo.2026.102290",
+      "url": "https://doi.org/10.1016/j.swevo.2026.102290",
+      "citations": 0
+    },
+    {
+      "title": "Illuminating Heuristic Design: Language-Model-Driven Quality-Diversity Evolution for Combinatorial Optimization",
+      "authors": [
+        "Shikun Chen",
+        "Yangguang Liu"
+      ],
+      "venue": "IEEE Transactions on Evolutionary Computation",
+      "year": 2026,
+      "date": "2026-01-01",
+      "type": "journal",
+      "doi": "10.1109/tevc.2026.3721299",
+      "url": "https://doi.org/10.1109/tevc.2026.3721299",
+      "citations": 0
+    },
+    {
+      "title": "Vision-Language Model-Assisted Active Learning for High-Accuracy Defect Detection in Automotive Bushing Components",
+      "authors": [
+        "Shikun Chen",
+        "Yangguang Liu"
+      ],
+      "venue": "ACM Conference Proceedings",
+      "year": 2025,
+      "date": "2025-12-19",
+      "type": "conference",
+      "doi": "10.1145/3788731.3788733",
+      "url": "https://doi.org/10.1145/3788731.3788733",
+      "citations": 0,
+      "locked": [
+        "venue"
+      ]
+    },
+    {
+      "title": "Design of graded cellular structures with data-driven inverse homogenization for microstructures with cubic symmetry",
+      "authors": [
+        "Shikun Chen",
+        "Jinlong Zhang",
+        "Robert J. Martin",
+        "Zhenan Zhao",
+        "Dengbao Xiao"
+      ],
+      "venue": "Structural and Multidisciplinary Optimization",
+      "year": 2025,
+      "date": "2025-11-26",
+      "type": "journal",
+      "doi": "10.1007/s00158-025-04200-x",
+      "url": "https://doi.org/10.1007/s00158-025-04200-x",
+      "citations": 1
+    },
+    {
+      "title": "Research on Cooperative Control of Heterogeneous Virtual Coupling Oriented to Variable Tracking Gap",
+      "authors": [
+        "Junyu Wang",
+        "Qingyuan Wang",
+        "Xiaoyun Feng",
+        "Shikun Chen"
+      ],
+      "venue": "Chinese Control Conference (CCC)",
+      "year": 2025,
+      "date": "2025-07-28",
+      "type": "conference",
+      "doi": "10.23919/ccc64809.2025.11178698",
+      "url": "https://doi.org/10.23919/ccc64809.2025.11178698",
+      "citations": 1
+    },
+    {
+      "title": "Optimizing on-demand food delivery with BDI-based multi-agent systems and Monte Carlo tree search scheduling",
+      "authors": [
+        "Li Liu",
+        "Shikun Chen",
+        "Huan Jin",
+        "Xiaoying Deng",
+        "Yangguang Liu",
+        "Yang Kuei Lin"
+      ],
+      "venue": "Scientific Reports",
+      "year": 2025,
+      "date": "2025-07-11",
+      "type": "journal",
+      "doi": "10.1038/s41598-025-10371-w",
+      "url": "https://doi.org/10.1038/s41598-025-10371-w",
+      "citations": 2
+    },
+    {
+      "title": "Optimization of non-smooth functions via differentiable surrogates",
+      "authors": [
+        "Shikun Chen",
+        "Zebin Huang",
+        "Wenlong Zheng"
+      ],
+      "venue": "PLoS ONE",
+      "year": 2025,
+      "date": "2025-05-30",
+      "type": "journal",
+      "doi": "10.1371/journal.pone.0321862",
+      "url": "https://doi.org/10.1371/journal.pone.0321862",
+      "citations": 2
+    },
+    {
+      "title": "RRMSE-enhanced weighted voting regressor for improved ensemble regression",
+      "authors": [
+        "Shikun Chen",
+        "Wenlong Zheng"
+      ],
+      "venue": "PLoS ONE",
+      "year": 2025,
+      "date": "2025-03-17",
+      "type": "journal",
+      "doi": "10.1371/journal.pone.0319515",
+      "url": "https://doi.org/10.1371/journal.pone.0319515",
+      "citations": 22,
+      "code": "https://github.com/redcican/RRMSE"
+    },
+    {
+      "title": "Conditional diffusion models for the inverse design of lattice structures",
+      "authors": [
+        "Jinlong Zhang",
+        "Shikun Chen",
+        "Robert J. Martin",
+        "Baochang Liu",
+        "Ruixiong Zhang",
+        "Dengbao Xiao"
+      ],
+      "venue": "Structural and Multidisciplinary Optimization",
+      "year": 2025,
+      "date": "2025-03-01",
+      "type": "journal",
+      "doi": "10.1007/s00158-025-03984-2",
+      "url": "https://doi.org/10.1007/s00158-025-03984-2",
+      "citations": 14
+    },
+    {
+      "title": "Surrogate gradient methods for data-driven foundry energy consumption optimization",
+      "authors": [
+        "Shikun Chen",
+        "Tim Kaufmann",
+        "Robert J. Martin"
+      ],
+      "venue": "The International Journal of Advanced Manufacturing Technology",
+      "year": 2024,
+      "date": "2024-08-13",
+      "type": "journal",
+      "doi": "10.1007/s00170-024-14219-x",
+      "url": "https://doi.org/10.1007/s00170-024-14219-x",
+      "citations": 5,
+      "code": "https://github.com/redcican/Surrogate-gradient-methods"
+    },
+    {
+      "title": "Train Trajectory Cooperative Optimization on Coupling Process at Junctions",
+      "authors": [
+        "Shikun Chen",
+        "Qingyuan Wang",
+        "Pengfei Sun",
+        "Bailing Yao"
+      ],
+      "venue": "IEEE International Power Electronics and Motion Control Conference (IPEMC 2024-ECCE Asia)",
+      "year": 2024,
+      "date": "2024-05-17",
+      "type": "conference",
+      "doi": "10.1109/ipemc-ecceasia60879.2024.10567546",
+      "url": "https://doi.org/10.1109/ipemc-ecceasia60879.2024.10567546",
+      "citations": 1
+    },
+    {
+      "title": "Development of Data-Driven Machine Learning Models for the Prediction of Casting Surface Defects",
+      "authors": [
+        "Shikun Chen",
+        "Tim Kaufmann"
+      ],
+      "venue": "Metals",
+      "year": 2021,
+      "date": "2021-12-21",
+      "type": "journal",
+      "doi": "10.3390/met12010001",
+      "url": "https://doi.org/10.3390/met12010001",
+      "citations": 65
+    }
+  ]
+}

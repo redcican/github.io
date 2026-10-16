@@ -1,0 +1,353 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Shikun Chen</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Shikun Chen: expensive multi-objective optimization, language models for optimization, scientific machine learning.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: one quiet reading column; a Pareto front strip under the name is the only figure. Years sit in a mono gutter beside publications. */
+:root {
+  --bg: #f6f7f9;
+  --surface: #ffffff;
+  --ink: #151a21;
+  --muted: #5b6573;
+  --rule: #dde2e8;
+  --accent: #1d5e8c;
+  --accent-soft: #e3edf5;
+  --dominated: #b5bfca;
+  --font-display: "Newsreader", "Iowan Old Style", Georgia, serif;
+  --font-body: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+  --measure: 46rem;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0e1217; --surface: #151b22; --ink: #e3e8ee; --muted: #95a2b1;
+    --rule: #26303b; --accent: #7db7e3; --accent-soft: #19293a; --dominated: #3c4856;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0e1217; --surface: #151b22; --ink: #e3e8ee; --muted: #95a2b1;
+  --rule: #26303b; --accent: #7db7e3; --accent-soft: #19293a; --dominated: #3c4856;
+  color-scheme: dark;
+}
+*, *::before, *::after { box-sizing: border-box; }
+[hidden] { display: none !important; }
+html { padding-top: env(safe-area-inset-top, 0px); padding-bottom: env(safe-area-inset-bottom, 0px); }
+body {
+  margin: 0; background: var(--bg); color: var(--ink);
+  font: 400 1rem/1.65 var(--font-body);
+  -webkit-font-smoothing: antialiased;
+}
+a { color: var(--accent); text-decoration-thickness: 1px; text-underline-offset: 3px; }
+a:hover { text-decoration-thickness: 2px; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 2px; }
+
+.wrap {
+  max-width: var(--measure); margin: 0 auto;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: 4.5rem 3rem;
+  display: grid; gap: 4rem;
+}
+
+/* Header */
+.head { display: grid; gap: 1.25rem; }
+.name {
+  font: 400 clamp(2.6rem, 7vw, 3.75rem)/1.02 var(--font-display);
+  letter-spacing: -0.02em; margin: 0; text-wrap: balance;
+}
+.name .native { font-size: 0.55em; color: var(--muted); margin-left: 0.4em; letter-spacing: 0; }
+.role { margin: 0; color: var(--muted); font-size: 1.05rem; }
+.role strong { color: var(--ink); font-weight: 500; }
+.links { display: flex; flex-wrap: wrap; gap: 0.5rem 1.25rem; font-size: 0.95rem; }
+.metrics {
+  display: flex; flex-wrap: wrap; gap: 0.25rem 1.5rem;
+  font: 400 0.8rem/1.4 var(--font-mono); color: var(--muted);
+  font-variant-numeric: tabular-nums;
+}
+.metrics b { color: var(--ink); font-weight: 500; }
+
+.front { position: relative; margin-top: 0.5rem; }
+.front canvas { display: block; width: 100%; height: 150px; }
+.front figcaption {
+  display: flex; justify-content: space-between; gap: 1rem;
+  font: 400 0.72rem/1.4 var(--font-mono); color: var(--muted); letter-spacing: 0.02em;
+  border-top: 1px solid var(--rule); padding-top: 0.4rem;
+}
+.front .key { display: inline-flex; align-items: center; gap: 0.4rem; }
+.front .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--accent); display: inline-block; }
+
+/* Sections */
+section { display: grid; gap: 1.25rem; }
+h2 {
+  margin: 0; font: 500 0.75rem/1 var(--font-mono); text-transform: uppercase;
+  letter-spacing: 0.14em; color: var(--muted);
+  display: flex; align-items: baseline; gap: 0.75rem;
+}
+h2 .count { color: var(--accent); letter-spacing: 0.04em; }
+.bio { margin: 0; font: 400 1.3rem/1.55 var(--font-display); max-width: 38rem; text-wrap: pretty; }
+
+.themes { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.5rem 2rem; }
+.theme { display: grid; gap: 0.3rem; align-content: start; }
+.theme h3 { margin: 0; font: 500 1rem/1.35 var(--font-body); }
+.theme p { margin: 0; color: var(--muted); font-size: 0.93rem; }
+.theme .n { font: 400 0.75rem var(--font-mono); color: var(--accent); }
+
+/* Filters */
+.filters { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+.chip {
+  font: 400 0.8rem/1 var(--font-body); color: var(--muted);
+  background: transparent; border: 1px solid var(--rule); border-radius: 999px;
+  padding: 0.45rem 0.8rem; cursor: pointer;
+}
+.chip:hover { color: var(--ink); border-color: var(--muted); }
+.chip[aria-pressed="true"] { background: var(--accent-soft); color: var(--accent); border-color: transparent; }
+
+/* Publications */
+.year-group { display: grid; grid-template-columns: 4.5rem minmax(0, 1fr); gap: 0 1rem; border-top: 1px solid var(--rule); padding-top: 1rem; }
+.year { font: 500 0.85rem/1.6 var(--font-mono); color: var(--muted); font-variant-numeric: tabular-nums; }
+.pubs { list-style: none; margin: 0; padding: 0; display: grid; gap: 1.15rem; }
+.pub { display: grid; gap: 0.15rem; }
+.pub-title { font: 500 1rem/1.45 var(--font-body); margin: 0; text-wrap: pretty; }
+.pub-title a { color: var(--ink); text-decoration: none; }
+.pub-title a:hover { color: var(--accent); text-decoration: underline; }
+.authors { margin: 0; color: var(--muted); font-size: 0.9rem; }
+.authors .me { color: var(--ink); font-weight: 600; }
+.meta { margin: 0; font-size: 0.88rem; color: var(--muted); display: flex; flex-wrap: wrap; gap: 0.2rem 0.9rem; align-items: baseline; }
+.venue { font-family: var(--font-display); font-style: italic; font-size: 1rem; color: var(--ink); }
+.tag { font: 400 0.7rem/1 var(--font-mono); letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); }
+.cites { font: 400 0.75rem var(--font-mono); font-variant-numeric: tabular-nums; }
+.new { font: 500 0.68rem/1 var(--font-mono); color: var(--accent); background: var(--accent-soft); padding: 0.2rem 0.4rem; border-radius: 3px; letter-spacing: 0.06em; }
+
+/* Reviews and projects */
+.rows { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--rule); }
+.rows li { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 1rem; padding: 0.7rem 0; border-bottom: 1px solid var(--rule); align-items: baseline; }
+.rows .j { font-family: var(--font-display); font-size: 1.05rem; min-width: 0; }
+.rows .y { font: 400 0.78rem var(--font-mono); color: var(--muted); font-variant-numeric: tabular-nums; white-space: nowrap; }
+.rows .sub { display: block; font: 400 0.85rem var(--font-body); color: var(--muted); }
+.empty { margin: 0; color: var(--muted); font-size: 0.93rem; }
+
+footer { font: 400 0.75rem/1.6 var(--font-mono); color: var(--muted); border-top: 1px solid var(--rule); padding-top: 1rem; }
+
+@media (max-width: 560px) {
+  .wrap { padding-block: 2.5rem 2rem; gap: 3rem; }
+  .themes { grid-template-columns: minmax(0, 1fr); }
+  .year-group { grid-template-columns: minmax(0, 1fr); gap: 0.6rem; }
+  .bio { font-size: 1.15rem; }
+  .front canvas { height: 110px; }
+}
+</style>
+</head>
+<body>
+<main class="wrap">
+  <header class="head">
+    <h1 class="name" id="name">Shikun Chen</h1>
+    <p class="role" id="role"></p>
+    <nav class="links" id="links" aria-label="Profiles"></nav>
+    <div class="metrics" id="metrics"></div>
+    <figure class="front" aria-hidden="true">
+      <canvas id="front"></canvas>
+      <figcaption><span>f₁ → minimize</span><span class="key"><span class="dot"></span>non-dominated set</span></figcaption>
+    </figure>
+  </header>
+
+  <section id="about" aria-labelledby="about-h">
+    <h2 id="about-h">About</h2>
+    <p class="bio" id="bio"></p>
+  </section>
+
+  <section id="research" aria-labelledby="research-h">
+    <h2 id="research-h">Research</h2>
+    <div class="themes" id="themes"></div>
+  </section>
+
+  <section id="publications" aria-labelledby="pubs-h">
+    <h2 id="pubs-h">Publications <span class="count" id="pub-count"></span></h2>
+    <div class="filters" id="filters" role="group" aria-label="Filter publications"></div>
+    <div id="pub-list"></div>
+  </section>
+
+  <section id="projects" aria-labelledby="proj-h" hidden>
+    <h2 id="proj-h">Projects</h2>
+    <ul class="rows" id="proj-list"></ul>
+  </section>
+
+  <section id="service" aria-labelledby="rev-h">
+    <h2 id="rev-h">Peer review <span class="count" id="rev-count"></span></h2>
+    <ul class="rows" id="rev-list"></ul>
+  </section>
+
+  <footer id="footer"></footer>
+</main>
+
+<script>
+(async function () {
+  const get = (p) => fetch(p, { cache: "no-cache" }).then(r => r.ok ? r.json() : null).catch(() => null);
+  const [profile, pubs, reviews, projects, metrics] = await Promise.all([
+    get("data/profile.json"), get("data/publications.json"), get("data/reviews.json"),
+    get("data/projects.json"), get("data/metrics.json")
+  ]);
+  const $ = (id) => document.getElementById(id);
+  const esc = (s) => String(s ?? "").replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+
+  /* Profile */
+  if (profile) {
+    $("name").innerHTML = esc(profile.name) + (profile.name_native ? `<span class="native">${esc(profile.name_native)}</span>` : "");
+    document.title = profile.name;
+    const roleBits = [profile.position && `<strong>${esc(profile.position)}</strong>`, esc(profile.affiliation), esc(profile.location)].filter(Boolean);
+    $("role").innerHTML = roleBits.join(" · ");
+    const links = (profile.links || []).map(l => `<a href="${esc(l.url)}" target="_blank" rel="noopener">${esc(l.label)}</a>`);
+    if (profile.email) links.push(`<span>${esc(profile.email)}</span>`);
+    $("links").innerHTML = links.join("");
+    $("bio").textContent = profile.bio || "";
+  }
+
+  const items = (pubs && pubs.items) || [];
+  const selfNames = new Set(((profile && profile.self_names) || []).map(n => n.toLowerCase()));
+  const themes = (profile && profile.themes) || [];
+  const themeOf = (p) => themes.findIndex(t => t.keywords.some(k => p.title.toLowerCase().includes(k.toLowerCase())));
+
+  /* Metrics */
+  if (metrics) {
+    $("metrics").innerHTML =
+      `<span><b>${items.length}</b> publications</span>` +
+      `<span><b>${metrics.citations}</b> citations</span>` +
+      `<span>h-index <b>${metrics.h_index}</b></span>`;
+  }
+
+  /* Research themes with paper counts */
+  $("themes").innerHTML = themes.map((t, i) => {
+    const n = items.filter(p => themeOf(p) === i).length;
+    return `<div class="theme"><h3>${esc(t.title)}</h3><p>${esc(t.text)}</p>${n ? `<span class="n">${n} paper${n > 1 ? "s" : ""}</span>` : ""}</div>`;
+  }).join("");
+
+  /* Publications */
+  const filters = [{ key: "all", label: "All" }, { key: "journal", label: "Journal" }, { key: "conference", label: "Conference" }]
+    .concat(themes.map((t, i) => ({ key: "t" + i, label: t.title })));
+  let active = "all";
+  try { active = localStorage.getItem("pubFilter") || "all"; } catch (e) {}
+  if (!filters.some(f => f.key === active)) active = "all";
+  const recent = Date.now() - 1000 * 60 * 60 * 24 * 60;
+
+  function authorsHtml(list) {
+    const shown = list.length > 8 ? list.slice(0, 7).concat(["…", list[list.length - 1]]) : list;
+    return shown.map(a => selfNames.has(a.toLowerCase()) ? `<span class="me">${esc(a)}</span>` : esc(a)).join(", ");
+  }
+  function renderPubs() {
+    const list = items.filter(p =>
+      active === "all" ? true :
+      active === "journal" || active === "conference" ? p.type === active :
+      themeOf(p) === Number(active.slice(1)));
+    $("pub-count").textContent = list.length;
+    $("filters").innerHTML = filters.map(f =>
+      `<button type="button" class="chip" id="f-${f.key}" data-k="${f.key}" aria-pressed="${f.key === active}">${esc(f.label)}</button>`).join("");
+    const years = [...new Set(list.map(p => p.year))].sort((a, b) => b - a);
+    $("pub-list").innerHTML = years.map(y => {
+      const ps = list.filter(p => p.year === y).sort((a, b) => (b.date || "").localeCompare(a.date || ""));
+      return `<div class="year-group"><div class="year">${y}</div><ol class="pubs">${ps.map(p => `
+        <li class="pub">
+          <p class="pub-title"><a href="${esc(p.url)}" target="_blank" rel="noopener">${esc(p.title)}</a></p>
+          <p class="authors">${authorsHtml(p.authors || [])}</p>
+          <p class="meta"><span class="venue">${esc(p.venue)}</span>
+            <span class="tag">${p.type === "conference" ? "Conference" : p.type === "journal" ? "Journal" : esc(p.type)}</span>
+            ${p.citations ? `<span class="cites">cited ${p.citations}</span>` : ""}
+            ${p.code ? `<a class="cites" href="${esc(p.code)}" target="_blank" rel="noopener">code</a>` : ""}
+            ${p.added && Date.parse(p.added) > recent ? `<span class="new">NEW</span>` : ""}</p>
+        </li>`).join("")}</ol></div>`;
+    }).join("");
+  }
+  $("filters").addEventListener("click", (e) => {
+    const b = e.target.closest("button[data-k]");
+    if (!b) return;
+    active = b.dataset.k;
+    try { localStorage.setItem("pubFilter", active); } catch (err) {}
+    renderPubs();
+  });
+  renderPubs();
+
+  /* Projects */
+  const projItems = (projects && projects.items) || [];
+  if (projItems.length) {
+    $("projects").hidden = false;
+    $("proj-list").innerHTML = projItems.map(p => `<li><span class="j">${p.url ? `<a href="${esc(p.url)}" target="_blank" rel="noopener">${esc(p.title)}</a>` : esc(p.title)}
+      <span class="sub">${esc([p.role, p.funder, p.grant].filter(Boolean).join(" · "))}</span></span>
+      <span class="y">${esc(p.start || "")}${p.end ? "–" + esc(p.end) : p.start ? "–now" : ""}</span></li>`).join("");
+  }
+
+  /* Peer review */
+  const revItems = (reviews && reviews.items) || [];
+  const totalReviews = revItems.reduce((s, r) => s + (r.count || 0), 0);
+  $("rev-count").textContent = totalReviews ? `${totalReviews} reviews · ${revItems.length} journals` : "";
+  $("rev-list").outerHTML = revItems.length
+    ? `<ul class="rows" id="rev-list">${revItems.map(r => `<li><span class="j">${esc(r.journal)}${r.publisher ? `<span class="sub">${esc(r.publisher)}</span>` : ""}</span>
+        <span class="y">${r.count} × · ${esc(r.years)}</span></li>`).join("")}</ul>`
+    : `<p class="empty" id="rev-list">Verified reviewing activity appears here once it syncs from ORCID.</p>`;
+
+  const stamp = (pubs && pubs.updated) || "";
+  $("footer").innerHTML = `Publications and peer review sync weekly from ORCID and OpenAlex${stamp ? ` · last update ${esc(stamp)}` : ""}`;
+})();
+
+/* Pareto front strip: a fixed sample of candidate solutions, the non-dominated ones joined by a staircase. */
+(function () {
+  const cv = document.getElementById("front");
+  const ctx = cv.getContext("2d");
+  let seed = 17;
+  const rnd = () => (seed = (seed * 16807) % 2147483647) / 2147483647;
+  const pts = [];
+  for (let i = 0; i < 150; i++) {
+    const t = rnd();
+    const front = 1 - Math.sqrt(t);
+    const gap = Math.pow(rnd(), 1.8) * 0.9;
+    pts.push({ x: t, y: Math.min(1, front + gap * (0.25 + rnd())) });
+  }
+  for (let i = 0; i < 14; i++) { const t = (i + 0.5) / 14; pts.push({ x: t, y: 1 - Math.sqrt(t) }); }
+  const nd = pts.filter(p => !pts.some(q => q !== p && q.x <= p.x && q.y <= p.y && (q.x < p.x || q.y < p.y)))
+    .sort((a, b) => a.x - b.x);
+  const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  let progress = reduce ? 1 : 0;
+
+  function draw() {
+    const css = getComputedStyle(document.documentElement);
+    const accent = css.getPropertyValue("--accent").trim();
+    const dom = css.getPropertyValue("--dominated").trim();
+    const dpr = window.devicePixelRatio || 1;
+    const w = cv.clientWidth, h = cv.clientHeight;
+    cv.width = w * dpr; cv.height = h * dpr;
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    ctx.clearRect(0, 0, w, h);
+    const pad = 6;
+    const X = (x) => pad + x * (w - pad * 2);
+    const Y = (y) => pad + y * (h - pad * 2);
+    ctx.fillStyle = dom;
+    for (const p of pts) { ctx.beginPath(); ctx.arc(X(p.x), Y(1 - p.y), 2, 0, Math.PI * 2); ctx.fill(); }
+    const upto = Math.max(1, Math.round(nd.length * progress));
+    ctx.strokeStyle = accent; ctx.lineWidth = 1.25; ctx.beginPath();
+    nd.slice(0, upto).forEach((p, i) => {
+      if (i === 0) ctx.moveTo(X(p.x), Y(1 - p.y));
+      else { ctx.lineTo(X(p.x), Y(1 - nd[i - 1].y)); ctx.lineTo(X(p.x), Y(1 - p.y)); }
+    });
+    ctx.stroke();
+    ctx.fillStyle = accent;
+    for (const p of nd.slice(0, upto)) { ctx.beginPath(); ctx.arc(X(p.x), Y(1 - p.y), 3, 0, Math.PI * 2); ctx.fill(); }
+  }
+  function animate() {
+    progress = Math.min(1, progress + 0.04);
+    draw();
+    if (progress < 1) requestAnimationFrame(animate);
+  }
+  draw();
+  if (!reduce) requestAnimationFrame(animate);
+  window.addEventListener("resize", draw);
+  window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", draw);
+  new MutationObserver(draw).observe(document.documentElement, { attributes: true, attributeFilter: ["data-theme"] });
+})();
+</script>
+</body>
+</html>

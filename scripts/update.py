@@ -1,0 +1,314 @@
+#!/usr/bin/env python3
+"""Sync publications, peer reviews, funded projects and metrics into data/*.json.
+
+Sources: the public ORCID API (works, peer reviews, fundings) and OpenAlex
+(author lists, venues, citation counts, journal names for ISSNs).
+Existing entries are never deleted, and fields listed in an entry's "locked"
+array are never overwritten, so hand edits survive every sync.
+"""
+import datetime as dt
+import json
+import os
+import re
+import sys
+import time
+import urllib.parse
+import urllib.request
+from pathlib import Path
+
+ROOT = Path(__file__).resolve().parent.parent
+DATA = ROOT / "data"
+CONFIG = json.loads((ROOT / "config.json").read_text())
+ORCID = CONFIG["orcid"]
+MAILTO = CONFIG.get("contact_email", "")
+TODAY = dt.date.today().isoformat()
+UA = "scholar-homepage-sync/1.0" + (f" (mailto:{MAILTO})" if MAILTO else "")
+
+
+def get_json(url, accept="application/json", tries=3):
+    for i in range(tries):
+        try:
+            req = urllib.request.Request(url, headers={"Accept": accept, "User-Agent": UA})
+            with urllib.request.urlopen(req, timeout=30) as r:
+                return json.load(r)
+        except Exception as e:  # network hiccups, 429s
+            if i == tries - 1:
+                print(f"warn: {url}: {e}", file=sys.stderr)
+                return None
+            time.sleep(2 ** i)
+
+
+def openalex(path, **params):
+    if MAILTO:
+        params["mailto"] = MAILTO
+    q = ("?" + urllib.parse.urlencode(params)) if params else ""
+    return get_json(f"https://api.openalex.org/{path}{q}")
+
+
+def orcid(section):
+    return get_json(f"https://pub.orcid.org/v3.0/{ORCID}/{section}")
+
+
+def val(d, *keys):
+    for k in keys:
+        if not isinstance(d, dict):
+            return None
+        d = d.get(k)
+    return d
+
+
+def norm_title(t):
+    return re.sub(r"[^a-z0-9]", "", (t or "").lower())
+
+
+def key_of(p):
+    return ("doi:" + p["doi"]) if p.get("doi") else ("t:" + norm_title(p["title"]))
+
+
+def load(name):
+    path = DATA / name
+    return json.loads(path.read_text()) if path.exists() else {"items": []}
+
+
+def save(name, obj):
+    """Write only when content changed, so unchanged runs make no commit."""
+    path = DATA / name
+    old = json.loads(path.read_text()) if path.exists() else None
+    if old is not None:
+        a = {k: v for k, v in old.items() if k != "updated"}
+        b = {k: v for k, v in obj.items() if k != "updated"}
+        if a == b:
+            return False
+    obj["updated"] = TODAY
+    path.write_text(json.dumps(obj, ensure_ascii=False, indent=2) + "\n")
+    return True
+
+
+ALIASES = CONFIG.get("author_aliases", {})
+HIDDEN = {h.lower() for h in CONFIG.get("hide", [])}
+TYPE_MAP = {"journal-article": "journal", "article": "journal", "conference-paper": "conference",
+            "conference-proceedings": "conference", "proceedings-article": "conference",
+            "book-chapter": "chapter", "book": "book", "preprint": "preprint", "posted-content": "preprint"}
+
+
+def date_from(d):
+    y, m, dd = val(d, "year", "value"), val(d, "month", "value"), val(d, "day", "value")
+    return "-".join(x for x in [y, m, dd] if x) if y else None
+
+
+# ---------- publications ----------
+
+def openalex_works():
+    """All works OpenAlex attributes to this ORCID, keyed by DOI / title."""
+    out, cursor = {}, "*"
+    while cursor:
+        r = openalex("works", filter=f"author.orcid:{ORCID}", **{"per-page": 200, "cursor": cursor})
+        if not r:
+            break
+        for w in r.get("results", []):
+            doi = (w.get("doi") or "").replace("https://doi.org/", "").lower() or None
+            src = val(w, "primary_location", "source") or {}
+            p = {
+                "title": w.get("title") or w.get("display_name") or "",
+                "authors": [ALIASES.get(a["author"]["display_name"], a["author"]["display_name"])
+                            for a in w.get("authorships", [])],
+                "venue": src.get("display_name") or val(w, "primary_location", "raw_source_name") or "",
+                "year": w.get("publication_year"),
+                "date": w.get("publication_date"),
+                "type": TYPE_MAP.get(w.get("type_crossref") or w.get("type"), w.get("type") or "other"),
+                "doi": doi,
+                "url": f"https://doi.org/{doi}" if doi else (w.get("id") or ""),
+                "citations": w.get("cited_by_count", 0),
+            }
+            if p["type"] == "journal" and src.get("type") == "conference":
+                p["type"] = "conference"
+            out[key_of(p)] = p
+        cursor = val(r, "meta", "next_cursor")
+    return out
+
+
+def orcid_works():
+    r = orcid("works") or {}
+    out = {}
+    for g in r.get("group", []):
+        s = (g.get("work-summary") or [{}])[0]
+        doi = None
+        for e in val(s, "external-ids", "external-id") or []:
+            if e.get("external-id-type") == "doi":
+                doi = e.get("external-id-value", "").lower().replace("https://doi.org/", "")
+        date = date_from(s.get("publication-date") or {})
+        p = {
+            "title": val(s, "title", "title", "value") or "",
+            "authors": [],
+            "venue": val(s, "journal-title", "value") or "",
+            "year": int(date[:4]) if date else None,
+            "date": date,
+            "type": TYPE_MAP.get(s.get("type"), s.get("type") or "other"),
+            "doi": doi,
+            "url": f"https://doi.org/{doi}" if doi else (val(s, "url", "value") or ""),
+            "citations": 0,
+        }
+        if p["title"]:
+            out[key_of(p)] = p
+    return out
+
+
+def sync_publications():
+    store = load("publications.json")
+    items = store["items"]
+    index = {key_of(p): p for p in items}
+    by_title = {norm_title(p["title"]): p for p in items}
+    oa, oc = openalex_works(), orcid_works()
+    if not oa and not oc:
+        print("No data from ORCID or OpenAlex; leaving publications unchanged.")
+        return []
+    # ORCID decides what is the author's; OpenAlex fills details. OpenAlex-only works are added too.
+    merged = dict(oa)
+    for k, p in oc.items():
+        if k in merged:
+            for f in ("venue", "date", "year"):
+                merged[k][f] = merged[k][f] or p[f]
+        else:
+            alt = next((v for v in oa.values() if norm_title(v["title"]) == norm_title(p["title"])), None)
+            if alt:
+                alt["doi"] = alt["doi"] or p["doi"]
+            else:
+                merged[k] = p
+    added = []
+    for k, p in merged.items():
+        if (p.get("doi") or "") in HIDDEN or norm_title(p["title"]) in HIDDEN or not p.get("year"):
+            continue
+        cur = index.get(k) or by_title.get(norm_title(p["title"]))
+        if cur is None:
+            p["added"] = TODAY
+            items.append(p)
+            added.append(p)
+            continue
+        locked = set(cur.get("locked", []))
+        for f, v in p.items():
+            if f in locked or v in (None, "", []):
+                continue
+            if f == "citations" or not cur.get(f):
+                cur[f] = v
+    items.sort(key=lambda p: (p.get("date") or str(p.get("year") or "")), reverse=True)
+    save("publications.json", store)
+    return added
+
+
+# ---------- peer review ----------
+
+def sync_reviews():
+    r = orcid("peer-reviews")
+    if r is None:
+        return 0
+    summaries = []
+
+    def walk(o):
+        if isinstance(o, dict):
+            if "review-group-id" in o:
+                summaries.append(o)
+            for v in o.values():
+                walk(v)
+        elif isinstance(o, list):
+            for v in o:
+                walk(v)
+    walk(r)
+
+    store = load("reviews.json")
+    known = {x["group"]: x for x in store["items"]}
+    groups = {}
+    for s in summaries:
+        gid = s["review-group-id"]
+        g = groups.setdefault(gid, {"count": 0, "years": set(), "publisher": val(s, "convening-organization", "name")})
+        g["count"] += 1
+        y = val(s, "completion-date", "year", "value")
+        if y:
+            g["years"].add(int(y))
+    items = []
+    for gid, g in groups.items():
+        prev = known.get(gid, {})
+        journal = prev.get("journal")
+        if not journal and gid.startswith("issn:"):
+            src = openalex(f"sources/issn:{gid[5:]}")
+            journal = (src or {}).get("display_name")
+        ys = sorted(g["years"])
+        items.append({
+            "group": gid,
+            "journal": journal or g["publisher"] or gid,
+            "publisher": prev.get("publisher") or (g["publisher"] if journal else ""),
+            "count": g["count"],
+            "years": (f"{ys[0]}–{ys[-1]}" if len(ys) > 1 and ys[0] != ys[-1] else str(ys[0])) if ys else "",
+        })
+    items.sort(key=lambda x: (-x["count"], x["journal"]))
+    before = sum(x.get("count", 0) for x in store["items"])
+    store["items"] = items
+    save("reviews.json", store)
+    return sum(x["count"] for x in items) - before
+
+
+# ---------- projects (ORCID fundings + hand-written entries) ----------
+
+def sync_projects():
+    r = orcid("fundings")
+    if r is None:
+        return []
+    store = load("projects.json")
+    items = store["items"]
+    known = {x.get("orcid_put_code") for x in items}
+    added = []
+    for g in r.get("group", []):
+        s = (g.get("funding-summary") or [{}])[0]
+        code = s.get("put-code")
+        if code in known:
+            continue
+        grant = next((e.get("external-id-value") for e in val(s, "external-ids", "external-id") or []
+                      if e.get("external-id-type") == "grant_number"), "")
+        p = {
+            "title": val(s, "title", "title", "value") or "",
+            "funder": val(s, "organization", "name") or "",
+            "grant": grant,
+            "role": "",
+            "start": val(s, "start-date", "year", "value") or "",
+            "end": val(s, "end-date", "year", "value") or "",
+            "url": val(s, "url", "value") or "",
+            "orcid_put_code": code,
+            "added": TODAY,
+        }
+        items.append(p)
+        added.append(p)
+    items.sort(key=lambda p: p.get("start") or "", reverse=True)
+    save("projects.json", store)
+    return added
+
+
+def sync_metrics(n_pubs):
+    a = openalex(f"authors/orcid:{ORCID}")
+    if not a:
+        return
+    save("metrics.json", {
+        "works": n_pubs,
+        "citations": a.get("cited_by_count", 0),
+        "h_index": val(a, "summary_stats", "h_index") or 0,
+        "source": "OpenAlex",
+    })
+
+
+def main():
+    new_pubs = sync_publications()
+    new_reviews = sync_reviews()
+    new_projects = sync_projects()
+    sync_metrics(len(load("publications.json")["items"]))
+    lines = [f"- New paper: {p['title']} ({p.get('venue') or p['year']})" for p in new_pubs]
+    lines += [f"- New project: {p['title']}" for p in new_projects]
+    if new_reviews > 0:
+        lines.append(f"- {new_reviews} new peer review record(s)")
+    summary = "\n".join(lines) or "- Citation counts refreshed"
+    print(summary)
+    (ROOT / ".sync-summary.md").write_text(summary + "\n")
+    if os.environ.get("GITHUB_STEP_SUMMARY"):
+        with open(os.environ["GITHUB_STEP_SUMMARY"], "a") as f:
+            f.write("## Homepage sync\n" + summary + "\n")
+
+
+if __name__ == "__main__":
+    main()
