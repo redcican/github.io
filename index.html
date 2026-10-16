@@ -59,7 +59,14 @@ a:hover { text-decoration-thickness: 2px; }
 }
 
 /* Header */
-.head { display: grid; gap: 1.25rem; }
+.head { display: grid; gap: 1.25rem; position: relative; }
+.lang {
+  position: absolute; top: 0; right: 0; font: 500 0.78rem/1 var(--font-body); color: var(--muted);
+  background: transparent; border: 1px solid var(--rule); border-radius: 999px; padding: 0.45rem 0.8rem; cursor: pointer;
+}
+.lang:hover { color: var(--accent); border-color: var(--accent); }
+.name { padding-right: 4.5rem; }
+:lang(zh-CN) .bio { font-family: var(--font-body); font-size: 1.12rem; line-height: 1.85; }
 .name {
   font: 400 clamp(2.6rem, 7vw, 3.75rem)/1.02 var(--font-display);
   letter-spacing: -0.02em; margin: 0; text-wrap: balance;
@@ -193,28 +200,29 @@ footer { font: 400 0.75rem/1.6 var(--font-mono); color: var(--muted); border-top
 <body>
 <main class="wrap">
   <header class="head">
+    <button type="button" class="lang" id="lang-toggle" aria-label="切换到中文">中文</button>
     <h1 class="name" id="name">Shikun Chen</h1>
     <p class="role" id="role"></p>
     <nav class="links" id="links" aria-label="Profiles"></nav>
     <div class="metrics" id="metrics"></div>
     <figure class="front" aria-hidden="true">
       <canvas id="front"></canvas>
-      <figcaption><span>f₁ → minimize</span><span class="key"><span class="dot"></span>non-dominated set</span></figcaption>
+      <figcaption><span data-i18n="minimize">f₁ → minimize</span><span class="key"><span class="dot"></span><span data-i18n="front">non-dominated set</span></span></figcaption>
     </figure>
   </header>
 
   <section id="about" aria-labelledby="about-h">
-    <h2 id="about-h">About</h2>
+    <h2 id="about-h" data-i18n="about">About</h2>
     <p class="bio" id="bio"></p>
   </section>
 
   <section id="research" aria-labelledby="research-h">
-    <h2 id="research-h">Research</h2>
+    <h2 id="research-h" data-i18n="research">Research</h2>
     <div class="themes" id="themes"></div>
   </section>
 
   <section id="publications" aria-labelledby="pubs-h">
-    <h2 id="pubs-h">Publications <span class="count" id="pub-count"></span></h2>
+    <h2 id="pubs-h"><span data-i18n="publications">Publications</span> <span class="count" id="pub-count"></span></h2>
     <div class="pub-tools">
       <input type="search" id="pub-search" class="search" placeholder="Search titles, co-authors, venues" aria-label="Search publications" autocomplete="off">
       <div class="years" id="years" role="group" aria-label="Filter by year"></div>
@@ -224,12 +232,12 @@ footer { font: 400 0.75rem/1.6 var(--font-mono); color: var(--muted); border-top
   </section>
 
   <section id="projects" aria-labelledby="proj-h" hidden>
-    <h2 id="proj-h">Projects</h2>
+    <h2 id="proj-h" data-i18n="projects">Projects</h2>
     <ul class="rows" id="proj-list"></ul>
   </section>
 
   <section id="service" aria-labelledby="rev-h">
-    <h2 id="rev-h">Peer review <span class="count" id="rev-count"></span></h2>
+    <h2 id="rev-h"><span data-i18n="review">Peer review</span> <span class="count" id="rev-count"></span></h2>
     <ul class="rows" id="rev-list"></ul>
   </section>
 
@@ -247,16 +255,57 @@ footer { font: 400 0.75rem/1.6 var(--font-mono); color: var(--muted); border-top
   const $ = (id) => document.getElementById(id);
   const esc = (s) => String(s ?? "").replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
 
+  /* Language: English or Chinese. Paper titles, authors and venues stay in English. */
+  const I18N = {
+    en: {
+      about: "About", research: "Research", publications: "Publications", projects: "Projects", review: "Peer review",
+      pubsN: "publications", cites: "citations", h: "h-index", papers: n => `${n} paper${n > 1 ? "s" : ""}`,
+      all: "All", journal: "Journal", conference: "Conference", preprint: "Preprint",
+      search: "Search titles, co-authors, venues", cited: n => `cited ${n}`, isNew: "NEW",
+      abstract: "Abstract", code: "Code", none: "No publications match.", clear: "Clear filters",
+      copied: "BibTeX copied", selected: "BibTeX selected, copy it from the box",
+      reviews: (n, j) => `${n} reviews · ${j} journals`, now: "now",
+      noReviews: "Verified reviewing activity appears here once it syncs from ORCID.",
+      footer: d => `Publications and peer review sync weekly from ORCID and OpenAlex${d ? ` · last update ${d}` : ""}`,
+      minimize: "f₁ → minimize", front: "non-dominated set", toggle: "中文", toggleLabel: "切换到中文"
+    },
+    zh: {
+      about: "简介", research: "研究方向", publications: "学术论文", projects: "科研项目", review: "审稿经历",
+      pubsN: "篇论文", cites: "次引用", h: "h 指数", papers: n => `${n} 篇`,
+      all: "全部", journal: "期刊", conference: "会议", preprint: "预印本",
+      search: "搜索标题、合作者、期刊", cited: n => `被引 ${n}`, isNew: "新",
+      abstract: "摘要", code: "代码", none: "没有符合条件的论文。", clear: "清除筛选",
+      copied: "已复制 BibTeX", selected: "已选中 BibTeX，请手动复制",
+      reviews: (n, j) => `${n} 次审稿 · ${j} 种期刊`, now: "至今",
+      noReviews: "审稿记录将在与 ORCID 同步后显示。",
+      footer: d => `论文与审稿记录每周自动从 ORCID 和 OpenAlex 同步${d ? ` · 最近更新 ${d}` : ""}`,
+      minimize: "f₁ → 最小化", front: "非支配解集", toggle: "EN", toggleLabel: "Switch to English"
+    }
+  };
+  let lang = (navigator.language || "").toLowerCase().startsWith("zh") ? "zh" : "en";
+  try { lang = localStorage.getItem("lang") || lang; } catch (e) {}
+  if (!I18N[lang]) lang = "en";
+  const t = (k, ...a) => { const v = I18N[lang][k]; return typeof v === "function" ? v(...a) : v; };
+  const pf = (o, f) => (lang === "zh" && o && o[f + "_zh"]) || (o && o[f]) || "";
+  function applyStatic() {
+    document.documentElement.lang = lang === "zh" ? "zh-CN" : "en";
+    document.querySelectorAll("[data-i18n]").forEach(el => { el.textContent = t(el.dataset.i18n); });
+    $("pub-search").placeholder = t("search");
+    $("lang-toggle").textContent = t("toggle");
+    $("lang-toggle").setAttribute("aria-label", t("toggleLabel"));
+  }
+
   /* Profile */
-  if (profile) {
+  function renderProfile() {
+    if (!profile) return;
     $("name").innerHTML = esc(profile.name) + (profile.name_native ? `<span class="native">${esc(profile.name_native)}</span>` : "");
     document.title = profile.name;
-    const roleBits = [profile.position && `<strong>${esc(profile.position)}</strong>`, esc(profile.affiliation), esc(profile.location)].filter(Boolean);
+    const roleBits = [pf(profile, "position") && `<strong>${esc(pf(profile, "position"))}</strong>`, esc(pf(profile, "affiliation")), esc(pf(profile, "location"))].filter(Boolean);
     $("role").innerHTML = roleBits.join(" · ");
     const links = (profile.links || []).map(l => `<a href="${esc(l.url)}" target="_blank" rel="noopener">${esc(l.label)}</a>`);
     if (profile.email) links.push(`<span>${esc(profile.email)}</span>`);
     $("links").innerHTML = links.join("");
-    $("bio").textContent = profile.bio || "";
+    $("bio").textContent = pf(profile, "bio");
   }
 
   const items = (pubs && pubs.items) || [];
@@ -264,23 +313,23 @@ footer { font: 400 0.75rem/1.6 var(--font-mono); color: var(--muted); border-top
   const themes = (profile && profile.themes) || [];
   const themeOf = (p) => themes.findIndex(t => t.keywords.some(k => p.title.toLowerCase().includes(k.toLowerCase())));
 
-  /* Metrics */
-  if (metrics) {
-    $("metrics").innerHTML =
-      `<span><b>${items.length}</b> publications</span>` +
-      `<span><b>${metrics.citations}</b> citations</span>` +
-      `<span>h-index <b>${metrics.h_index}</b></span>`;
+  /* Metrics and research themes with paper counts */
+  function renderTop() {
+    if (metrics) {
+      $("metrics").innerHTML =
+        `<span><b>${items.length}</b> ${t("pubsN")}</span>` +
+        `<span><b>${metrics.citations}</b> ${t("cites")}</span>` +
+        `<span>${t("h")} <b>${metrics.h_index}</b></span>`;
+    }
+    $("themes").innerHTML = themes.map((th, i) => {
+      const n = items.filter(p => themeOf(p) === i).length;
+      return `<div class="theme"><h3>${esc(pf(th, "title"))}</h3><p>${esc(pf(th, "text"))}</p>${n ? `<span class="n">${t("papers", n)}</span>` : ""}</div>`;
+    }).join("");
   }
 
-  /* Research themes with paper counts */
-  $("themes").innerHTML = themes.map((t, i) => {
-    const n = items.filter(p => themeOf(p) === i).length;
-    return `<div class="theme"><h3>${esc(t.title)}</h3><p>${esc(t.text)}</p>${n ? `<span class="n">${n} paper${n > 1 ? "s" : ""}</span>` : ""}</div>`;
-  }).join("");
-
   /* Publications */
-  const filters = [{ key: "all", label: "All" }, { key: "journal", label: "Journal" }, { key: "conference", label: "Conference" }]
-    .concat(themes.map((t, i) => ({ key: "t" + i, label: t.title })));
+  const filters = [{ key: "all" }, { key: "journal" }, { key: "conference" }].concat(themes.map((th, i) => ({ key: "t" + i })));
+  const flabel = (f) => f.key[0] === "t" && f.key !== "t" ? pf(themes[Number(f.key.slice(1))], "title") : t(f.key);
   let active = "all", query = "", yearSel = null;
   try { active = localStorage.getItem("pubFilter") || "all"; } catch (e) {}
   if (!filters.some(f => f.key === active)) active = "all";
@@ -329,7 +378,7 @@ footer { font: 400 0.75rem/1.6 var(--font-mono); color: var(--muted); border-top
     const list = items.filter(matches);
     $("pub-count").textContent = list.length === items.length ? list.length : `${list.length} / ${items.length}`;
     $("filters").innerHTML = filters.map(f =>
-      `<button type="button" class="chip" id="f-${f.key}" data-k="${f.key}" aria-pressed="${f.key === active}">${esc(f.label)}</button>`).join("");
+      `<button type="button" class="chip" id="f-${f.key}" data-k="${f.key}" aria-pressed="${f.key === active}">${esc(flabel(f))}</button>`).join("");
     renderYears();
     const years = [...new Set(list.map(p => p.year))].sort((a, b) => b - a);
     $("pub-list").innerHTML = list.length ? years.map(y => {
@@ -343,19 +392,19 @@ footer { font: 400 0.75rem/1.6 var(--font-mono); color: var(--muted); border-top
             <p class="pub-title"><a href="${esc(p.url)}" target="_blank" rel="noopener">${esc(p.title)}</a></p>
             <p class="authors">${authorsHtml(p.authors || [])}</p>
             <p class="meta"><span class="venue">${esc(p.venue)}</span>
-              <span class="tag">${p.type === "conference" ? "Conference" : p.type === "journal" ? "Journal" : p.type === "preprint" ? "Preprint" : esc(p.type)}</span>
-              ${p.citations ? `<span class="cites">cited ${p.citations}</span>` : ""}
-              ${p.date && Date.parse(p.date) > recent ? `<span class="new">NEW</span>` : ""}</p>
+              <span class="tag">${["conference", "journal", "preprint"].includes(p.type) ? t(p.type) : esc(p.type)}</span>
+              ${p.citations ? `<span class="cites">${t("cited", p.citations)}</span>` : ""}
+              ${p.date && Date.parse(p.date) > recent ? `<span class="new">${t("isNew")}</span>` : ""}</p>
             <div class="actions">
-              ${p.abstract ? `<button type="button" class="act" data-act="abs" aria-expanded="false">Abstract</button>` : ""}
+              ${p.abstract ? `<button type="button" class="act" data-act="abs" aria-expanded="false">${t("abstract")}</button>` : ""}
               <button type="button" class="act" data-act="bib">BibTeX</button>
-              ${p.code ? `<a class="act" href="${esc(p.code)}" target="_blank" rel="noopener">Code</a>` : ""}
+              ${p.code ? `<a class="act" href="${esc(p.code)}" target="_blank" rel="noopener">${t("code")}</a>` : ""}
               ${p.doi ? `<a class="act" href="https://doi.org/${esc(p.doi)}" target="_blank" rel="noopener">DOI</a>` : ""}
             </div>
             <div class="drawer" hidden></div>
           </div>
         </li>`).join("")}</ol></div>`;
-    }).join("") : `<p class="empty">No publications match. <button type="button" class="act" data-act="reset">Clear filters</button></p>`;
+    }).join("") : `<p class="empty">${t("none")} <button type="button" class="act" data-act="reset">${t("clear")}</button></p>`;
     document.querySelectorAll("#pub-list canvas[data-k]").forEach(c => drawThumb(c, byKey.get(c.dataset.k)));
   }
   $("filters").addEventListener("click", (e) => {
@@ -396,11 +445,11 @@ footer { font: 400 0.75rem/1.6 var(--font-mono); color: var(--muted); border-top
       drawer.hidden = false;
       li.querySelectorAll(".act").forEach(x => x.classList.remove("on"));
       b.classList.add("on");
-      try { await navigator.clipboard.writeText(text); toast("BibTeX copied"); }
+      try { await navigator.clipboard.writeText(text); toast(t("copied")); }
       catch (err) {
         const r = document.createRange(); r.selectNodeContents(drawer.querySelector("pre"));
         const sel = getSelection(); sel.removeAllRanges(); sel.addRange(r);
-        toast("BibTeX selected, copy it from the box");
+        toast(t("selected"));
       }
     }
   });
@@ -488,31 +537,40 @@ footer { font: 400 0.75rem/1.6 var(--font-mono); color: var(--muted); border-top
       nodes.forEach((a, i) => { g.fillStyle = i < 3 ? accent : ink; g.beginPath(); g.arc(a[0], a[1], i < 3 ? 3 : 2, 0, 7); g.fill(); });
     }
   }
-  renderPubs();
   const redrawThumbs = () => document.querySelectorAll("#pub-list canvas[data-k]").forEach(c => drawThumb(c, byKey.get(c.dataset.k)));
   window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", redrawThumbs);
   new MutationObserver(redrawThumbs).observe(document.documentElement, { attributes: true, attributeFilter: ["data-theme"] });
 
+  function renderRest() {
   /* Projects */
   const projItems = (projects && projects.items) || [];
   if (projItems.length) {
     $("projects").hidden = false;
     $("proj-list").innerHTML = projItems.map(p => `<li><span class="j">${p.url ? `<a href="${esc(p.url)}" target="_blank" rel="noopener">${esc(p.title)}</a>` : esc(p.title)}
       <span class="sub">${esc([p.role, p.funder, p.grant].filter(Boolean).join(" · "))}</span></span>
-      <span class="y">${esc(p.start || "")}${p.end ? "–" + esc(p.end) : p.start ? "–now" : ""}</span></li>`).join("");
+      <span class="y">${esc(p.start || "")}${p.end ? "–" + esc(p.end) : p.start ? "–" + t("now") : ""}</span></li>`).join("");
   }
 
   /* Peer review */
   const revItems = (reviews && reviews.items) || [];
   const totalReviews = revItems.reduce((s, r) => s + (r.count || 0), 0);
-  $("rev-count").textContent = totalReviews ? `${totalReviews} reviews · ${revItems.length} journals` : "";
+  $("rev-count").textContent = totalReviews ? t("reviews", totalReviews, revItems.length) : "";
   $("rev-list").outerHTML = revItems.length
     ? `<ul class="rows" id="rev-list">${revItems.map(r => `<li><span class="j">${esc(r.journal)}${r.publisher ? `<span class="sub">${esc(r.publisher)}</span>` : ""}</span>
         <span class="y">${r.count} × · ${esc(r.years)}</span></li>`).join("")}</ul>`
-    : `<p class="empty" id="rev-list">Verified reviewing activity appears here once it syncs from ORCID.</p>`;
+    : `<p class="empty" id="rev-list">${t("noReviews")}</p>`;
 
   const stamp = (pubs && pubs.updated) || "";
-  $("footer").innerHTML = `Publications and peer review sync weekly from ORCID and OpenAlex${stamp ? ` · last update ${esc(stamp)}` : ""}`;
+  $("footer").textContent = t("footer", stamp);
+  }
+
+  function renderAll() { applyStatic(); renderProfile(); renderTop(); renderPubs(); renderRest(); }
+  $("lang-toggle").addEventListener("click", () => {
+    lang = lang === "zh" ? "en" : "zh";
+    try { localStorage.setItem("lang", lang); } catch (e) {}
+    renderAll();
+  });
+  renderAll();
 })();
 
 /* Pareto front strip: a fixed sample of candidate solutions, the non-dominated ones joined by a staircase. */

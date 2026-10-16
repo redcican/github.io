@@ -7,30 +7,73 @@
   "email": "",
   "bio": "I work on optimization when evaluations are expensive, objectives conflict and the system is only partly understood. My research combines evolutionary multi-objective optimization, Bayesian optimization and surrogate modeling with modern machine learning, including diffusion models, reinforcement learning and large language models, and applies them to scheduling, structural design and intelligent manufacturing.",
   "links": [
-    { "label": "Google Scholar", "url": "https://scholar.google.com/citations?user=FpLnHcEAAAAJ&hl=en" },
-    { "label": "ORCID", "url": "https://orcid.org/0000-0001-5958-7545" }
+    {
+      "label": "Google Scholar",
+      "url": "https://scholar.google.com/citations?user=FpLnHcEAAAAJ&hl=en"
+    },
+    {
+      "label": "ORCID",
+      "url": "https://orcid.org/0000-0001-5958-7545"
+    }
   ],
   "themes": [
     {
       "title": "Expensive multi-objective optimization",
       "text": "Surrogate-assisted evolutionary multitasking, gradient-guided diffusion and causal Bayesian optimization for problems where each evaluation costs hours.",
-      "keywords": ["multi-objective", "multiobjective", "surrogate", "bayesian", "pareto", "expensive"]
+      "keywords": [
+        "multi-objective",
+        "multiobjective",
+        "surrogate",
+        "bayesian",
+        "pareto",
+        "expensive"
+      ],
+      "title_zh": "昂贵多目标优化",
+      "text_zh": "面向单次评估耗时数小时的问题，研究代理辅助进化多任务、梯度引导扩散模型与因果贝叶斯优化。"
     },
     {
       "title": "Language models for optimization",
       "text": "Large language models as heuristic designers and search guides for flow shop and job shop scheduling and combinatorial optimization.",
-      "keywords": ["language model", "language-model", "heuristic design", "scheduling"]
+      "keywords": [
+        "language model",
+        "language-model",
+        "heuristic design",
+        "scheduling"
+      ],
+      "title_zh": "大语言模型驱动的优化",
+      "text_zh": "以大语言模型作为启发式设计者与搜索引导，求解流水车间、作业车间调度及组合优化问题。"
     },
     {
       "title": "Scientific machine learning and inverse design",
       "text": "Physics-informed networks, inverse identification of dynamical systems and data-driven inverse design of lattice and cellular structures.",
-      "keywords": ["physics-informed", "inverse", "lattice", "cellular", "fractional"]
+      "keywords": [
+        "physics-informed",
+        "inverse",
+        "lattice",
+        "cellular",
+        "fractional"
+      ],
+      "title_zh": "科学机器学习与逆向设计",
+      "text_zh": "物理信息神经网络、动力系统逆向辨识，以及晶格与胞元结构的数据驱动逆向设计。"
     },
     {
       "title": "Intelligent manufacturing",
       "text": "Defect detection with vision-language models and active learning, and data-driven energy optimization in foundries.",
-      "keywords": ["defect", "foundry", "casting", "manufacturing"]
+      "keywords": [
+        "defect",
+        "foundry",
+        "casting",
+        "manufacturing"
+      ],
+      "title_zh": "智能制造",
+      "text_zh": "基于视觉-语言模型与主动学习的缺陷检测，以及铸造车间的数据驱动能耗优化。"
     }
   ],
-  "self_names": ["Shikun Chen", "S. Chen"]
+  "self_names": [
+    "Shikun Chen",
+    "S. Chen"
+  ],
+  "affiliation_zh": "宁波财经学院",
+  "location_zh": "中国宁波",
+  "bio_zh": "我的研究关注评估代价高昂、目标相互冲突、系统机理仅部分已知的优化问题。我将进化多目标优化、贝叶斯优化和代理模型与扩散模型、强化学习、大语言模型等现代机器学习方法相结合，并应用于生产调度、结构设计和智能制造。"
 }
