@@ -2,7 +2,11 @@
   "orcid": "0000-0001-5958-7545",
   "contact_email": "",
   "author_aliases": {
-    "Баочанг Лиу": "Baochang Liu"
+    "Баочанг Лиу": "Baochang Liu",
+    "S T Chen": "Shikun Chen",
+    "Y F LIU": "Yangguang Liu",
+    "CHEN Shikun": "Shikun Chen",
+    "LIU Yangguang": "Yangguang Liu"
   },
   "hide": [
     "rrmsevotingregressoraweightingfunctionbasedimprovementtoensembleregression",

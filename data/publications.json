@@ -136,8 +136,8 @@
     {
       "title": "Hierarchical process-level generative reward modeling with adaptive long-horizon reasoning for robust LLM alignment",
       "authors": [
-        "S T Chen",
-        "Y F LIU"
+        "Shikun Chen",
+        "Yangguang Liu"
       ],
       "venue": "Information Processing & Management",
       "year": 2026,
@@ -147,7 +147,10 @@
       "url": "https://doi.org/10.1016/j.ipm.2026.104957",
       "citations": 1,
       "added": "2026-10-16",
-      "thumb": "images/thumbs/10-1016-j-ipm-2026-104957.svg"
+      "thumb": "images/thumbs/10-1016-j-ipm-2026-104957.svg",
+      "locked": [
+        "authors"
+      ]
     },
     {
       "title": "Multi-objective evolutionary reinforcement learning for Pareto-optimal interpretable policies",
@@ -336,7 +339,11 @@
     {
       "title": "Integration of Machine Learning Prediction and Water Wave Optimization for Online Customer Service Representatives Scheduling in Bank Contact Centers",
       "authors": [
-        "LU Xueqin, XIE Xicheng, TANG Yan, CHEN Shikun, LIU Yangguang"
+        "Xueqin Lu",
+        "Xicheng Xie",
+        "Yan Tang",
+        "Shikun Chen",
+        "Yangguang Liu"
       ],
       "venue": "Computer Science (计算机科学)",
       "year": 2025,
@@ -347,6 +354,7 @@
       "citations": 0,
       "added": "2026-10-16",
       "locked": [
+        "authors",
         "title",
         "venue"
       ],
