@@ -342,18 +342,19 @@ def sync_metrics(n_pubs):
         source = "OpenAlex"
     save("metrics.json", {"works": n_pubs, **m, "source": source})
     print(f"Metrics from {source}: {m}")
+    return source
 
 
 def main():
     new_pubs = sync_publications()
     new_reviews = sync_reviews()
     new_projects = sync_projects()
-    sync_metrics(len(load("publications.json")["items"]))
+    source = sync_metrics(len(load("publications.json")["items"]))
     lines = [f"- New paper: {p['title']} ({p.get('venue') or p['year']})" for p in new_pubs]
     lines += [f"- New project: {p['title']}" for p in new_projects]
     if new_reviews > 0:
         lines.append(f"- {new_reviews} new peer review record(s)")
-    summary = "\n".join(lines) or "- Citation counts refreshed"
+    summary = "\n".join(lines) or f"- Citation counts refreshed ({source or 'unchanged'})"
     print(summary)
     (ROOT / ".sync-summary.md").write_text(summary + "\n")
     if os.environ.get("GITHUB_STEP_SUMMARY"):
