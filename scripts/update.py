@@ -240,7 +240,8 @@ def merge_scholar(items):
     by_title = {norm_title(p["title"]): p for p in items}
     report, added = [], []
     for a in arts:
-        t = a.get("title") or ""
+        # Scholar sometimes appends the Springer running head, e.g. "...symmetry: S. Chen et al."
+        t = re.sub(r":\s*[A-Z]\.\s*[\w-]+ et al\.?\s*$", "", a.get("title") or "").strip()
         nt = norm_title(t)
         cites = val(a, "cited_by", "value") or 0
         cur = by_title.get(nt)

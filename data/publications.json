@@ -509,45 +509,6 @@
       "thumb": "images/thumbs/10-1007-s00158-025-03984-2.svg"
     },
     {
-      "title": "Design of graded cellular structures with data-driven inverse homogenization for microstructures with cubic symmetry: S. Chen et al.",
-      "authors": [
-        "Shikun Chen",
-        "J Zhang",
-        "R Martin",
-        "Z Zhao",
-        "D Xiao"
-      ],
-      "venue": "Structural and Multidisciplinary Optimization",
-      "year": 2025,
-      "date": null,
-      "type": "journal",
-      "doi": null,
-      "url": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=FpLnHcEAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=FpLnHcEAAAAJ:NMxIlDl6LWMC",
-      "citations": 1,
-      "added": "2026-10-16",
-      "source": "scholar"
-    },
-    {
-      "title": "Conditional diffusion models for the inverse design of lattice structures: J. Zhang et al.",
-      "authors": [
-        "J Zhang",
-        "Shikun Chen",
-        "RJ Martin",
-        "B Liu",
-        "R Zhang",
-        "D Xiao"
-      ],
-      "venue": "Structural and Multidisciplinary Optimization",
-      "year": 2025,
-      "date": null,
-      "type": "journal",
-      "doi": null,
-      "url": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=FpLnHcEAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=FpLnHcEAAAAJ:iH-uZ7U-co4C",
-      "citations": 21,
-      "added": "2026-10-16",
-      "source": "scholar"
-    },
-    {
       "title": "Surrogate gradient methods for data-driven foundry energy consumption optimization",
       "authors": [
         "Shikun Chen",
