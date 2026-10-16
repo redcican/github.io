@@ -100,6 +100,14 @@ def date_from(d):
 
 # ---------- publications ----------
 
+def abstract_text(inv):
+    """OpenAlex stores abstracts as {word: [positions]}; rebuild the running text."""
+    if not inv:
+        return ""
+    pos = sorted((i, word) for word, idx in inv.items() for i in idx)
+    return " ".join(word for _, word in pos)
+
+
 def from_openalex(w):
     doi = (w.get("doi") or "").replace("https://doi.org/", "").lower() or None
     src = val(w, "primary_location", "source") or {}
@@ -114,6 +122,7 @@ def from_openalex(w):
         "doi": doi,
         "url": f"https://doi.org/{doi}" if doi else (w.get("id") or ""),
         "citations": w.get("cited_by_count", 0),
+        "abstract": abstract_text(w.get("abstract_inverted_index")),
     }
     if p["type"] == "journal" and src.get("type") == "conference":
         p["type"] = "conference"
