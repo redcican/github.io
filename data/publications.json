@@ -173,6 +173,25 @@
       "thumb": "images/thumbs/10-1016-j-swevo-2026-102448.svg"
     },
     {
+      "title": "Cross-modal fusion of cytomorphology and 18F-FDG PET/CT for non-invasive bone marrow immune microenvironment decoding in multiple myeloma",
+      "authors": [
+        "Minjie Gao",
+        "Guifang Ouyang",
+        "Liu Y",
+        "Shikun Chen",
+        "Kaihong Xu"
+      ],
+      "venue": "Frontiers in Immunology",
+      "year": 2026,
+      "date": "2026-06-24",
+      "type": "journal",
+      "doi": "10.3389/fimmu.2026.1856163",
+      "url": "https://doi.org/10.3389/fimmu.2026.1856163",
+      "citations": 0,
+      "abstract": "Introduction The bone marrow immune microenvironment (BMME) shapes treatment response in multiple myeloma (MM), yet routine diagnostic workup primarily assesses tumor burden rather than immune competence. We developed ImmunoCast-MM, a cross-modal deep learning framework that extracts immunologically relevant signals from two examinations routinely performed at diagnosis: Wright–Giemsa-stained bone marrow aspirate smears and whole-body 18 F-FDG PET/CT. Methods The cytomorphology branch used DinoBloom embeddings to classify individual cells across five hierarchical levels. The PET/CT branch generated a multi-organ inflammation fingerprint from tumor, spleen, lymph node, and diffuse bone marrow compartments. A contrastive fusion module aligned the two imaging modalities with a flow cytometry reference panel and generated an Immune Dysfunction Index (IDI) along a learned effector–suppressor axis. ImmunoCast-MM was evaluated retrospectively in 243 patients with newly diagnosed MM. Associations with flow cytometric measurements, progression-free survival, and daratumumab response were assessed, with adjustment for International Staging System stage, cytogenetic risk, and age. Results On a held-out validation subset, decoded cytomorphologic indices correlated with matched flow cytometric fractions, with Spearman ρ values of 0.68–0.81 across three decoded index–panel pairs; all Benjamini–Hochberg-adjusted (p) values were (<0.001). Unsupervised clustering of the fused embeddings identified immune-competent and immune-exhausted archetypes that differed in progression-free survival and response to daratumumab. Separately, adding the IDI to conventional risk markers increased the concordance index from 0.58 to 0.75 ((p<0.001)) and improved the area under the receiver operating characteristic curve for daratumumab response from 0.55 to 0.81 ((p<0.001)). Discussion ImmunoCast-MM reframes two standard diagnostic examinations as non-invasive profilers of the BMME. The framework may support risk assessment and immunotherapy stratification, particularly in centers without access to high-dimensional flow cytometry.",
+      "added": "2026-10-16"
+    },
+    {
       "title": "Hierarchical process-level generative reward modeling with adaptive long-horizon reasoning for robust LLM alignment",
       "authors": [
         "Shikun Chen",
@@ -242,6 +261,26 @@
       "citations": 0,
       "added": "2026-10-16",
       "thumb": "images/thumbs/10-1007-s00170-026-18199-y.svg"
+    },
+    {
+      "title": "Morphology-based cytogenetic risk prediction in multiple myeloma from bone marrow smears",
+      "authors": [
+        "Minjie Gao",
+        "Xiao Yan",
+        "Ling Chen",
+        "Guifang Ouyang",
+        "Yangguang Liu",
+        "Shikun Chen"
+      ],
+      "venue": "Frontiers in Oncology",
+      "year": 2026,
+      "date": "2026-03-18",
+      "type": "journal",
+      "doi": "10.3389/fonc.2026.1790130",
+      "url": "https://doi.org/10.3389/fonc.2026.1790130",
+      "citations": 1,
+      "abstract": "hybridization remains expensive and inaccessible in many clinical settings. Prior studies have established that specific chromosomal alterations correlate with distinct plasma cell morphological features. This suggests that visual analysis of bone marrow aspirate (BMA) smears could enable genetic risk prediction. We developed a computational framework that predicts high-risk cytogenetic status directly from digitized BMA smear images. Our approach employs DinoBloom, an established hematology-specific vision transformer pretrained on bone marrow and peripheral blood cell images, to extract morphological features from individual plasma cells. These embeddings are aggregated through attention-based multiple instance learning, which requires only patient-level labels rather than cell-by-cell annotations. The attention mechanism identifies which cells drive each prediction and links morphological phenotypes to genetic subtypes. Evaluated on a multi-center MM cohort with matched genetic results, the model achieved area under the curve values ranging from 0.76 to 0.85 across multiple cytogenetic markers. Attention maps highlighted plasmablastic features in high-risk predictions and mature plasma cell characteristics in standard-risk cases, consistent with established morphology-genetics correlations. This approach offers a rapid, cost-effective screening tool that could extend genetic risk stratification to resource-limited settings.",
+      "added": "2026-10-16"
     },
     {
       "title": "Conditional diffusion with gradient guidance for high-dimensional expensive multi-objective optimization",
@@ -324,6 +363,28 @@
       "thumb": "images/thumbs/10-1109-tevc-2026-3721299.svg"
     },
     {
+      "title": "Development of multifunctional nanomaterials for advanced theranostic applications in skin cancer",
+      "authors": [
+        "Yu-Lung HSIEH",
+        "Jun Xie",
+        "Shaohua Jiang",
+        "Junwei Chen",
+        "Hao Peng",
+        "Fang Yang",
+        "Shikun Chen",
+        "Chao Liang"
+      ],
+      "venue": "Journal of Materials Chemistry B",
+      "year": 2026,
+      "date": "2026-01-01",
+      "type": "journal",
+      "doi": "10.1039/d6tb00762g",
+      "url": "https://doi.org/10.1039/d6tb00762g",
+      "citations": 0,
+      "abstract": "Skin cancer is a highly heterogeneous malignancy with increasing incidence and limited therapeutic efficacy from conventional treatments due to poor specificity, inadequate drug penetration, and resistance. Nanomaterial-based platforms have emerged as promising strategies to address these challenges by enabling precise diagnosis and targeted therapy. This review summarizes recent advances in nanomaterial-mediated theranostics for skin cancer, including organic, inorganic, and biomimetic or hybrid nanosystems. Their roles in enhancing drug delivery through passive and active targeting, improving transdermal penetration, and enabling controlled release are highlighted. Emerging diagnostic approaches based on nanotechnology, such as imaging and biosensing, are also discussed for sensitive and noninvasive detection. In addition, nanoplatform-enabled multimodal therapies that integrate chemotherapy, phototherapy, gene therapy, and immunotherapy are presented, with particular emphasis on microneedle-assisted transdermal systems. Despite the remaining challenges in terms of biosafety, scalability, and clinical translation, nanomaterials offer significant potential for advancing precise and personalized skin cancer management.",
+      "added": "2026-10-16"
+    },
+    {
       "title": "Vision-Language Model-Assisted Active Learning for High-Accuracy Defect Detection in Automotive Bushing Components",
       "authors": [
         "Shikun Chen",
@@ -374,6 +435,24 @@
       "url": "https://doi.org/10.1007/s00158-025-04200-x",
       "citations": 1,
       "thumb": "images/thumbs/10-1007-s00158-025-04200-x.svg"
+    },
+    {
+      "title": "Research on the impact of digital economy on the high-quality development of logistics industry",
+      "authors": [
+        "Wenlong Zheng",
+        "Shikun Chen",
+        "Jiaying Guo",
+        "Chenliang Wo"
+      ],
+      "venue": "Proceedings of the 2025 2nd International Conference on Digital Economy and Computer Science",
+      "year": 2025,
+      "date": "2025-10-17",
+      "type": "conference",
+      "doi": "10.1145/3785706.3785770",
+      "url": "https://doi.org/10.1145/3785706.3785770",
+      "citations": 0,
+      "abstract": "In the era of digital economy, the development of computer technology has driven the digital construction of the logistics industry, making the logistics system more intelligent and providing strong technical support and efficiency improvement for the logistics industry. As an important manifestation of new quality productivity, digital economy directly affects the high-quality development of logistics industry. This paper selects the panel data of 31 provinces in China from 2011 to 2023 to analyze the interactive relationship between digital economy and the high-quality development of logistics industry from the two aspects of digital industrialization and industrial digitalization. It shows that the current digital industrialization and industrial digitalization have a relatively obvious impact on the high-quality development of logistics industry. The impact of digital industrialization and industrial digitalization on the high quality of logistics industry has obviously different fluctuation phenomena.",
+      "added": "2026-10-16"
     },
     {
       "title": "Integration of Machine Learning Prediction and Water Wave Optimization for Online Customer Service Representatives Scheduling in Bank Contact Centers",
