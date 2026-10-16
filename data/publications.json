@@ -53,6 +53,25 @@
       "thumb": "images/thumbs/10-1016-j-ymssp-2026-114895.svg"
     },
     {
+      "title": "Multimodal AI reading of genetic complexity and residual marrow composition in acute promyelocytic leukemia",
+      "authors": [
+        "Minjie Gao",
+        "Guifang Ouyang",
+        "Yangguang Liu",
+        "Shikun Chen"
+      ],
+      "venue": "Frontiers in Immunology",
+      "year": 2026,
+      "date": "2026-08-24",
+      "type": "journal",
+      "doi": "10.3389/fimmu.2026.1933105",
+      "url": "https://doi.org/10.3389/fimmu.2026.1933105",
+      "citations": 0,
+      "abstract": "Introduction Acute promyelocytic leukemia (APL) is defined by its genetics, yet interphase fluorescence in situ hybridization (FISH) for the PML::RARA fusion, the chromosomal complement seen on a metaphase spread, and the marrow’s cellular composition on a Wright–Giemsa smear are read as separate, unconnected examinations. We did not identify a published model trained on two or more of these image types in the same patients with APL. Methods We describe two image-derived readouts for a retrospective cohort of patients with APL. A genetic complexity axis classifies the FISH fusion signal pattern and flags any additional cytogenetic abnormality (ACA) beyond the t(15;17), directly from raw, unarranged metaphase spreads. A marrow composition axis extends a cytomorphology pipeline, built on frozen DinoBloom embeddings and a per-cell classification head directly supervised on an annotated subset, from promyelocyte detection to a seven-class differential count. From this composition, we compute a residual hematopoiesis index, the model-estimated fraction of non-leukemic nucleated marrow cells, so that a higher value indicates a larger non-leukemic fraction. The index is a morphology-derived surrogate for residual non-leukemic marrow composition and carries no immune-phenotypic information. The association between the two axes is computed directly from patient-level, out-of-fold branch outputs; a small, three-node fusion module over the two genetic and one composition readout supports only a secondary, exploratory analysis, reported in the Supplementary Material. The cohort held 700 patients with smear, FISH, and karyotype linked per patient, of whom 650 had complete clinical annotation; we evaluated each branch with patient-stratified fivefold cross-validation, five repeats, pooled out-of-fold, and report bootstrap confidence intervals (CIs) over patients. Diagnostic flow cytometry was retrievable for 118 patients, and 80 slides were re-scanned with fields independently re-selected, to check the index against an external measurement and against itself. Results The fusion-pattern classifier had a macro-averaged F1 of 0.82 across the five signal classes, and the karyotype ACA reader had an area under the curve (AUC) of 0.86. The residual hematopoiesis index had a median of 0.42 (interquartile range, IQR, 0.29 to 0.58) across the cohort, tracked the flow-derived non-blast fraction at a Spearman correlation of 0.80 (95% CI 0.72 to 0.86) in the 118 patients with flow data, and had an intraclass correlation of 0.91 on re-scanned slides. Genetic complexity and the residual hematopoiesis index were associated at a Spearman ρ of 0.24 (95% CI 0.17 to 0.31, p < 0.0001), the primary finding of this study, with higher genetic complexity accompanying a larger non-leukemic fraction. The association held under adjustment for metaphase yield, scorable nuclei per FISH image, age, presenting white-cell count, and accession year, with partial correlations between 0.19 and 0.24, and patients with an expert-defined additional abnormality had a higher index than those with the isolated translocation (median 0.46 against 0.41). An exploratory test of the same readouts against the Sanz risk group and DS occurrence, run on the clinically annotated subcohort, showed performance no better than chance, and an adjusted logistic model bounded any effect of an additional cytogenetic abnormality on DS at an odds ratio of 1.07 (95% CI 0.74 to 1.55), in line with two prior clinical cohorts that reported no association between cytogenetic abnormality and DS. Conclusion Image-derived genetic complexity was positively associated with the residual hematopoiesis index, and the association persisted under the adjustments and substitutions applied to it. These findings describe a cross-sectional association in a single-center, retrospective cohort, not a validated diagnostic or risk tool. The residual hematopoiesis index summarizes morphology alone, its agreement with flow cytometry is supportive rather than confirmatory, and the secondary DS analysis drew on a smaller, clinically annotated subset of the cohort rather than on every patient.",
+      "added": "2026-10-16",
+      "source": "scholar"
+    },
+    {
       "title": "Coupling-aware destruction with large-language-model guidance for energy-efficient blocking hybrid flow shop scheduling",
       "authors": [
         "Shikun Chen"
@@ -116,6 +135,24 @@
       "url": "https://doi.org/10.1016/j.jfranklin.2026.108884",
       "citations": 0,
       "thumb": "images/thumbs/10-1016-j-jfranklin-2026-108884.svg"
+    },
+    {
+      "title": "Height-aware attention for industrial defect detection: co-designing imaging and deep networks for rubber–metal bushings",
+      "authors": [
+        "Rongfen Shen",
+        "Shikun Chen",
+        "Yangguang Liu"
+      ],
+      "venue": "Scientific Reports",
+      "year": 2026,
+      "date": "2026-07-01",
+      "type": "journal",
+      "doi": "10.1038/s41598-026-60232-3",
+      "url": "https://doi.org/10.1038/s41598-026-60232-3",
+      "citations": 0,
+      "abstract": "Defect detection in rubber-metal bushings is difficult because many faults appear as small surface-height changes rather than intensity changes. Here, we present a height-information inspection method that converts 16-bit laser profile measurements into three-channel height-color images for detector input. Paired grayscale images are used only as a baseline for modality comparison. The model replaces the standard attention block in a real-time one-stage detector with a height-aware attention module that combines feature-group channel attention, multi-scale spatial attention, and adaptive feature fusion. This design lets the network emphasize local height transitions while it retains contextual surface information. On 11,000 bushing images, height-color input alone increased recall by 45.3% over grayscale input. With the proposed attention module, the detector reached 92.9% precision, 93.5% recall, and 96.7% mean average precision at 0.5 intersection over union. Compared with representative transformer, graph-based, and multimodal detectors, the method improved mean average precision by 4.9-18.8 percentage points and reduced computation by 40-82%. These results show that joint design of image representation and network architecture improves industrial bushing inspection.",
+      "added": "2026-10-16",
+      "source": "scholar"
     },
     {
       "title": "Cooperative surrogate-assisted evolutionary multitasking for expensive constrained multiobjective optimization",
@@ -394,7 +431,7 @@
       "type": "journal",
       "doi": "10.1016/j.wpi.2025.102380",
       "url": "https://doi.org/10.1016/j.wpi.2025.102380",
-      "citations": 5,
+      "citations": 7,
       "added": "2026-10-16",
       "thumb": "images/thumbs/10-1016-j-wpi-2025-102380.svg"
     },
@@ -414,7 +451,7 @@
       "type": "journal",
       "doi": "10.1038/s41598-025-10371-w",
       "url": "https://doi.org/10.1038/s41598-025-10371-w",
-      "citations": 2,
+      "citations": 5,
       "abstract": "On-demand food delivery services are a rapidly expanding sector within the logistics industry, yet optimizing delivery routes in real-time remains a significant challenge, particularly in high-demand and complex environments. This gap hinders operational efficiency and customer satisfaction, highlighting the need for advanced decision-making frameworks. In response, we propose a multi-agent system (MAS) using the Belief-Desire-Intention (BDI) framework to enhance delivery efficiency. Our dynamic model simulates interactions between platforms, riders, and shops, utilizing Monte Carlo Tree Search (MCTS) and Insertion Heuristic methodologies to optimize routes. Through simulations of varying complexity, we demonstrate that MCTS outperforms the Insertion Heuristic, especially in complex scenarios, by effectively managing multiple objectives and maintaining high service quality. These results indicate that advanced intention scheduling methods like MCTS can significantly improve real-time decision-making, thereby enhancing both customer satisfaction and operational efficiency in high-demand delivery contexts.",
       "thumb": "images/thumbs/10-1038-s41598-025-10371-w.svg"
     },
@@ -431,7 +468,7 @@
       "type": "journal",
       "doi": "10.1371/journal.pone.0321862",
       "url": "https://doi.org/10.1371/journal.pone.0321862",
-      "citations": 2,
+      "citations": 4,
       "abstract": "Mathematical optimization is fundamental across many scientific and engineering applications. While data-driven models like gradient boosting and random forests excel at prediction tasks, they often lack mathematical regularity, being non-differentiable or even discontinuous. These models are commonly used to predict outputs based on a combination of fixed parameters and adjustable variables. A key transition in optimization involves moving beyond simple prediction to determine optimal variable values. Specifically, the challenge lies in identifying values of adjustable variables that maximize the output quality according to the model's predictions, given a set of fixed parameters. To address this challenge, we propose a method that combines XGBoost's superior prediction accuracy with neural networks' differentiability as optimization surrogates. The approach leverages gradient information from neural networks to guide SLSQP optimization while maintaining XGBoost's prediction precision. Through extensive testing on classical optimization benchmarks including Rosenbrock, Levy, and Rastrigin functions with varying dimensions and constraint conditions, we demonstrate that our method achieves solutions up to 40% better than traditional methods while reducing computation time by orders of magnitude. The framework consistently maintains near-zero constraint violations across all test cases, even as problem complexity increases. This approach bridges the gap between model accuracy and optimization efficiency, offering a practical solution for optimizing non-differentiable machine learning models that can be extended to other tree-based ensemble algorithms. The method has been successfully applied to real-world steel alloy optimization, where it achieved superior performance while maintaining all metallurgical composition constraints.",
       "thumb": "images/thumbs/10-1371-journal-pone-0321862.svg"
     },
@@ -447,7 +484,7 @@
       "type": "journal",
       "doi": "10.1371/journal.pone.0319515",
       "url": "https://doi.org/10.1371/journal.pone.0319515",
-      "citations": 22,
+      "citations": 37,
       "code": "https://github.com/redcican/RRMSE",
       "abstract": "Ensemble regression methods are widely used to improve prediction accuracy by combining multiple regression models, especially when dealing with continuous numerical targets. However, most ensemble voting regressors use equal weights for each base model's predictions, which can limit their effectiveness, particularly when there is no specific domain knowledge to guide the weighting. This uniform weighting approach doesn't consider that some models may perform better than others on different datasets, leaving room for improvement in optimizing ensemble performance. To overcome this limitation, we propose the RRMSE (Relative Root Mean Square Error) Voting Regressor, a new ensemble regression technique that assigns weights to each base model based on their relative error rates. By using an RRMSE-based weighting function, our method gives more importance to models that demonstrate higher accuracy, thereby enhancing the overall prediction quality. We tested the RRMSE Voting Regressor on six popular regression datasets and compared its performance with several state-of-the-art ensemble regression algorithms. The results show that the RRMSE Voting Regressor consistently achieves lower prediction errors than existing methods across all tested datasets. This improvement highlights the effectiveness of using relative error metrics for weighting in ensemble models. Our approach not only fills a gap in current ensemble regression techniques but also provides a reliable and adaptable method for boosting prediction performance in various machine learning tasks. By leveraging the strengths of individual models through smart weighting, the RRMSE Voting Regressor offers a significant advancement in the field of ensemble learning.",
       "thumb": "images/thumbs/10-1371-journal-pone-0319515.svg"
@@ -472,6 +509,45 @@
       "thumb": "images/thumbs/10-1007-s00158-025-03984-2.svg"
     },
     {
+      "title": "Design of graded cellular structures with data-driven inverse homogenization for microstructures with cubic symmetry: S. Chen et al.",
+      "authors": [
+        "Shikun Chen",
+        "J Zhang",
+        "R Martin",
+        "Z Zhao",
+        "D Xiao"
+      ],
+      "venue": "Structural and Multidisciplinary Optimization",
+      "year": 2025,
+      "date": null,
+      "type": "journal",
+      "doi": null,
+      "url": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=FpLnHcEAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=FpLnHcEAAAAJ:NMxIlDl6LWMC",
+      "citations": 1,
+      "added": "2026-10-16",
+      "source": "scholar"
+    },
+    {
+      "title": "Conditional diffusion models for the inverse design of lattice structures: J. Zhang et al.",
+      "authors": [
+        "J Zhang",
+        "Shikun Chen",
+        "RJ Martin",
+        "B Liu",
+        "R Zhang",
+        "D Xiao"
+      ],
+      "venue": "Structural and Multidisciplinary Optimization",
+      "year": 2025,
+      "date": null,
+      "type": "journal",
+      "doi": null,
+      "url": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=FpLnHcEAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=FpLnHcEAAAAJ:iH-uZ7U-co4C",
+      "citations": 21,
+      "added": "2026-10-16",
+      "source": "scholar"
+    },
+    {
       "title": "Surrogate gradient methods for data-driven foundry energy consumption optimization",
       "authors": [
         "Shikun Chen",
@@ -484,7 +560,7 @@
       "type": "journal",
       "doi": "10.1007/s00170-024-14219-x",
       "url": "https://doi.org/10.1007/s00170-024-14219-x",
-      "citations": 4,
+      "citations": 6,
       "code": "https://github.com/redcican/Surrogate-gradient-methods",
       "abstract": "Abstract In many industrial applications, data-driven models are more and more commonly employed as an alternative to classical analytical descriptions or simulations. In particular, such models are often used to predict the outcome of an industrial process with respect to specific quality characteristics from both observed process parameters and control variables. A major step in proceeding from purely predictive to prescriptive analytics, i.e., towards leveraging data-driven models for process optimization, consists of, for given process parameters, determining control variable values such that the output quality improves according to the process model. This task naturally leads to a constrained optimization problem for data-driven prediction algorithms. In many cases, however, the best available models suffer from a lack of regularity: methods such as gradient boosting or random forests are generally non-differentiable and might even exhibit discontinuities. The optimization of these models would therefore require the use of derivative-free techniques. Here, we discuss the use of alternative, independently trained differentiable machine learning models as a surrogate during the optimization procedure. While these alternatives are generally less accurate representations of the actual process, the possibility of employing derivative-based optimization methods provides major advantages in terms of computational performance. Using classical benchmarks as well as a real-world dataset obtained from an industrial environment, we demonstrate that these advantages can outweigh the additional model error, especially in real-time applications.",
       "thumb": "images/thumbs/10-1007-s00170-024-14219-x.svg"
@@ -501,7 +577,7 @@
       "type": "journal",
       "doi": "10.3390/met12010001",
       "url": "https://doi.org/10.3390/met12010001",
-      "citations": 65,
+      "citations": 70,
       "abstract": "This paper presents an approach for the application of machine learning in the prediction and understanding of casting surface related defects. The manner by which production data from a steel and cast iron foundry can be used to create models for predicting casting surface related defect is demonstrated. The data used for the model creation were collected from a medium-sized steel and cast iron foundry in which components ranging from 1 to 100 kg in weight are produced from wear and heat resistant cast iron and steel materials. This includes all production-relevant data from the melting and casting process, as well as from the mold production, the sand preparation and component quality related data from the quality management department. The data are tethered together with each other, the information regarding the identity and number of components that resulted in scrap due to the casting surface defect metal penetrations was added to the dataset. Six different machine learning algorithms were trained and an interpretation of the models outputs was accomplished with the application of the SHAP framework.",
       "thumb": "images/thumbs/10-3390-met12010001.svg"
     },
@@ -514,7 +590,7 @@
       "type": "preprint",
       "doi": null,
       "url": "https://publons.com/wos-op/publon/68056201/",
-      "citations": 0,
+      "citations": 32,
       "added": "2026-10-16",
       "thumb": "images/thumbs/interpretation-of-multi-label-classification-models-using-sh.svg"
     }
