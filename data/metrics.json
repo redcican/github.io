@@ -1,7 +1,8 @@
 {
   "works": 32,
-  "citations": 113,
-  "h_index": 4,
-  "source": "OpenAlex",
+  "citations": 236,
+  "h_index": 6,
+  "i10_index": 5,
+  "source": "Google Scholar",
   "updated": "2026-10-16"
 }
