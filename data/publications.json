@@ -386,18 +386,22 @@
       "added": "2026-10-16"
     },
     {
-      "title": "Integration of Machine Learning Prediction and Water Wave Optimization for Online Customer Service Representatives Scheduling in Bank Contact Centers,融合机器学习预测和水波优化算法求解银行在线客服调度问题",
+      "title": "Integration of Machine Learning Prediction and Water Wave Optimization for Online Customer Service Representatives Scheduling in Bank Contact Centers",
       "authors": [
         "LU Xueqin, XIE Xicheng, TANG Yan, CHEN Shikun, LIU Yangguang"
       ],
-      "venue": "DOAJ (DOAJ: Directory of Open Access Journals)",
+      "venue": "Computer Science (计算机科学)",
       "year": 2025,
       "date": "2025-10-01",
       "type": "journal",
       "doi": "10.11896/jsjkx.250500086",
       "url": "https://doi.org/10.11896/jsjkx.250500086",
       "citations": 0,
-      "added": "2026-10-16"
+      "added": "2026-10-16",
+      "locked": [
+        "title",
+        "venue"
+      ]
     },
     {
       "title": "Chebyshev-Sobolev Physics-Informed Neural Networks for General PDE Solutions",
@@ -549,18 +553,6 @@
       "citations": 1
     },
     {
-      "title": "RRMSE Voting Regressor: A weighting function based improvement to ensemble regression",
-      "authors": [],
-      "venue": "ArXiv",
-      "year": 2022,
-      "date": "2022",
-      "type": "journal",
-      "doi": null,
-      "url": "https://publons.com/wos-op/publon/68056202/",
-      "citations": 0,
-      "added": "2026-10-16"
-    },
-    {
       "title": "Development of Data-Driven Machine Learning Models for the Prediction of Casting Surface Defects",
       "authors": [
         "Shikun Chen",
@@ -577,10 +569,10 @@
     {
       "title": "Interpretation of multi-label classification models using shapley values",
       "authors": [],
-      "venue": "ArXiv",
+      "venue": "arXiv",
       "year": 2021,
       "date": "2021",
-      "type": "journal",
+      "type": "preprint",
       "doi": null,
       "url": "https://publons.com/wos-op/publon/68056201/",
       "citations": 0,

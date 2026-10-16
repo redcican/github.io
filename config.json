@@ -4,7 +4,9 @@
   "author_aliases": {
     "Баочанг Лиу": "Baochang Liu"
   },
-  "hide": [],
+  "hide": [
+    "rrmsevotingregressoraweightingfunctionbasedimprovementtoensembleregression"
+  ],
   "exclude_types": [
     "preprint",
     "data-set",

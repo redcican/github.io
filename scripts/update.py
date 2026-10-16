@@ -171,9 +171,11 @@ def sync_publications():
         rich = openalex_by_doi(p.get("doi"))
         if rich:
             for f in ("venue", "date", "year"):
-                rich[f] = rich[f] or p[f]
+                rich[f] = p[f] or rich[f] if f == "venue" else rich[f] or p[f]
+            if "arxiv" in (rich["venue"] or "").lower():
+                rich["type"] = "preprint"
             rich["title"] = p["title"] or rich["title"]
-            if p["type"] in ("journal", "conference"):
+            if p["type"] in ("journal", "conference") and rich["type"] != "preprint":
                 rich["type"] = p["type"]
             p = rich
         if not p.get("year"):

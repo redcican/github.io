@@ -256,7 +256,7 @@ footer { font: 400 0.75rem/1.6 var(--font-mono); color: var(--muted); border-top
           <p class="pub-title"><a href="${esc(p.url)}" target="_blank" rel="noopener">${esc(p.title)}</a></p>
           <p class="authors">${authorsHtml(p.authors || [])}</p>
           <p class="meta"><span class="venue">${esc(p.venue)}</span>
-            <span class="tag">${p.type === "conference" ? "Conference" : p.type === "journal" ? "Journal" : esc(p.type)}</span>
+            <span class="tag">${p.type === "conference" ? "Conference" : p.type === "journal" ? "Journal" : p.type === "preprint" ? "Preprint" : esc(p.type)}</span>
             ${p.citations ? `<span class="cites">cited ${p.citations}</span>` : ""}
             ${p.code ? `<a class="cites" href="${esc(p.code)}" target="_blank" rel="noopener">code</a>` : ""}
             ${p.date && Date.parse(p.date) > recent ? `<span class="new">NEW</span>` : ""}</p>
