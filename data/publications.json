@@ -126,24 +126,6 @@
       "code": "https://github.com/redcican/CoSAEM"
     },
     {
-      "title": "Cross-modal fusion of cytomorphology and 18F-FDG PET/CT for non-invasive bone marrow immune microenvironment decoding in multiple myeloma",
-      "authors": [
-        "Minjie Gao",
-        "Guifang Ouyang",
-        "Liu Y",
-        "S T Chen",
-        "Kaihong Xu"
-      ],
-      "venue": "Frontiers in Immunology",
-      "year": 2026,
-      "date": "2026-06-24",
-      "type": "journal",
-      "doi": "10.3389/fimmu.2026.1856163",
-      "url": "https://doi.org/10.3389/fimmu.2026.1856163",
-      "citations": 0,
-      "added": "2026-10-16"
-    },
-    {
       "title": "Hierarchical process-level generative reward modeling with adaptive long-horizon reasoning for robust LLM alignment",
       "authors": [
         "S T Chen",
@@ -205,25 +187,6 @@
       "doi": "10.1007/s00170-026-18199-y",
       "url": "https://doi.org/10.1007/s00170-026-18199-y",
       "citations": 0,
-      "added": "2026-10-16"
-    },
-    {
-      "title": "Morphology-based cytogenetic risk prediction in multiple myeloma from bone marrow smears",
-      "authors": [
-        "Minjie Gao",
-        "Xiao Yan",
-        "Ling Chen",
-        "Guifang Ouyang",
-        "Yangguang Liu",
-        "Shikun Chen"
-      ],
-      "venue": "Frontiers in Oncology",
-      "year": 2026,
-      "date": "2026-03-18",
-      "type": "journal",
-      "doi": "10.3389/fonc.2026.1790130",
-      "url": "https://doi.org/10.3389/fonc.2026.1790130",
-      "citations": 1,
       "added": "2026-10-16"
     },
     {
@@ -300,27 +263,6 @@
       "citations": 0
     },
     {
-      "title": "Development of multifunctional nanomaterials for advanced theranostic applications in skin cancer",
-      "authors": [
-        "Yu-Lung HSIEH",
-        "Jun Xie",
-        "Shaohua Jiang",
-        "Junwei Chen",
-        "Hao Peng",
-        "Fang Yang",
-        "Shikun Chen",
-        "Chao Liang"
-      ],
-      "venue": "Journal of Materials Chemistry B",
-      "year": 2026,
-      "date": "2026-01-01",
-      "type": "journal",
-      "doi": "10.1039/d6tb00762g",
-      "url": "https://doi.org/10.1039/d6tb00762g",
-      "citations": 0,
-      "added": "2026-10-16"
-    },
-    {
       "title": "Vision-Language Model-Assisted Active Learning for High-Accuracy Defect Detection in Automotive Bushing Components",
       "authors": [
         "Shikun Chen",
@@ -367,23 +309,6 @@
       "doi": "10.1007/s00158-025-04200-x",
       "url": "https://doi.org/10.1007/s00158-025-04200-x",
       "citations": 1
-    },
-    {
-      "title": "Research on the impact of digital economy on the high-quality development of logistics industry",
-      "authors": [
-        "Wenlong Zheng",
-        "Shikun Chen",
-        "Jiaying Guo",
-        "Chenliang Wo"
-      ],
-      "venue": "Proceedings of the 2025 2nd International Conference on Digital Economy and Computer Science",
-      "year": 2025,
-      "date": "2025-10-17",
-      "type": "conference",
-      "doi": "10.1145/3785706.3785770",
-      "url": "https://doi.org/10.1145/3785706.3785770",
-      "citations": 0,
-      "added": "2026-10-16"
     },
     {
       "title": "Integration of Machine Learning Prediction and Water Wave Optimization for Online Customer Service Representatives Scheduling in Bank Contact Centers",

@@ -5,7 +5,11 @@
     "Баочанг Лиу": "Baochang Liu"
   },
   "hide": [
-    "rrmsevotingregressoraweightingfunctionbasedimprovementtoensembleregression"
+    "rrmsevotingregressoraweightingfunctionbasedimprovementtoensembleregression",
+    "10.3389/fimmu.2026.1856163",
+    "10.3389/fonc.2026.1790130",
+    "10.1039/d6tb00762g",
+    "10.1145/3785706.3785770"
   ],
   "exclude_types": [
     "preprint",
