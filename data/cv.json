@@ -1,0 +1,100 @@
+{
+  "education": [
+    {
+      "start": "2019.10",
+      "end": "2024.04",
+      "title": "Doctoral program in Applied Mathematics",
+      "title_zh": "应用数学 博士研究生",
+      "org": "University of Duisburg-Essen, Germany",
+      "org_zh": "德国杜伊斯堡-埃森大学",
+      "detail": "Research: Surrogate Gradient Methods for Data-Driven Scrap Procurement Optimization",
+      "detail_zh": "研究内容：Surrogate Gradient Methods for Data-Driven Scrap Procurement Optimization"
+    },
+    {
+      "start": "2017.06",
+      "end": "2018.09",
+      "title": "Master's program in Mechanical Engineering",
+      "title_zh": "机械工程 硕士研究生",
+      "org": "University of Duisburg-Essen, Germany",
+      "org_zh": "德国杜伊斯堡-埃森大学",
+      "detail": "Research: Parameter optimization for neural networks and machine-learning-based KPI identification",
+      "detail_zh": "研究内容：神经网络参数优化与基于机器学习的 KPI 识别"
+    },
+    {
+      "start": "2012.10",
+      "end": "2017.05",
+      "title": "Bachelor's program in Mechanical Engineering",
+      "title_zh": "机械工程 本科",
+      "org": "University of Duisburg-Essen, Germany",
+      "org_zh": "德国杜伊斯堡-埃森大学",
+      "detail": "Research: Finite-element analysis of a human femur under a standard load case",
+      "detail_zh": "研究内容：标准载荷工况下人体股骨的有限元分析"
+    }
+  ],
+  "experience": [
+    {
+      "start": "2024.09",
+      "end": "",
+      "title": "School of Finance and Information",
+      "title_zh": "金融与信息学院",
+      "org": "Ningbo University of Finance and Economics, China",
+      "org_zh": "宁波财经学院",
+      "detail": "",
+      "detail_zh": ""
+    },
+    {
+      "start": "2024.05",
+      "end": "2024.09",
+      "title": "Research Assistant",
+      "title_zh": "研究助理",
+      "org": "RWTH Aachen University, Germany",
+      "org_zh": "德国亚琛工业大学",
+      "detail": "",
+      "detail_zh": ""
+    },
+    {
+      "start": "2022.01",
+      "end": "2024.04",
+      "title": "Research Assistant",
+      "title_zh": "研究助理",
+      "org": "University of Duisburg-Essen, Germany",
+      "org_zh": "德国杜伊斯堡-埃森大学",
+      "detail": "BMBF project OptiRodig: optimization software for raw-material productivity in the foundry and steel industries",
+      "detail_zh": "德国联邦教育与研究部项目 OptiRodig：面向铸造和钢铁行业原材料生产率的优化软件研发"
+    },
+    {
+      "start": "2019.03",
+      "end": "2021.12",
+      "title": "Research Assistant",
+      "title_zh": "研究助理",
+      "org": "Kempten University of Applied Sciences, Germany",
+      "org_zh": "德国肯普滕应用技术大学",
+      "detail": "BMBF project EMMAPRO: machine learning software development",
+      "detail_zh": "德国联邦教育与研究部项目 EMMAPRO：机器学习软件研发"
+    }
+  ],
+  "honors": [
+    {
+      "start": "2024.10",
+      "end": "",
+      "title": "Ningbo High-Level Talent",
+      "title_zh": "宁波市高层次人才",
+      "org": "",
+      "org_zh": "",
+      "detail": "",
+      "detail_zh": "",
+      "single": true
+    },
+    {
+      "start": "2019.12",
+      "end": "",
+      "title": "First place, SMS data science competition, Germany",
+      "title_zh": "德国 SMS 数据竞赛 第一名",
+      "org": "",
+      "org_zh": "",
+      "detail": "Data science, machine learning, multi-label classification",
+      "detail_zh": "数据科学、机器学习、多标签分类",
+      "single": true
+    }
+  ]
+}
