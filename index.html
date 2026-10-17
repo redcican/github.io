@@ -162,6 +162,16 @@ h2 .count { color: var(--accent); letter-spacing: 0.04em; }
 .rows .sub { display: block; font: 400 0.85rem var(--font-body); color: var(--muted); }
 .empty { margin: 0; color: var(--muted); font-size: 0.93rem; }
 
+/* Tabs: Home and CV share the header; the hash (#cv) picks the view so the CV has its own link. */
+.tabs { display: flex; gap: 0.25rem; border-bottom: 1px solid var(--rule); margin-top: -2.5rem; }
+.tab {
+  font: 500 0.8rem/1 var(--font-mono); letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted);
+  text-decoration: none; padding: 0.8rem 0.9rem 0.75rem; border-bottom: 2px solid transparent; margin-bottom: -1px;
+}
+.tab:hover { color: var(--ink); }
+.tab[aria-current="page"] { color: var(--accent); border-bottom-color: var(--accent); }
+.view { display: grid; gap: 4rem; }
+
 /* CV timeline: dates in a mono gutter, entries joined by a thin rail */
 .cv-list { list-style: none; margin: 0; padding: 0; display: grid; }
 .cv-item { display: grid; grid-template-columns: 9.5rem minmax(0, 1fr); gap: 0 1.25rem; padding: 0.9rem 0; border-top: 1px solid var(--rule); }
@@ -225,6 +235,8 @@ footer { font: 400 0.75rem/1.6 var(--font-mono); color: var(--muted); border-top
   .year-group { grid-template-columns: minmax(0, 1fr); gap: 0.6rem; }
   .bio { font-size: 1.15rem; }
   .front canvas { height: 110px; }
+  .tabs { margin-top: -1.5rem; }
+  .view { gap: 3rem; }
   .cv-item { grid-template-columns: minmax(0, 1fr); gap: 0.3rem; }
   .cv-body { padding-left: 0.85rem; }
 }
@@ -244,6 +256,12 @@ footer { font: 400 0.75rem/1.6 var(--font-mono); color: var(--muted); border-top
     </figure>
   </header>
 
+  <nav class="tabs" aria-label="Pages">
+    <a class="tab" href="#" id="tab-home" data-i18n="home">Publications</a>
+    <a class="tab" href="#cv" id="tab-cv" data-i18n="cv">CV</a>
+  </nav>
+
+  <div class="view" id="view-home">
   <section id="about" aria-labelledby="about-h">
     <h2 id="about-h" data-i18n="about">About</h2>
     <p class="bio" id="bio"></p>
@@ -252,21 +270,6 @@ footer { font: 400 0.75rem/1.6 var(--font-mono); color: var(--muted); border-top
   <section id="research" aria-labelledby="research-h">
     <h2 id="research-h" data-i18n="research">Research</h2>
     <div class="themes" id="themes"></div>
-  </section>
-
-  <section id="cv" aria-labelledby="edu-h">
-    <h2 id="edu-h" data-i18n="education">Education</h2>
-    <ol class="cv-list" id="cv-education"></ol>
-  </section>
-
-  <section aria-labelledby="exp-h">
-    <h2 id="exp-h" data-i18n="experience">Experience</h2>
-    <ol class="cv-list" id="cv-experience"></ol>
-  </section>
-
-  <section aria-labelledby="hon-h" id="cv-honors-sec" hidden>
-    <h2 id="hon-h" data-i18n="honors">Honors</h2>
-    <ol class="cv-list" id="cv-honors"></ol>
   </section>
 
   <section id="publications" aria-labelledby="pubs-h">
@@ -288,6 +291,22 @@ footer { font: 400 0.75rem/1.6 var(--font-mono); color: var(--muted); border-top
     <h2 id="rev-h"><span data-i18n="review">Peer review</span> <span class="count" id="rev-count"></span></h2>
     <ul class="rows" id="rev-list"></ul>
   </section>
+  </div>
+
+  <div class="view" id="view-cv" hidden>
+    <section aria-labelledby="edu-h">
+      <h2 id="edu-h" data-i18n="education">Education</h2>
+      <ol class="cv-list" id="cv-education"></ol>
+    </section>
+    <section aria-labelledby="exp-h">
+      <h2 id="exp-h" data-i18n="experience">Experience</h2>
+      <ol class="cv-list" id="cv-experience"></ol>
+    </section>
+    <section aria-labelledby="hon-h" id="cv-honors-sec" hidden>
+      <h2 id="hon-h" data-i18n="honors">Honors</h2>
+      <ol class="cv-list" id="cv-honors"></ol>
+    </section>
+  </div>
 
   <footer id="footer"></footer>
   <div class="toast" id="toast" role="status" hidden></div>
@@ -306,7 +325,7 @@ footer { font: 400 0.75rem/1.6 var(--font-mono); color: var(--muted); border-top
   /* Language: English or Chinese. Paper titles, authors and venues stay in English. */
   const I18N = {
     en: {
-      education: "Education", experience: "Experience", honors: "Honors",
+      home: "Publications", cv: "CV", education: "Education", experience: "Experience", honors: "Honors",
       about: "About", research: "Research", publications: "Publications", projects: "Projects", review: "Peer review",
       pubsN: "publications", cites: "citations", via: "via", h: "h-index", papers: n => `${n} paper${n > 1 ? "s" : ""}`,
       all: "All", journal: "Journal", conference: "Conference", preprint: "Preprint",
@@ -319,7 +338,7 @@ footer { font: 400 0.75rem/1.6 var(--font-mono); color: var(--muted); border-top
       minimize: "f₁ → minimize", front: "non-dominated set", toggle: "中文", toggleLabel: "切换到中文"
     },
     zh: {
-      education: "教育经历", experience: "工作经历", honors: "荣誉",
+      home: "学术论文", cv: "简历", education: "教育经历", experience: "工作经历", honors: "荣誉",
       about: "简介", research: "研究方向", publications: "学术论文", projects: "科研项目", review: "审稿经历",
       pubsN: "篇论文", cites: "次引用", via: "来源", h: "h 指数", papers: n => `${n} 篇`,
       all: "全部", journal: "期刊", conference: "会议", preprint: "预印本",
@@ -630,8 +649,16 @@ footer { font: 400 0.75rem/1.6 var(--font-mono); color: var(--muted); border-top
     $("cv-honors-sec").hidden = !hon.length;
     $("cv-honors").innerHTML = hon.map(row).join("");
   }
+  function route() {
+    const onCV = location.hash === "#cv";
+    $("view-home").hidden = onCV; $("view-cv").hidden = !onCV;
+    $(onCV ? "tab-cv" : "tab-home").setAttribute("aria-current", "page");
+    $(onCV ? "tab-home" : "tab-cv").removeAttribute("aria-current");
+    if (!onCV) redrawThumbs();
+  }
+  window.addEventListener("hashchange", route);
 
-  function renderAll() { applyStatic(); renderProfile(); renderTop(); renderPubs(); renderRest(); renderCV(); }
+  function renderAll() { applyStatic(); renderProfile(); renderTop(); renderPubs(); renderRest(); renderCV(); route(); }
   $("lang-toggle").addEventListener("click", () => {
     lang = lang === "zh" ? "en" : "zh";
     try { localStorage.setItem("lang", lang); } catch (e) {}
