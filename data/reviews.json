@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-16",
+  "updated": "2026-10-17",
   "items": [
     {
       "group": "issn:0956-5515",
@@ -58,6 +58,13 @@
       "years": "2026"
     },
     {
+      "group": "issn:0925-2312",
+      "journal": "Neurocomputing",
+      "publisher": "Elsevier, Inc.",
+      "count": 3,
+      "years": "2026"
+    },
+    {
       "group": "issn:0168-1699",
       "journal": "Computers and Electronics in Agriculture",
       "publisher": "Elsevier, Inc.",
@@ -102,13 +109,6 @@
     {
       "group": "issn:0888-3270",
       "journal": "Mechanical Systems and Signal Processing",
-      "publisher": "Elsevier, Inc.",
-      "count": 1,
-      "years": "2026"
-    },
-    {
-      "group": "issn:0925-2312",
-      "journal": "Neurocomputing",
       "publisher": "Elsevier, Inc.",
       "count": 1,
       "years": "2026"

@@ -1,11 +1,17 @@
 {
-  "count": 35,
+  "count": 36,
   "items": [
     {
       "title": "Hierarchical process-level generative reward modeling with adaptive long-horizon reasoning for robust LLM alignment",
       "year": "2026",
       "publication": "Information Processing & Management 63 (8), 104957, 2026",
       "status": "listed"
+    },
+    {
+      "title": "Product Manifold Flow Matching for Mixed-Type Tabular Data Generation",
+      "year": "2026",
+      "publication": "Machine Learning 115 (10), 248, 2026",
+      "status": "added"
     },
     {
       "title": "Causal Bayesian optimization for sensor placement and deconfounding in structural health monitoring",
@@ -212,5 +218,5 @@
       "status": "listed"
     }
   ],
-  "updated": "2026-10-16"
+  "updated": "2026-10-17"
 }

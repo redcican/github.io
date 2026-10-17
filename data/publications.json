@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-16",
+  "updated": "2026-10-17",
   "items": [
     {
       "title": "A self-consistent physics-informed neural network paradigm for sloshing analysis",
@@ -20,6 +20,23 @@
       "url": "https://doi.org/10.1063/5.0353139",
       "citations": 0,
       "thumb": "images/thumbs/10-1063-5-0353139.svg"
+    },
+    {
+      "title": "Product Manifold Flow Matching for Mixed-Type Tabular Data Generation",
+      "authors": [
+        "Shikun Chen",
+        "Yangguang Liu"
+      ],
+      "venue": "Machine Learning",
+      "year": 2026,
+      "date": "2026-10-01",
+      "type": "journal",
+      "doi": "10.1007/s10994-026-07178-9",
+      "url": "https://doi.org/10.1007/s10994-026-07178-9",
+      "citations": 0,
+      "abstract": "",
+      "added": "2026-10-17",
+      "source": "scholar"
     },
     {
       "title": "Calibrated inverse identification for nonlinear and fractional-order dynamical systems",
