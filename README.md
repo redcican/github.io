@@ -16,7 +16,7 @@ Nothing is ever deleted automatically.
 
 ## What you edit by hand
 - `data/profile.json`: name, position, bio, links, research themes (each theme's `keywords` decide which papers it counts and filters).
-- `data/cv.json`: the CV tab (education, experience, honors). Each entry has `start`, `end` (empty means now), `title`, `org`, `detail`, plus `_zh` versions. The sync never touches it.
+- `data/cv.json`: the Education, Experience and Honors sections. Each entry has `start`, `end` (empty means now), `title`, `org`, `detail`, plus `_zh` versions. The sync never touches it.
 - `data/projects.json`: add projects that are not in ORCID (`title`, `funder`, `grant`, `role`, `start`, `end`, `url`).
 - Thumbnails: each paper gets a small figure drawn from its topic. To use a real figure, put an image in `images/` and set the paper's `"thumb": "images/name.png"` (syncs never touch it).
 - `data/publications.json`: fix any field, then add its name to that entry's `"locked": [...]` so syncs never overwrite it.
