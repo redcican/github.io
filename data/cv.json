@@ -3,8 +3,8 @@
     {
       "start": "2019.10",
       "end": "2024.04",
-      "title": "Doctoral program in Applied Mathematics",
-      "title_zh": "应用数学 博士研究生",
+      "title": "Ph.D. in Applied Mathematics",
+      "title_zh": "应用数学 博士",
       "org": "University of Duisburg-Essen, Germany",
       "org_zh": "德国杜伊斯堡-埃森大学",
       "detail": "Research: Surrogate Gradient Methods for Data-Driven Scrap Procurement Optimization",
@@ -74,17 +74,6 @@
     }
   ],
   "honors": [
-    {
-      "start": "2024.10",
-      "end": "",
-      "title": "Ningbo High-Level Talent",
-      "title_zh": "宁波市高层次人才",
-      "org": "",
-      "org_zh": "",
-      "detail": "",
-      "detail_zh": "",
-      "single": true
-    },
     {
       "start": "2019.12",
       "end": "",
