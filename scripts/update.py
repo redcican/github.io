@@ -307,6 +307,8 @@ def sync_reviews():
         y = val(s, "completion-date", "year", "value")
         if y:
             g["years"].add(int(y))
+            g.setdefault("by_year", {})
+            g["by_year"][y] = g["by_year"].get(y, 0) + 1
     items = []
     for gid, g in groups.items():
         prev = known.get(gid, {})
@@ -321,6 +323,7 @@ def sync_reviews():
             "publisher": prev.get("publisher") or (g["publisher"] if journal else ""),
             "count": g["count"],
             "years": (f"{ys[0]}–{ys[-1]}" if len(ys) > 1 and ys[0] != ys[-1] else str(ys[0])) if ys else "",
+            "by_year": dict(sorted(g.get("by_year", {}).items())),
         })
     items.sort(key=lambda x: (-x["count"], x["journal"]))
     before = sum(x.get("count", 0) for x in store["items"])
