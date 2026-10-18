@@ -11,7 +11,7 @@
       "title": "Product Manifold Flow Matching for Mixed-Type Tabular Data Generation",
       "year": "2026",
       "publication": "Machine Learning 115 (10), 248, 2026",
-      "status": "added"
+      "status": "listed"
     },
     {
       "title": "Causal Bayesian optimization for sensor placement and deconfounding in structural health monitoring",
@@ -218,5 +218,5 @@
       "status": "listed"
     }
   ],
-  "updated": "2026-10-17"
+  "updated": "2026-10-18"
 }

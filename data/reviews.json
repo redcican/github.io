@@ -1,138 +1,198 @@
 {
-  "updated": "2026-10-17",
+  "updated": "2026-10-18",
   "items": [
     {
       "group": "issn:0956-5515",
       "journal": "Journal of Intelligent Manufacturing",
       "publisher": "Springer Nature",
       "count": 35,
-      "years": "2025–2026"
+      "years": "2025–2026",
+      "by_year": {
+        "2025": 24,
+        "2026": 11
+      }
     },
     {
       "group": "issn:1568-4946",
       "journal": "Applied Soft Computing",
       "publisher": "Elsevier, Inc.",
       "count": 7,
-      "years": "2026"
+      "years": "2026",
+      "by_year": {
+        "2026": 7
+      }
     },
     {
       "group": "issn:0950-7051",
       "journal": "Knowledge-Based Systems",
       "publisher": "Elsevier, Inc.",
       "count": 6,
-      "years": "2026"
+      "years": "2026",
+      "by_year": {
+        "2026": 6
+      }
     },
     {
       "group": "issn:0278-6125",
       "journal": "Journal of Manufacturing Systems",
       "publisher": "Elsevier, Inc.",
       "count": 4,
-      "years": "2025–2026"
+      "years": "2025–2026",
+      "by_year": {
+        "2025": 1,
+        "2026": 3
+      }
     },
     {
       "group": "issn:0952-1976",
       "journal": "Engineering Applications of Artificial Intelligence",
       "publisher": "Elsevier, Inc.",
       "count": 3,
-      "years": "2026"
+      "years": "2026",
+      "by_year": {
+        "2026": 3
+      }
     },
     {
       "group": "issn:0957-4174",
       "journal": "Expert Systems with Applications",
       "publisher": "Elsevier, Inc.",
       "count": 3,
-      "years": "2026"
+      "years": "2026",
+      "by_year": {
+        "2026": 3
+      }
     },
     {
       "group": "issn:0306-4573",
       "journal": "Information Processing & Management",
       "publisher": "Elsevier, Inc.",
       "count": 3,
-      "years": "2025–2026"
+      "years": "2025–2026",
+      "by_year": {
+        "2025": 2,
+        "2026": 1
+      }
     },
     {
       "group": "issn:2666-8270",
       "journal": "Machine Learning with Applications",
       "publisher": "Elsevier, Inc.",
       "count": 3,
-      "years": "2026"
+      "years": "2026",
+      "by_year": {
+        "2026": 3
+      }
     },
     {
       "group": "issn:0925-2312",
       "journal": "Neurocomputing",
       "publisher": "Elsevier, Inc.",
       "count": 3,
-      "years": "2026"
+      "years": "2026",
+      "by_year": {
+        "2026": 3
+      }
     },
     {
       "group": "issn:0168-1699",
       "journal": "Computers and Electronics in Agriculture",
       "publisher": "Elsevier, Inc.",
       "count": 2,
-      "years": "2026"
+      "years": "2026",
+      "by_year": {
+        "2026": 2
+      }
     },
     {
       "group": "issn:1615-147X",
       "journal": "Structural and Multidisciplinary Optimization",
       "publisher": "Springer Nature",
       "count": 2,
-      "years": "2026"
+      "years": "2026",
+      "by_year": {
+        "2026": 2
+      }
     },
     {
       "group": "issn:2522-0136",
       "journal": "Advanced Composites and Hybrid Materials",
       "publisher": "Springer Nature",
       "count": 1,
-      "years": "2026"
+      "years": "2026",
+      "by_year": {
+        "2026": 1
+      }
     },
     {
       "group": "issn:0166-3615",
       "journal": "Computers in Industry",
       "publisher": "Elsevier, Inc.",
       "count": 1,
-      "years": "2026"
+      "years": "2026",
+      "by_year": {
+        "2026": 1
+      }
     },
     {
       "group": "issn:1941-0026",
       "journal": "IEEE Transactions on Evolutionary Computation",
       "publisher": "Clarivate PLC",
       "count": 1,
-      "years": "2026"
+      "years": "2026",
+      "by_year": {
+        "2026": 1
+      }
     },
     {
       "group": "issn:1806-3691",
       "journal": "Journal of the Brazilian Society of Mechanical Sciences and Engineering",
       "publisher": "Springer Nature",
       "count": 1,
-      "years": "2026"
+      "years": "2026",
+      "by_year": {
+        "2026": 1
+      }
     },
     {
       "group": "issn:0888-3270",
       "journal": "Mechanical Systems and Signal Processing",
       "publisher": "Elsevier, Inc.",
       "count": 1,
-      "years": "2026"
+      "years": "2026",
+      "by_year": {
+        "2026": 1
+      }
     },
     {
       "group": "issn:0031-3203",
       "journal": "Pattern Recognition",
       "publisher": "Elsevier, Inc.",
       "count": 1,
-      "years": "2026"
+      "years": "2026",
+      "by_year": {
+        "2026": 1
+      }
     },
     {
       "group": "issn:2590-1230",
       "journal": "Results in Engineering",
       "publisher": "Elsevier, Inc.",
       "count": 1,
-      "years": "2026"
+      "years": "2026",
+      "by_year": {
+        "2026": 1
+      }
     },
     {
       "group": "issn:2589-0042",
       "journal": "iScience",
       "publisher": "Elsevier, Inc.",
       "count": 1,
-      "years": "2026"
+      "years": "2026",
+      "by_year": {
+        "2026": 1
+      }
     }
   ]
 }

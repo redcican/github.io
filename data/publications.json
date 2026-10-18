@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-17",
+  "updated": "2026-10-18",
   "items": [
     {
       "title": "A self-consistent physics-informed neural network paradigm for sloshing analysis",
@@ -204,7 +204,7 @@
       "type": "journal",
       "doi": "10.3389/fimmu.2026.1856163",
       "url": "https://doi.org/10.3389/fimmu.2026.1856163",
-      "citations": 0,
+      "citations": 1,
       "abstract": "Introduction The bone marrow immune microenvironment (BMME) shapes treatment response in multiple myeloma (MM), yet routine diagnostic workup primarily assesses tumor burden rather than immune competence. We developed ImmunoCast-MM, a cross-modal deep learning framework that extracts immunologically relevant signals from two examinations routinely performed at diagnosis: Wright–Giemsa-stained bone marrow aspirate smears and whole-body 18 F-FDG PET/CT. Methods The cytomorphology branch used DinoBloom embeddings to classify individual cells across five hierarchical levels. The PET/CT branch generated a multi-organ inflammation fingerprint from tumor, spleen, lymph node, and diffuse bone marrow compartments. A contrastive fusion module aligned the two imaging modalities with a flow cytometry reference panel and generated an Immune Dysfunction Index (IDI) along a learned effector–suppressor axis. ImmunoCast-MM was evaluated retrospectively in 243 patients with newly diagnosed MM. Associations with flow cytometric measurements, progression-free survival, and daratumumab response were assessed, with adjustment for International Staging System stage, cytogenetic risk, and age. Results On a held-out validation subset, decoded cytomorphologic indices correlated with matched flow cytometric fractions, with Spearman ρ values of 0.68–0.81 across three decoded index–panel pairs; all Benjamini–Hochberg-adjusted (p) values were (<0.001). Unsupervised clustering of the fused embeddings identified immune-competent and immune-exhausted archetypes that differed in progression-free survival and response to daratumumab. Separately, adding the IDI to conventional risk markers increased the concordance index from 0.58 to 0.75 ((p<0.001)) and improved the area under the receiver operating characteristic curve for daratumumab response from 0.55 to 0.81 ((p<0.001)). Discussion ImmunoCast-MM reframes two standard diagnostic examinations as non-invasive profilers of the BMME. The framework may support risk assessment and immunotherapy stratification, particularly in centers without access to high-dimensional flow cytometry.",
       "added": "2026-10-16",
       "locked": [
@@ -260,7 +260,7 @@
       "type": "journal",
       "doi": "10.1016/j.patcog.2026.113913",
       "url": "https://doi.org/10.1016/j.patcog.2026.113913",
-      "citations": 0,
+      "citations": 1,
       "added": "2026-10-16",
       "thumb": "images/thumbs/10-1016-j-patcog-2026-113913.svg"
     },
@@ -656,7 +656,7 @@
       "type": "preprint",
       "doi": null,
       "url": "https://publons.com/wos-op/publon/68056201/",
-      "citations": 32,
+      "citations": 33,
       "added": "2026-10-16",
       "thumb": "images/thumbs/interpretation-of-multi-label-classification-models-using-sh.svg"
     }
