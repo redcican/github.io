@@ -226,7 +226,46 @@ footer { font: 400 0.75rem/1.6 var(--font-mono); color: var(--muted); border-top
 }
 @media (prefers-reduced-motion: reduce) { .thumb, .ybar-fill { transition: none; } }
 
+/* Peer review visual */
+.rv { display: grid; gap: 1rem; }
+.rv-stats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0.75rem; }
+.rv-stats div { display: grid; gap: 0.15rem; padding: 0.9rem 1rem; border-radius: 10px; background: color-mix(in srgb, var(--accent) 6%, var(--surface)); border: 1px solid var(--rule); }
+.rv-stats b { font: 500 clamp(1.5rem, 4vw, 2.1rem)/1 var(--font-display); color: var(--accent); font-variant-numeric: tabular-nums; }
+.rv-stats span { font: 400 0.75rem var(--font-mono); color: var(--muted); letter-spacing: 0.04em; }
+.rv-controls { display: flex; flex-wrap: wrap; gap: 0.6rem 1rem; justify-content: space-between; align-items: center; }
+.seg { display: inline-flex; border: 1px solid var(--rule); border-radius: 999px; padding: 2px; background: var(--surface); }
+.seg button { font: 500 0.78rem/1 var(--font-body); color: var(--muted); background: transparent; border: 0; border-radius: 999px; padding: 0.45rem 0.8rem; cursor: pointer; }
+.seg button[aria-pressed="true"] { background: var(--accent); color: #fff; }
+.rv-legend { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+.rv-key { display: inline-flex; align-items: center; gap: 0.4rem; font: 400 0.78rem/1 var(--font-body); color: var(--muted); background: transparent; border: 1px solid var(--rule); border-radius: 999px; padding: 0.4rem 0.7rem; cursor: pointer; }
+.rv-key i { width: 0.6rem; height: 0.6rem; border-radius: 50%; background: var(--fc); }
+.rv-key span { font-family: var(--font-mono); color: var(--fc); }
+.rv-key[aria-pressed="true"] { border-color: var(--fc); color: var(--ink); background: color-mix(in srgb, var(--fc) 12%, var(--surface)); }
+.rv-stage { position: relative; }
+#rv-svg { display: block; width: 100%; height: auto; max-width: 100%; overflow: visible; }
+#rv-svg g.b { cursor: pointer; outline: none; }
+#rv-svg circle { stroke-width: 1.5; transition: stroke-width .15s; }
+#rv-svg g.b.on circle, #rv-svg g.b:focus-visible circle { stroke-width: 3.5; }
+#rv-svg text { text-anchor: middle; pointer-events: none; }
+.b-ab { font-family: var(--font-body); font-weight: 600; }
+.b-n { font-family: var(--font-mono); fill: var(--muted); }
+.rv-tip {
+  position: absolute; z-index: 5; width: 15rem; max-width: calc(100% - 16px); display: grid; gap: 0.3rem;
+  background: var(--surface); border: 1px solid var(--rule); border-radius: 10px; padding: 0.75rem 0.9rem;
+  box-shadow: 0 12px 30px -12px color-mix(in srgb, var(--ink) 35%, transparent); font-size: 0.85rem; pointer-events: none;
+}
+.rv-tip b { font-family: var(--font-display); font-size: 1.05rem; font-weight: 500; line-height: 1.25; }
+.rv-pub { color: var(--muted); font-size: 0.78rem; }
+.rv-big { font: 500 0.9rem var(--font-mono); }
+.rv-row { display: grid; grid-template-columns: 2.6rem 1fr 1.5rem; gap: 0.4rem; align-items: center; font: 400 0.75rem var(--font-mono); color: var(--muted); }
+.rv-row em { font-style: normal; }
+.rv-row i { display: block; height: 0.5rem; border-radius: 3px; }
+.rv-all summary { cursor: pointer; font: 400 0.8rem var(--font-mono); color: var(--muted); padding: 0.4rem 0; }
+.rv-all summary:hover { color: var(--accent); }
+
 @media (max-width: 560px) {
+  .rv-stats { gap: 0.5rem; }
+  .rv-stats div { padding: 0.7rem; }
   .pub { grid-template-columns: 4.75rem minmax(0, 1fr); gap: 0.75rem; }
   .years { width: 100%; }
   .ybar { flex: 1; width: auto; }
@@ -289,7 +328,21 @@ footer { font: 400 0.75rem/1.6 var(--font-mono); color: var(--muted); border-top
 
   <section id="service" aria-labelledby="rev-h">
     <h2 id="rev-h"><span data-i18n="review">Peer review</span> <span class="count" id="rev-count"></span></h2>
-    <ul class="rows" id="rev-list"></ul>
+    <div class="rv" id="rv">
+      <div class="rv-stats" id="rv-stats"></div>
+      <div class="rv-controls">
+        <div class="seg" id="rv-years" role="group" aria-label="Year"></div>
+        <div class="rv-legend" id="rv-legend" role="group" aria-label="Field"></div>
+      </div>
+      <div class="rv-stage">
+        <svg id="rv-svg" viewBox="0 0 640 420" role="img" aria-label="Peer reviews by journal"></svg>
+        <div class="rv-tip" id="rv-tip" hidden></div>
+      </div>
+      <details class="rv-all">
+        <summary id="rv-all-sum"></summary>
+        <ul class="rows" id="rev-list"></ul>
+      </details>
+    </div>
   </section>
   </div>
 
@@ -312,6 +365,7 @@ footer { font: 400 0.75rem/1.6 var(--font-mono); color: var(--muted); border-top
   <div class="toast" id="toast" role="status" hidden></div>
 </main>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.9.0/d3.min.js"></script>
 <script>
 (async function () {
   const get = (p) => fetch(p, { cache: "no-cache" }).then(r => r.ok ? r.json() : null).catch(() => null);
@@ -334,6 +388,9 @@ footer { font: 400 0.75rem/1.6 var(--font-mono); color: var(--muted); border-top
       copied: "BibTeX copied", selected: "BibTeX selected, copy it from the box",
       reviews: (n, j) => `${n} reviews · ${j} journals`, now: "now",
       noReviews: "Verified reviewing activity appears here once it syncs from ORCID.",
+      rvReviews: "reviews", rvJournals: "journals", rvYears: "years active", rvAllYears: "All years",
+      rvAI: "AI & computing", rvEng: "Engineering & manufacturing", rvX: "Interdisciplinary",
+      rvTimes: n => `${n} review${n > 1 ? "s" : ""}`, rvList: n => `All ${n} journals`, rvHint: "Hover or tap a bubble for details. Bubble size is the number of reviews.",
       footer: d => `Publications and peer review sync weekly from ORCID and OpenAlex${d ? ` · last update ${d}` : ""}`,
       minimize: "f₁ → minimize", front: "non-dominated set", toggle: "中文", toggleLabel: "切换到中文"
     },
@@ -347,6 +404,9 @@ footer { font: 400 0.75rem/1.6 var(--font-mono); color: var(--muted); border-top
       copied: "已复制 BibTeX", selected: "已选中 BibTeX，请手动复制",
       reviews: (n, j) => `${n} 次审稿 · ${j} 种期刊`, now: "至今",
       noReviews: "审稿记录将在与 ORCID 同步后显示。",
+      rvReviews: "次审稿", rvJournals: "种期刊", rvYears: "活跃年份", rvAllYears: "全部年份",
+      rvAI: "人工智能与计算", rvEng: "工程与制造", rvX: "交叉学科",
+      rvTimes: n => `${n} 次审稿`, rvList: n => `全部 ${n} 种期刊`, rvHint: "将鼠标悬停或点击气泡查看详情，气泡大小代表审稿次数。",
       footer: d => `论文与审稿记录每周自动从 ORCID 和 OpenAlex 同步${d ? ` · 最近更新 ${d}` : ""}`,
       minimize: "f₁ → 最小化", front: "非支配解集", toggle: "EN", toggleLabel: "Switch to English"
     }
@@ -623,17 +683,128 @@ footer { font: 400 0.75rem/1.6 var(--font-mono); color: var(--muted); border-top
   }
 
   /* Peer review */
-  const revItems = (reviews && reviews.items) || [];
-  const totalReviews = revItems.reduce((s, r) => s + (r.count || 0), 0);
-  $("rev-count").textContent = totalReviews ? t("reviews", totalReviews, revItems.length) : "";
-  $("rev-list").outerHTML = revItems.length
-    ? `<ul class="rows" id="rev-list">${revItems.map(r => `<li><span class="j">${esc(r.journal)}${r.publisher ? `<span class="sub">${esc(r.publisher)}</span>` : ""}</span>
-        <span class="y">${r.count} × · ${esc(r.years)}</span></li>`).join("")}</ul>`
-    : `<p class="empty" id="rev-list">${t("noReviews")}</p>`;
+  renderReviews();
 
   const stamp = (pubs && pubs.updated) || "";
   $("footer").textContent = t("footer", stamp);
   }
+
+  /* Peer review: journals packed as bubbles sized by review count, coloured by field, filterable by year */
+  const revItems = (reviews && reviews.items) || [];
+  let rvYear = "all", rvField = null;
+  const FIELDS = [
+    { key: "ai", label: "rvAI", color: "--c0" },
+    { key: "eng", label: "rvEng", color: "--c3" },
+    { key: "x", label: "rvX", color: "--c2" }
+  ];
+  const fieldOf = (j) => {
+    const s = j.toLowerCase();
+    if (/manufactur|industry|mechanical|structural|composite|brazilian society/.test(s)) return "eng";
+    if (/artificial|learning|knowledge|expert|neuro|pattern|evolutionary|soft computing|information processing/.test(s)) return "ai";
+    return "x";
+  };
+  const ABBR = { "IEEE Transactions on Evolutionary Computation": "IEEE TEVC", "iScience": "iScience" };
+  const abbr = (j) => ABBR[j] || j.split(/[\s-]+/).filter(w => !/^(of|and|the|with|on|for|in|&)$/i.test(w)).map(w => w[0].toUpperCase()).join("");
+  const countFor = (r) => rvYear === "all" ? r.count : ((r.by_year || {})[rvYear] || 0);
+  function renderReviews() {
+    const total = revItems.reduce((n, r) => n + (r.count || 0), 0);
+    $("rev-count").textContent = total ? t("reviews", total, revItems.length) : "";
+    if (!revItems.length) {
+      $("rv").innerHTML = `<p class="empty">${t("noReviews")}</p>`;
+      return;
+    }
+    const years = [...new Set(revItems.flatMap(r => Object.keys(r.by_year || {})))].sort();
+    const shown = revItems.filter(countFor);
+    const n = shown.reduce((s, r) => s + countFor(r), 0);
+    $("rv-stats").innerHTML =
+      `<div><b data-to="${n}">${n}</b><span>${t("rvReviews")}</span></div>` +
+      `<div><b data-to="${shown.length}">${shown.length}</b><span>${t("rvJournals")}</span></div>` +
+      `<div><b>${years.length ? (years.length > 1 ? years[0] + "–" + years[years.length - 1] : years[0]) : "–"}</b><span>${t("rvYears")}</span></div>`;
+    $("rv-years").innerHTML = ["all", ...years].map(y =>
+      `<button type="button" id="rvy-${y}" data-y="${y}" aria-pressed="${rvYear === y}">${y === "all" ? t("rvAllYears") : y}</button>`).join("");
+    $("rv-legend").innerHTML = FIELDS.map(f => {
+      const c = revItems.filter(r => fieldOf(r.journal) === f.key).reduce((s, r) => s + countFor(r), 0);
+      return `<button type="button" class="rv-key" id="rvf-${f.key}" data-f="${f.key}" style="--fc: var(${f.color})" aria-pressed="${rvField === f.key}"><i></i>${t(f.label)} <span>${c}</span></button>`;
+    }).join("");
+    $("rv-all-sum").textContent = t("rvList", revItems.length);
+    $("rev-list").innerHTML = revItems.map(r => `<li><span class="j">${esc(r.journal)}${r.publisher ? `<span class="sub">${esc(r.publisher)}</span>` : ""}</span>
+        <span class="y">${r.count} × · ${esc(r.years)}</span></li>`).join("");
+    drawBubbles();
+  }
+  function drawBubbles() {
+    if (!window.d3) return;
+    const svg = d3.select("#rv-svg");
+    const narrow = $("rv-svg").getBoundingClientRect().width < 480;
+    const W = narrow ? 400 : 640, H = narrow ? 440 : 420;
+    svg.attr("viewBox", `0 0 ${W} ${H}`);
+    const css = getComputedStyle(document.documentElement);
+    const col = (f) => css.getPropertyValue(FIELDS.find(x => x.key === f).color).trim();
+    const data = revItems.map(r => ({ ...r, v: countFor(r), f: fieldOf(r.journal) })).filter(d => d.v > 0);
+    const root = d3.pack().size([W, H]).padding(5)(d3.hierarchy({ children: data }).sum(d => d.v));
+    const leaves = root.leaves();
+    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const dur = reduce ? 0 : 650;
+    const g = svg.selectAll("g.b").data(leaves, d => d.data.group);
+    g.exit().transition().duration(dur / 2).attr("opacity", 0).remove();
+    const enter = g.enter().append("g").attr("class", "b").attr("tabindex", 0)
+      .attr("transform", d => `translate(${d.x},${d.y}) scale(0.01)`);
+    enter.append("circle");
+    enter.append("text").attr("class", "b-ab");
+    enter.append("text").attr("class", "b-n");
+    const all = enter.merge(g);
+    all.attr("role", "img").attr("aria-label", d => `${d.data.journal}: ${t("rvTimes", d.data.v)}`);
+    all.transition().duration(dur).ease(d3.easeCubicOut)
+      .attr("transform", d => `translate(${d.x},${d.y}) scale(1)`)
+      .attr("opacity", d => !rvField || d.data.f === rvField ? 1 : 0.18);
+    all.select("circle")
+      .style("fill", d => `color-mix(in srgb, ${col(d.data.f)} 22%, var(--surface))`)
+      .style("stroke", d => col(d.data.f))
+      .transition().duration(dur).attr("r", d => d.r);
+    all.select(".b-ab").text(d => d.r > 24 ? abbr(d.data.journal) : "")
+      .attr("y", d => d.r > 40 ? -4 : 3).style("fill", d => col(d.data.f))
+      .style("font-size", d => `${Math.max(10, Math.min(26, d.r / 2.6))}px`);
+    all.select(".b-n").text(d => d.r > 40 ? d.data.v : "")
+      .attr("y", d => Math.min(26, d.r / 2.6) + 6).style("font-size", d => `${Math.max(10, Math.min(16, d.r / 4))}px`);
+    const tip = $("rv-tip");
+    const show = (ev, d) => {
+      const by = d.data.by_year || {};
+      const max = Math.max(...Object.values(by), 1);
+      tip.innerHTML = `<b>${esc(d.data.journal)}</b><span class="rv-pub">${esc(d.data.publisher || "")}</span>
+        <span class="rv-big" style="color:${col(d.data.f)}">${t("rvTimes", d.data.v)}</span>
+        ${Object.entries(by).map(([y, c]) => `<span class="rv-row"><em>${y}</em><i style="width:${c / max * 100}%;background:${col(d.data.f)}"></i><span>${c}</span></span>`).join("")}`;
+      tip.hidden = false;
+      const box = $("rv-svg").getBoundingClientRect(), k = box.width / W;
+      const x = d.x * k, y = d.y * k;
+      tip.style.left = Math.min(Math.max(8, x - tip.offsetWidth / 2), box.width - tip.offsetWidth - 8) + "px";
+      tip.style.top = (y - d.r * k - tip.offsetHeight - 8 < 0 ? y + d.r * k + 8 : y - d.r * k - tip.offsetHeight - 8) + "px";
+      all.classed("on", e => e === d);
+    };
+    const hide = () => { tip.hidden = true; all.classed("on", false); };
+    all.on("mouseenter focus click", (ev, d) => { ev.stopPropagation(); show(ev, d); }).on("mouseleave blur", hide);
+    svg.on("click", hide);
+    if (!reduce) {
+      document.querySelectorAll("#rv-stats b[data-to]").forEach(el => {
+        const to = Number(el.dataset.to), t0 = performance.now();
+        const step = (now) => { const p = Math.min(1, (now - t0) / 700); el.textContent = Math.round(to * (1 - Math.pow(1 - p, 3))); if (p < 1) requestAnimationFrame(step); };
+        requestAnimationFrame(step);
+      });
+    }
+  }
+  $("rv-years").addEventListener("click", (e) => {
+    const b = e.target.closest("button[data-y]"); if (!b) return;
+    rvYear = b.dataset.y; renderReviews();
+  });
+  $("rv-legend").addEventListener("click", (e) => {
+    const b = e.target.closest("button[data-f]"); if (!b) return;
+    rvField = rvField === b.dataset.f ? null : b.dataset.f; renderReviews();
+  });
+  window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", () => revItems.length && drawBubbles());
+  let rvW = 0;
+  window.addEventListener("resize", () => {
+    const w = $("rv-svg").getBoundingClientRect().width;
+    if (revItems.length && (w < 480) !== (rvW < 480)) drawBubbles();
+    rvW = w;
+  });
 
   /* CV: education, experience and honors from data/cv.json (edited by hand, never touched by the sync) */
   function renderCV() {
