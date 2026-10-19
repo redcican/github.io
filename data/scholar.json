@@ -1,10 +1,16 @@
 {
-  "count": 36,
+  "count": 37,
   "items": [
     {
       "title": "Hierarchical process-level generative reward modeling with adaptive long-horizon reasoning for robust LLM alignment",
       "year": "2026",
       "publication": "Information Processing & Management 63 (8), 104957, 2026",
+      "status": "listed"
+    },
+    {
+      "title": "A self-consistent physics-informed neural network paradigm for sloshing analysis",
+      "year": "2026",
+      "publication": "Physics of Fluids 38 (10), 2026",
       "status": "listed"
     },
     {
@@ -218,5 +224,5 @@
       "status": "listed"
     }
   ],
-  "updated": "2026-10-18"
+  "updated": "2026-10-19"
 }
