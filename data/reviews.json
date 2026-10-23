@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-18",
+  "updated": "2026-10-23",
   "items": [
     {
       "group": "issn:0956-5515",
@@ -16,10 +16,10 @@
       "group": "issn:1568-4946",
       "journal": "Applied Soft Computing",
       "publisher": "Elsevier, Inc.",
-      "count": 7,
+      "count": 8,
       "years": "2026",
       "by_year": {
-        "2026": 7
+        "2026": 8
       }
     },
     {
@@ -30,6 +30,27 @@
       "years": "2026",
       "by_year": {
         "2026": 6
+      }
+    },
+    {
+      "group": "issn:0952-1976",
+      "journal": "Engineering Applications of Artificial Intelligence",
+      "publisher": "Elsevier, Inc.",
+      "count": 4,
+      "years": "2026",
+      "by_year": {
+        "2026": 4
+      }
+    },
+    {
+      "group": "issn:0306-4573",
+      "journal": "Information Processing & Management",
+      "publisher": "Elsevier, Inc.",
+      "count": 4,
+      "years": "2025–2026",
+      "by_year": {
+        "2025": 2,
+        "2026": 2
       }
     },
     {
@@ -44,16 +65,6 @@
       }
     },
     {
-      "group": "issn:0952-1976",
-      "journal": "Engineering Applications of Artificial Intelligence",
-      "publisher": "Elsevier, Inc.",
-      "count": 3,
-      "years": "2026",
-      "by_year": {
-        "2026": 3
-      }
-    },
-    {
       "group": "issn:0957-4174",
       "journal": "Expert Systems with Applications",
       "publisher": "Elsevier, Inc.",
@@ -61,17 +72,6 @@
       "years": "2026",
       "by_year": {
         "2026": 3
-      }
-    },
-    {
-      "group": "issn:0306-4573",
-      "journal": "Information Processing & Management",
-      "publisher": "Elsevier, Inc.",
-      "count": 3,
-      "years": "2025–2026",
-      "by_year": {
-        "2025": 2,
-        "2026": 1
       }
     },
     {

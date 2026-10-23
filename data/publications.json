@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-19",
+  "updated": "2026-10-23",
   "items": [
     {
       "title": "A self-consistent physics-informed neural network paradigm for sloshing analysis",
@@ -316,7 +316,7 @@
       "type": "journal",
       "doi": "10.1016/j.swevo.2026.102340",
       "url": "https://doi.org/10.1016/j.swevo.2026.102340",
-      "citations": 1,
+      "citations": 2,
       "thumb": "images/thumbs/10-1016-j-swevo-2026-102340.svg"
     },
     {
