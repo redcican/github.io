@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-23",
+  "updated": "2026-10-26",
   "items": [
     {
       "title": "A self-consistent physics-informed neural network paradigm for sloshing analysis",
@@ -332,7 +332,7 @@
       "type": "journal",
       "doi": "10.1016/j.cie.2026.111898",
       "url": "https://doi.org/10.1016/j.cie.2026.111898",
-      "citations": 1,
+      "citations": 2,
       "thumb": "images/thumbs/10-1016-j-cie-2026-111898.svg"
     },
     {
@@ -420,7 +420,7 @@
       "type": "conference",
       "doi": "10.1145/3788731.3788733",
       "url": "https://doi.org/10.1145/3788731.3788733",
-      "citations": 0,
+      "citations": 1,
       "locked": [
         "venue"
       ],
@@ -574,7 +574,7 @@
       "type": "journal",
       "doi": "10.1371/journal.pone.0321862",
       "url": "https://doi.org/10.1371/journal.pone.0321862",
-      "citations": 4,
+      "citations": 5,
       "abstract": "Mathematical optimization is fundamental across many scientific and engineering applications. While data-driven models like gradient boosting and random forests excel at prediction tasks, they often lack mathematical regularity, being non-differentiable or even discontinuous. These models are commonly used to predict outputs based on a combination of fixed parameters and adjustable variables. A key transition in optimization involves moving beyond simple prediction to determine optimal variable values. Specifically, the challenge lies in identifying values of adjustable variables that maximize the output quality according to the model's predictions, given a set of fixed parameters. To address this challenge, we propose a method that combines XGBoost's superior prediction accuracy with neural networks' differentiability as optimization surrogates. The approach leverages gradient information from neural networks to guide SLSQP optimization while maintaining XGBoost's prediction precision. Through extensive testing on classical optimization benchmarks including Rosenbrock, Levy, and Rastrigin functions with varying dimensions and constraint conditions, we demonstrate that our method achieves solutions up to 40% better than traditional methods while reducing computation time by orders of magnitude. The framework consistently maintains near-zero constraint violations across all test cases, even as problem complexity increases. This approach bridges the gap between model accuracy and optimization efficiency, offering a practical solution for optimizing non-differentiable machine learning models that can be extended to other tree-based ensemble algorithms. The method has been successfully applied to real-world steel alloy optimization, where it achieved superior performance while maintaining all metallurgical composition constraints.",
       "thumb": "images/thumbs/10-1371-journal-pone-0321862.svg"
     },
@@ -611,7 +611,7 @@
       "type": "journal",
       "doi": "10.1007/s00158-025-03984-2",
       "url": "https://doi.org/10.1007/s00158-025-03984-2",
-      "citations": 21,
+      "citations": 22,
       "thumb": "images/thumbs/10-1007-s00158-025-03984-2.svg"
     },
     {
