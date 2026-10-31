@@ -1,15 +1,15 @@
 {
-  "updated": "2026-10-23",
+  "updated": "2026-10-31",
   "items": [
     {
       "group": "issn:0956-5515",
       "journal": "Journal of Intelligent Manufacturing",
       "publisher": "Springer Nature",
-      "count": 35,
+      "count": 36,
       "years": "2025–2026",
       "by_year": {
         "2025": 24,
-        "2026": 11
+        "2026": 12
       }
     },
     {
@@ -26,10 +26,10 @@
       "group": "issn:0950-7051",
       "journal": "Knowledge-Based Systems",
       "publisher": "Elsevier, Inc.",
-      "count": 6,
+      "count": 7,
       "years": "2026",
       "by_year": {
-        "2026": 6
+        "2026": 7
       }
     },
     {
