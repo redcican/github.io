@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-31",
+  "updated": "2026-11-02",
   "items": [
     {
       "title": "A self-consistent physics-informed neural network paradigm for sloshing analysis",
@@ -627,7 +627,7 @@
       "type": "journal",
       "doi": "10.1007/s00170-024-14219-x",
       "url": "https://doi.org/10.1007/s00170-024-14219-x",
-      "citations": 6,
+      "citations": 7,
       "code": "https://github.com/redcican/Surrogate-gradient-methods",
       "abstract": "Abstract In many industrial applications, data-driven models are more and more commonly employed as an alternative to classical analytical descriptions or simulations. In particular, such models are often used to predict the outcome of an industrial process with respect to specific quality characteristics from both observed process parameters and control variables. A major step in proceeding from purely predictive to prescriptive analytics, i.e., towards leveraging data-driven models for process optimization, consists of, for given process parameters, determining control variable values such that the output quality improves according to the process model. This task naturally leads to a constrained optimization problem for data-driven prediction algorithms. In many cases, however, the best available models suffer from a lack of regularity: methods such as gradient boosting or random forests are generally non-differentiable and might even exhibit discontinuities. The optimization of these models would therefore require the use of derivative-free techniques. Here, we discuss the use of alternative, independently trained differentiable machine learning models as a surrogate during the optimization procedure. While these alternatives are generally less accurate representations of the actual process, the possibility of employing derivative-based optimization methods provides major advantages in terms of computational performance. Using classical benchmarks as well as a real-world dataset obtained from an industrial environment, we demonstrate that these advantages can outweigh the additional model error, especially in real-time applications.",
       "thumb": "images/thumbs/10-1007-s00170-024-14219-x.svg"
@@ -644,7 +644,7 @@
       "type": "journal",
       "doi": "10.3390/met12010001",
       "url": "https://doi.org/10.3390/met12010001",
-      "citations": 71,
+      "citations": 72,
       "abstract": "This paper presents an approach for the application of machine learning in the prediction and understanding of casting surface related defects. The manner by which production data from a steel and cast iron foundry can be used to create models for predicting casting surface related defect is demonstrated. The data used for the model creation were collected from a medium-sized steel and cast iron foundry in which components ranging from 1 to 100 kg in weight are produced from wear and heat resistant cast iron and steel materials. This includes all production-relevant data from the melting and casting process, as well as from the mold production, the sand preparation and component quality related data from the quality management department. The data are tethered together with each other, the information regarding the identity and number of components that resulted in scrap due to the casting surface defect metal penetrations was added to the dataset. Six different machine learning algorithms were trained and an interpretation of the models outputs was accomplished with the application of the SHAP framework.",
       "thumb": "images/thumbs/10-3390-met12010001.svg"
     },
