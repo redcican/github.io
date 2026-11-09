@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-02",
+  "updated": "2026-11-09",
   "items": [
     {
       "title": "A self-consistent physics-informed neural network paradigm for sloshing analysis",
@@ -225,7 +225,7 @@
       "type": "journal",
       "doi": "10.1016/j.ipm.2026.104957",
       "url": "https://doi.org/10.1016/j.ipm.2026.104957",
-      "citations": 1,
+      "citations": 2,
       "added": "2026-10-16",
       "thumb": "images/thumbs/10-1016-j-ipm-2026-104957.svg",
       "locked": [
@@ -316,7 +316,7 @@
       "type": "journal",
       "doi": "10.1016/j.swevo.2026.102340",
       "url": "https://doi.org/10.1016/j.swevo.2026.102340",
-      "citations": 2,
+      "citations": 3,
       "thumb": "images/thumbs/10-1016-j-swevo-2026-102340.svg"
     },
     {
@@ -365,7 +365,7 @@
       "type": "journal",
       "doi": "10.1371/journal.pone.0341118",
       "url": "https://doi.org/10.1371/journal.pone.0341118",
-      "citations": 0,
+      "citations": 1,
       "added": "2026-10-16",
       "abstract": "The rapid expansion of patent databases poses increasing challenges for multi-label patent classification, particularly for inventions spanning multiple technological domains. Conventional approaches are hindered by high annotation costs and limited scalability, while often neglecting the semantic structure of patent documents. Here, we present a retrieval-enhanced few-shot learning framework that combines patent-specific contrastive pre-training with semantic retrieval to enable scalable multi-label classification. Drone technologies are selected as the evaluation domain due to their multidisciplinary characteristics encompassing mechanical, electronic, and software aspects. The proposed method learns domain-adapted embeddings that capture multi-label co-occurrence patterns and leverages retrieval-augmented few-shot learning with structured reasoning to reduce reliance on extensive annotations. Experiments on a curated dataset of 15,000 annotated drone patents across ten categories demonstrate that the framework achieves Macro-F1 and Micro-F1 scores of 0.847 and 0.892, corresponding to improvements of 30% and 23% over few-shot baselines. Furthermore, contrastive pre-training yields notable benefits for underrepresented categories, with performance improvements reaching 16% over transformer-based approaches. These results indicate that the proposed approach offers an effective and resource-efficient solution for multi-label patent classification, with potential to improve the scalability and accessibility of intellectual property analysis.",
       "thumb": "images/thumbs/10-1371-journal-pone-0341118.svg"
@@ -383,7 +383,8 @@
       "doi": "10.1109/tevc.2026.3721299",
       "url": "https://doi.org/10.1109/tevc.2026.3721299",
       "citations": 0,
-      "thumb": "images/thumbs/10-1109-tevc-2026-3721299.svg"
+      "thumb": "images/thumbs/10-1109-tevc-2026-3721299.svg",
+      "abstract": "Current methods that use large language models to evolve heuristics for combinatorial optimization converge toward a single best algorithm or a small set of trade-off solutions. When the problem distribution shifts, these methods require expensive re-adaptation and their performance degrades. Here, we propose a quality-diversity evolutionary framework that maintains a structured archive of diverse heuristics, where each is specialized for a particular class of problem instances. A large language model serves as the variation operator within the evolutionary loop. Shapley additive explanations on abstract syntax tree features play a dual role in this framework: they guide the mutation prompts toward productive code modifications, and they extract the behavioral descriptors that organize the archive. An online selector then retrieves the best-matched heuristic for each new unseen instance. We evaluate the approach on vehicle routing, traveling salesman, and job shop scheduling problems under static, perturbed, stochastic, and dynamic conditions. The archive coverage provides inherent robustness to distributional shift, whereas single-heuristic baselines and neural solvers degrade considerably. The resulting heuristic library is interpretable, since each archive cell contains readable code at known feature coordinates."
     },
     {
       "title": "Development of multifunctional nanomaterials for advanced theranostic applications in skin cancer",
@@ -517,7 +518,7 @@
       "type": "journal",
       "doi": "10.1007/s40819-025-01988-6",
       "url": "https://doi.org/10.1007/s40819-025-01988-6",
-      "citations": 6,
+      "citations": 5,
       "added": "2026-10-16",
       "thumb": "images/thumbs/10-1007-s40819-025-01988-6.svg"
     },
